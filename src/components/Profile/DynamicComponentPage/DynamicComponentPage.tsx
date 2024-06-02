@@ -2,11 +2,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-interface ParamsId {
-  id: string;
-}
-
-const DynamicComponentPage = ({ id }: ParamsId) => {
+const DynamicComponentPage = () => {
   return (
     <div className="max-w-[1750px] mx-auto">
       <div className="mb-[40px] flex mobile:flex-wrap items-center mobile:gap-[20px] tablet:gap-[32px]">
