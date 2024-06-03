@@ -15,6 +15,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <link rel="manifest" href="/manifest.json"></link>
       <body className={myFontPanagram.className}>
         <Header />
         <main>{children}</main>
