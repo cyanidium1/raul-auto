@@ -1,4 +1,5 @@
 import CustomSelect from '@/components/UI/CustomSelect/CustomSelect';
+import Button from '@/components/UI/Button/Button';
 
 const selectOptions = [
   {
@@ -62,12 +63,12 @@ const InpuDataCalculator = () => {
           </li>
         ))}
         <li className="self-end w-full">
-          <button
-            className="flex items-center justify-center bg-gradient-red font-bold w-full h-[60px] rounded-sub-block-12 text-primary transform transition duration-300 ease-in-out hover:scale-105 hover:text-hoverprimary focus:outline-focus outline-none"
+          <Button
+            className="flex items-center justify-center bg-gradient-red font-bold w-full h-[60px] rounded-sub-block-12 text-primary"
             type="submit"
           >
             Рассчёт по платежам
-          </button>
+          </Button>
         </li>
       </ul>
     </div>

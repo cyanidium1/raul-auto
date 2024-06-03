@@ -67,7 +67,7 @@ const OurCoordinates = () => {
           Контакты
         </h1>
       </div>
-      <div className="max-w-[1696px] bg-mapbg mobile:rounded-sub-block-10 tablet:rounded-sub-block-36  desktop:rounded-sub-block-42 mobile:p-[15px] tablet:p-[25px] desktop:p-[32px] mx-auto overflow-hidden">
+      <div className="max-w-[1696px] bg-mapbg mobile:rounded-sub-block-10 tablet:rounded-sub-block-36 desktop:rounded-sub-block-42 mobile:p-0 tablet:p-[25px] desktop:p-[32px] mx-auto overflow-hidden">
         <div className="relative w-full pb-[36.04%] mb-[32px]">
           <Image
             className="absolute top-0 left-0 w-full h-full object-cover"
@@ -80,15 +80,21 @@ const OurCoordinates = () => {
         <ul className="flex flex-wrap items-center mobile:justify-around desktop:justify-center mobile:gap-[25px] tablet:gap-[40px] desktop:gap-[64px]">
           {locations.map((location, index) => (
             <li key={index} className="flex flex-col">
-              <div className="text-primary text-30">{location.city}</div>
-              <div className="text-16 text-secondary font-[500]">
+              <div className="text-primary mobile:text-20 tablet:text-30">
+                {location.city}
+              </div>
+              <div className="mobile:text-14 mobile:leading-10 tablet:text-16 text-secondary font-[500]">
                 {location.address}
               </div>
-              <div className="text-16 text-secondary font-[500]">
+              <div className="mobile:text-14 mobile:leading-10 tablet:text-16 text-secondary font-[500]">
                 {location.hours}
               </div>
-              <div className="text-16 text-primary">{location.phone}</div>
-              <div className="text-16 text-primary">{location.email}</div>
+              <div className="mobile:text-14 mobile:leading-10 tablet:text-16 text-primary">
+                {location.phone}
+              </div>
+              <div className="mobile:text-14 mobile:leading-10 tablet:text-16 text-primary">
+                {location.email}
+              </div>
             </li>
           ))}
         </ul>

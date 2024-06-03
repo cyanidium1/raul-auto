@@ -16,7 +16,7 @@ const Navigation = () => {
       <ul className="mobile:hidden pointnav:flex items-center gap-10">
         <li className="text-primary text-14">
           <Link
-            className={`transition-colors duration-300 ease-in-out hover:text-red-600 ${
+            className={`transition-colors duration-300 ease-in-out hover:text-red-600 focus:text-red-600 outline-none ${
               pathname === '/calculator' ? isActiveClass : ''
             }`}
             href="/calculator"
@@ -26,7 +26,7 @@ const Navigation = () => {
         </li>
         <li className="text-primary text-14">
           <Link
-            className={`transition-colors duration-300 ease-in-out hover:text-red-600 ${
+            className={`transition-colors duration-300 ease-in-out hover:text-red-600 focus:text-red-600 outline-none ${
               pathname === '/partnership' ? isActiveClass : ''
             }`}
             href="/partnership"
@@ -36,7 +36,7 @@ const Navigation = () => {
         </li>
         <li className="text-primary text-14">
           <Link
-            className={`transition-colors duration-300 ease-in-out hover:text-red-600 ${
+            className={`transition-colors duration-300 ease-in-out hover:text-red-600 focus:text-red-600 outline-none ${
               pathname === '/contacts' ? isActiveClass : ''
             }`}
             href="/contacts"
@@ -46,7 +46,7 @@ const Navigation = () => {
         </li>
         <li className="text-primary text-14">
           <Link
-            className={`transition-colors duration-300 ease-in-out hover:text-red-600 ${
+            className={`transition-colors duration-300 ease-in-out hover:text-red-600 focus:text-red-600 outline-none ${
               pathname === '/about' ? isActiveClass : ''
             }`}
             href="/about"

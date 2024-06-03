@@ -1,6 +1,7 @@
 'use client';
 import DynamicForm from '@/components/UI/DynamicForm/DynamicForm';
 import InputField from '@/components/UI/InputField/InputField';
+import Button from '@/components/UI/Button/Button';
 import Link from 'next/link';
 import { FormikValues } from 'formik';
 
@@ -61,12 +62,12 @@ const LoginClientForm = () => {
             >
               Забыли пароль?
             </Link>
-            <button
-              className="bg-gradient-red text-primary text-18 font-bold rounded-sub-block-16 flex items-center justify-center px-[20px] py-[18px] w-full h-[60px] transform transition duration-300 ease-in-out hover:scale-105 hover:text-hoverprimary focus:outline-focus outline-none"
+            <Button
+              className="bg-gradient-red text-primary text-18 font-bold rounded-sub-block-16 flex items-center justify-center px-[20px] py-[18px] w-full h-[60px]"
               type="submit"
             >
               Продолжить
-            </button>
+            </Button>
           </div>
         )}
       </DynamicForm>

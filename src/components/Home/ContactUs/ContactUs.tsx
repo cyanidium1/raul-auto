@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Button from '@/components/UI/Button/Button';
 
 const ContactUs = () => {
   return (
@@ -41,12 +42,12 @@ const ContactUs = () => {
                 name="phone"
                 placeholder="Введите ваш номер"
               />
-              <button
-                className="mobile:w-full desktop:w-[136px] h-[60px] rounded-sub-block-12 bg-gradient-red flex items-center justify-center text-primary text-18 px-[20px] py-[18px] transform transition duration-300 ease-in-out hover:scale-105 hover:text-hoverprimary focus:outline-focus outline-none"
+              <Button
+                className="mobile:w-full desktop:w-[136px] h-[60px] rounded-sub-block-12 bg-gradient-red flex items-center justify-center text-primary text-18 px-[20px] py-[18px]"
                 type="submit"
               >
                 Отправить
-              </button>
+              </Button>
             </div>
           </div>
         </div>

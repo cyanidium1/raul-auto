@@ -104,13 +104,13 @@ const OrdersDealer = () => {
               </p>
               <Link
                 href={`/profile/${order.id}`}
-                className="flex items-center justify-center bg-gradient-red mobile:text-[26px] lg:text-[12px] desktop:text-14 font-bold text-primary px-[24px] py-[14px] rounded-sub-block-10 mobile:w-full lg:w-[116px] mobile:h-[80px] lg:h-[40px] mobile:mb-[30px] tablet:mb-[90px] lg:mb-0 focus:outline-focus outline-none"
+                className="flex items-center justify-center bg-gradient-red mobile:text-[22px] lg:text-[12px] desktop:text-14 font-bold text-primary px-[24px] py-[14px] rounded-sub-block-10 mobile:w-full lg:w-[116px] mobile:h-[60px] lg:h-[40px] mobile:mb-[30px] tablet:mb-[90px] lg:mb-0 focus:outline-focus outline-none"
               >
                 Детально
               </Link>
             </div>
             <div className="flex flex-col gap-[16px]">
-              <div className="flex flex-col mobile:items-center lg:items-start mobile:gap-[35px] lg:gap-[16px] mobile:mb-[30px] tablet:tablet:mb-[90px] lg:mb-0">
+              <div className="flex flex-col mobile:items-center lg:items-start mobile:gap-[10px] tablet:gap-[30px] lg:gap-[16px] mobile:mb-[30px] tablet:tablet:mb-[90px] lg:mb-0">
                 <p className="mobile:text-[22px] tablet:text-[30px] lg:text-[12px] desktop:text-[16px] mobile:leading-10 tablet:leading-6 text-secondary font-semibold text-center lg:tex-left">
                   Диллер:{' '}
                   <span className="text-primary font-semibold uppercase">

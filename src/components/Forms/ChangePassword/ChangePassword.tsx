@@ -1,6 +1,7 @@
 'use client';
 import DynamicForm from '@/components/UI/DynamicForm/DynamicForm';
 import InputField from '@/components/UI/InputField/InputField';
+import Button from '@/components/UI/Button/Button';
 import { FormikValues } from 'formik';
 
 const initialValues = {
@@ -13,7 +14,7 @@ const ChangePassword = () => {
     console.log(value);
   };
   return (
-    <div className="bg-gradient-sub-block rounded-sub-block-26 p-[38px] mobile:w-full desktop:max-w-[544px] w-full">
+    <div className="bg-gradient-sub-block mobile:rounded-sub-block-10 tablet:rounded-sub-block-26 p-[38px] mobile:w-full desktop:max-w-[544px] w-full">
       <h2 className="text-primary text-24 font-bold mb-[32px]">
         Изменить пароль
       </h2>
@@ -27,7 +28,7 @@ const ChangePassword = () => {
                 label="Пароль"
                 placeholder="Введите старый пароль"
                 labelClassName="text-18 mb-[10px] font-semibold"
-                inputClassName="placeholder:text-placeholderText placeholder:text-18 text-primary placeholder:font-semibold flex border-solid border-[1px] border-primary rounded-sub-block-12 bg-input px-[20px] py-[18px] w-full h-[60px]"
+                inputClassName="placeholder:text-placeholderText mobile:placeholder:text-[12px] tablet:placeholder:text-18 text-primary placeholder:font-semibold flex border-solid border-[1px] border-primary rounded-sub-block-12 bg-input px-[20px] py-[18px] w-full mobile:h-[50px] tablet:h-[60px]"
               />
             </div>
             <div>
@@ -39,16 +40,16 @@ const ChangePassword = () => {
                     label="Новый пароль"
                     placeholder="Введите новый пароль"
                     labelClassName="text-18 mb-[10px] font-semibold"
-                    inputClassName="placeholder:text-placeholderText placeholder:text-18 text-primary placeholder:font-semibold flex border-solid border-[1px] border-primary rounded-sub-block-12 bg-input px-[20px] py-[18px] w-full h-[60px]"
+                    inputClassName="placeholder:text-placeholderText mobile:placeholder:text-[12px] tablet:placeholder:text-18 text-primary placeholder:font-semibold flex border-solid border-[1px] border-primary rounded-sub-block-12 bg-input px-[20px] py-[18px] w-full mobile:h-[50px] tablet:h-[60px]"
                   />
                 </div>
                 <div className="self-end">
-                  <button
-                    className="flex items-center justify-center w-[126px] h-[60px] rounded-sub-block-12 bg-copybtn py-[18px] px-[20px] font-bold text-18 text-primary transform transition duration-300 ease-in-out hover:scale-105 hover:text-hoverprimary focus:outline-focus outline-none"
+                  <Button
+                    className="flex items-center justify-center mobile:w-[100px] mobile:h-[50px] tablet:w-[126px] tablet:h-[60px] rounded-sub-block-12 bg-copybtn py-[18px] px-[20px] font-bold mobile:text-12 tablet:text-18 text-primary "
                     type="submit"
                   >
                     Изменить
-                  </button>
+                  </Button>
                 </div>
               </div>
             </div>

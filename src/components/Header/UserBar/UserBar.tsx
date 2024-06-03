@@ -1,14 +1,19 @@
 'use client';
 import LanguageSelection from '@/components/UI/LanguageSelection/LanguageSelection';
 import Image from 'next/image';
+import Link from 'next/link';
+import Button from '@/components/UI/Button/Button';
 import SelectedAuthRouts from '@/components/Modals/SelectedAuthRouts/SelectedAuthRouts';
 import { useMediaQuery } from 'usehooks-ts';
 import { useState } from 'react';
+import { usePathname } from 'next/navigation';
 const UserBar = () => {
   const [showModal, setShowModal] = useState(false);
   const isScreenInRange = useMediaQuery('(max-width: 920px)', {
     initializeWithValue: false,
   });
+  const pathname = usePathname();
+  const isActiveClass = 'text-red-600 text-14';
 
   const toggleModal = () => {
     setShowModal((prev) => !prev);
@@ -36,13 +41,27 @@ const UserBar = () => {
                 height={16}
               />
             </li>
+            {/* <li>
+              <div className="flex items-center gap-[40px] text-14 text-primary font-bold mr-[40px]">
+                <Link
+                  className={`transition-colors duration-300 ease-in-out hover:text-red-600 ${
+                    pathname === '/profile' ? isActiveClass : ''
+                  }`}
+                  href="/profile"
+                >
+                  Личный кабинет
+                </Link>
+                <button type="button">Выйти</button>
+              </div>
+            </li> */}
             <li className="relative">
-              <button
+              <Button
                 onClick={toggleModal}
-                className="bg-gradient-red text-14 py-4 px-[24px] mr-10 text-primary rounded-sub-block-10 transform transition duration-300 ease-in-out hover:scale-105 hover:text-hoverprimary h-[44px] focus:outline-focus outline-none"
+                className="bg-gradient-red text-14 py-4 px-[24px] mr-10 text-primary rounded-sub-block-10 h-[44px]"
+                type="button"
               >
                 Войти
-              </button>
+              </Button>
               {showModal && (
                 <div className="absolute left-[-15px] bottom-[-100px] z-10">
                   <SelectedAuthRouts toggleModal={toggleModal} />

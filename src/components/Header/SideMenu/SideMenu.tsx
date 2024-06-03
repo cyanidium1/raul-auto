@@ -28,7 +28,7 @@ const SideMenu = ({ isOpen, onClose }: SideMenuProps) => {
         <li className="p-2">
           <Link
             onClick={onClose}
-            className={`text-[20px] text-primary transition-colors duration-300 ease-in-out hover:text-red-600 focus:outline-focus outline-none ${
+            className={`text-[20px] text-primary transition-colors duration-300 ease-in-out hover:text-red-600 focus:text-red-600 outline-none ${
               pathname === '/calculator' ? isActive : ''
             }`}
             href="/calculator"
@@ -39,7 +39,7 @@ const SideMenu = ({ isOpen, onClose }: SideMenuProps) => {
         <li className="p-2">
           <Link
             onClick={onClose}
-            className={`text-[20px] text-primary transition-colors duration-300 ease-in-out hover:text-red-600 focus:outline-focus outline-none ${
+            className={`text-[20px] text-primary transition-colors duration-300 ease-in-out hover:text-red-600 focus:text-red-600 outline-none${
               pathname === '/partnership' ? isActive : ''
             }`}
             href="/partnership"
@@ -50,7 +50,7 @@ const SideMenu = ({ isOpen, onClose }: SideMenuProps) => {
         <li className="p-2">
           <Link
             onClick={onClose}
-            className={`text-[20px] text-primary transition-colors duration-300 ease-in-out hover:text-red-600 focus:outline-focus outline-none ${
+            className={`text-[20px] text-primary transition-colors duration-300 ease-in-out hover:text-red-600 focus:text-red-600 outline-none ${
               pathname === '/contacts' ? isActive : ''
             }`}
             href="/contacts"
@@ -61,12 +61,23 @@ const SideMenu = ({ isOpen, onClose }: SideMenuProps) => {
         <li className="p-2">
           <Link
             onClick={onClose}
-            className={`text-[20px] text-primary transition-colors duration-300 ease-in-out hover:text-red-600 focus:outline-focus outline-none ${
+            className={`text-[20px] text-primary transition-colors duration-300 ease-in-out hover:text-red-600 focus:text-red-600 outline-none ${
               pathname === '/about' ? isActive : ''
             }`}
             href="/about"
           >
             О нас
+          </Link>
+        </li>
+        <li className="p-2">
+          <Link
+            onClick={onClose}
+            className={`text-[20px] text-primary transition-colors duration-300 ease-in-out hover:text-red-600 focus:text-red-600 outline-none ${
+              pathname === '/profile' ? isActive : ''
+            }`}
+            href="/profile"
+          >
+            Личный кабинет
           </Link>
         </li>
         <li className="text-primary text-14 mt-8">Найти авто по VIN:</li>

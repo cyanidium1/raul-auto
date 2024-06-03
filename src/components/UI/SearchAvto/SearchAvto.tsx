@@ -1,5 +1,6 @@
 'use client';
 import Image from 'next/image';
+import Button from '../Button/Button';
 import { useMediaQuery } from 'usehooks-ts';
 
 const SearchAvto = () => {
@@ -103,12 +104,12 @@ const SearchAvto = () => {
               height={18}
             />
           </label>
-          <button
-            className="w-full lg:w-[207px] h-[60px] bg-gradient-red text-primary text-[16px] lg:text-18 rounded-lg lg:rounded-sub-block-12 transform transition duration-300 ease-in-out hover:scale-105 hover:text-hoverprimary focus:outline-focus outline-none"
+          <Button
+            className="w-full lg:w-[207px] h-[60px] bg-gradient-red text-primary text-[16px] lg:text-18 rounded-lg lg:rounded-sub-block-12"
             type="submit"
           >
             Найти
-          </button>
+          </Button>
         </div>
       </div>
     </div>
