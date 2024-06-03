@@ -47,3 +47,33 @@ button {
     align-items: center;
     cursor: pointer;
 }
+
+/* Стили для всего скроллбара */
+.custom-scrollbar::-webkit-scrollbar {
+    width: 5px;
+}
+
+/* Стили для трека скроллбара */
+.custom-scrollbar::-webkit-scrollbar-track {
+    border-radius: 17px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+
+/* Стили для ползунка скроллбара */
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background-color: #3e4146;
+    border-radius: 17px;
+    border: 2px solid #272a2e;
+    -webkit-border-radius: 17px;
+    -moz-border-radius: 17px;
+    -ms-border-radius: 17px;
+    -o-border-radius: 17px;
+}
+
+/* Стили для ползунка скроллбара при наведении */
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background-color: #6a6969;
+}

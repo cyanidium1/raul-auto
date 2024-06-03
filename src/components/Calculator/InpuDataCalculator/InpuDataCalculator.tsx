@@ -1,5 +1,7 @@
+'use client';
 import CustomSelect from '@/components/UI/CustomSelect/CustomSelect';
 import Button from '@/components/UI/Button/Button';
+import { useState } from 'react';
 
 const selectOptions = [
   {
@@ -21,6 +23,12 @@ const selectOptions = [
       { label: 'LOS_ANGELES 18', value: 'los_angeles_18' },
       { label: 'SAN_FRANCISCO 19', value: 'san_francisco_19' },
       { label: 'MIAMI 20', value: 'miami_20' },
+      { label: 'LOS_ANGELES 18', value: 'los_angeles_18' },
+      { label: 'SAN_FRANCISCO 19', value: 'san_francisco_19' },
+      { label: 'MIAMI 20', value: 'miami_20' },
+      { label: 'LOS_ANGELES 18', value: 'los_angeles_18' },
+      { label: 'SAN_FRANCISCO 19', value: 'san_francisco_19' },
+      { label: 'MIAMI 20', value: 'miami_20' },
     ],
   },
   {
@@ -30,6 +38,23 @@ const selectOptions = [
 ];
 
 const InpuDataCalculator = () => {
+  const [selectedOptions, setSelectedOptions] = useState<
+    Record<string, string>
+  >({});
+
+  const handleSelect = (
+    label: string,
+    option: { label: string; value: string }
+  ) => {
+    setSelectedOptions((prevState) => ({
+      ...prevState,
+      [label]: option.value,
+    }));
+  };
+
+  const handleSubmit = () => {
+    console.log(selectedOptions);
+  };
   return (
     <div className="container mx-auto mobile:rounded-sub-block-10 tablet:rounded-sub-block-24 lg:rounded-sub-block-42 mobile:p-[20px] tablet:p-[40px] desktop:p-[80px] max-w-[832px] w-full bg-gradient-sub-block self-start">
       <h2 className="text-primary mobile:text-28 tablet:text-40 font-medium mb-[72px] text-center">
@@ -58,6 +83,7 @@ const InpuDataCalculator = () => {
                 labelClassName="text-secondary text-16 mb-[8px] truncate"
                 selectClassName="border border-primary rounded-sub-block-12 bg-input w-full h-[60px] py-[18px] px-[20px] text-primary font-semibold"
                 optionClassName="text-primary w-full"
+                onSelect={(option) => handleSelect(item.label, option)}
               />
             )}
           </li>

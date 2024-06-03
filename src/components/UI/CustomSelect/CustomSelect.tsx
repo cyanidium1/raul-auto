@@ -1,3 +1,5 @@
+'use client';
+import { useState } from 'react';
 import Image from 'next/image';
 
 interface Option {
@@ -6,12 +8,14 @@ interface Option {
 }
 
 interface CustomSelectProps {
-  label: string;
+  label?: string;
   options: Option[];
   containerClassName?: string;
   labelClassName?: string;
   selectClassName?: string;
   optionClassName?: string;
+  onSelect: (value: Option) => void;
+  // selectedOption: string;
 }
 
 const CustomSelect: React.FC<CustomSelectProps> = ({
@@ -21,7 +25,18 @@ const CustomSelect: React.FC<CustomSelectProps> = ({
   labelClassName,
   selectClassName,
   optionClassName,
+  onSelect,
+  // selectedOption,
 }) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [selectedOption, setSelectedOption] = useState<Option | null>(null);
+
+  const handleOptionClick = (option: Option) => {
+    setSelectedOption(option);
+    setIsOpen(false);
+    onSelect(option);
+  };
+
   return (
     <>
       <label
@@ -29,27 +44,36 @@ const CustomSelect: React.FC<CustomSelectProps> = ({
       >
         {label}
       </label>
-      <div className={`relative flex flex-col ${containerClassName}`}>
-        <select
-          className={`focus:outline-focus outline-none appearance-none cursor-pointer ${selectClassName}`}
+      <div className={`relative z-[15] flex flex-col ${containerClassName}`}>
+        <div
+          className={`flex items-center justify-between focus:outline-focus outline-none appearance-none cursor-pointer z-[15] ${selectClassName}`}
+          onClick={() => setIsOpen(!isOpen)}
         >
-          {options.map((option, index) => (
-            <option
-              key={index}
-              value={option.value}
-              className={optionClassName}
-            >
-              {option.label}
-            </option>
-          ))}
-        </select>
-        <Image
-          className="absolute top-1/2 right-3 lg:right-[14px] transform translate-y-[-50%] cursor-pointer pointer-events-none"
-          src="/select-icon.png"
-          alt="select icon"
-          width={18}
-          height={18}
-        />
+          {selectedOption ? selectedOption.label : 'Выберите опцию'}
+          {/* <span>{selectedOption}</span> */}
+          <Image
+            src="/select-icon.png"
+            alt="select icon"
+            width={18}
+            height={18}
+            className={`transform transition-transform duration-200 ${
+              isOpen ? 'rotate-180' : 'rotate-0'
+            }`}
+          />
+        </div>
+        {isOpen && (
+          <ul className="absolute mobile:max-h-[100px] tablet:max-h-[145px] top-[60%] left-0 right-0 py-[14px] px-[24px] bg-gradient-select border border-primary rounded-sub-block-10 z-[10] overflow-y-auto custom-scrollbar">
+            {options.map((option, index) => (
+              <li
+                key={index}
+                className={`py-[14px] cursor-pointer hover:bg-input border-t border-primary text-primary text-14 font-bold ${optionClassName}`}
+                onClick={() => handleOptionClick(option)}
+              >
+                {option.label}
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
     </>
   );
