@@ -14,20 +14,22 @@ interface CustomSelectProps {
   labelClassName?: string;
   selectClassName?: string;
   optionClassName?: string;
+  optionListClassName?: string;
   onSelect: (value: Option) => void;
-  // selectedOption: string;
+  currentSelectedOption: string;
 }
 
-const CustomSelect: React.FC<CustomSelectProps> = ({
+const CustomSelect = ({
   label,
   options,
   containerClassName,
   labelClassName,
   selectClassName,
+  optionListClassName,
   optionClassName,
   onSelect,
-  // selectedOption,
-}) => {
+  currentSelectedOption,
+}: CustomSelectProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState<Option | null>(null);
 
@@ -49,8 +51,7 @@ const CustomSelect: React.FC<CustomSelectProps> = ({
           className={`flex items-center justify-between focus:outline-focus outline-none appearance-none cursor-pointer z-[15] ${selectClassName}`}
           onClick={() => setIsOpen(!isOpen)}
         >
-          {selectedOption ? selectedOption.label : 'Выберите опцию'}
-          {/* <span>{selectedOption}</span> */}
+          {selectedOption ? selectedOption.label : currentSelectedOption}
           <Image
             src="/select-icon.png"
             alt="select icon"
@@ -62,11 +63,13 @@ const CustomSelect: React.FC<CustomSelectProps> = ({
           />
         </div>
         {isOpen && (
-          <ul className="absolute mobile:max-h-[100px] tablet:max-h-[145px] top-[60%] left-0 right-0 py-[14px] px-[24px] bg-gradient-select border border-primary rounded-sub-block-10 z-[10] overflow-y-auto custom-scrollbar">
+          <ul
+            className={`absolute mobile:max-h-[100px] tablet:max-h-[145px] top-[60%] left-0 right-0 py-[14px] px-[24px] bg-gradient-select border border-primary rounded-sub-block-10 z-[10] overflow-y-auto custom-scrollbar ${optionListClassName}`}
+          >
             {options.map((option, index) => (
               <li
                 key={index}
-                className={`py-[14px] cursor-pointer hover:bg-input border-t border-primary text-primary text-14 font-bold ${optionClassName}`}
+                className={`py-[14px] cursor-pointer transition duration-300 ease-in-out hover:bg-input border-t border-primary text-primary text-14 font-bold ${optionClassName}`}
                 onClick={() => handleOptionClick(option)}
               >
                 {option.label}

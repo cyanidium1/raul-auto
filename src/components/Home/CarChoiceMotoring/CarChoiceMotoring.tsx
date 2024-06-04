@@ -8,7 +8,7 @@ const CarChoiceMotoring = () => {
 
   return (
     <div className="mobile:pb-[80px] tablet:pb-[160px]">
-      <h2 className="mobile:text-34 tablet:text-40 lg:text-56 desktop:text-64 mobile:mb-10 tablet:mb-[80px] text-primary  text-center flex justify-center">
+      <h2 className="mobile:text-34 tablet:text-40 lg:text-56 desktop:text-[64px] font-bold mobile:mb-10 tablet:mb-[80px] text-primary  text-center flex justify-center">
         Выбрать авто по двигателю:
       </h2>
       <ul className="flex gap-8 flex-wrap items-center justify-center">

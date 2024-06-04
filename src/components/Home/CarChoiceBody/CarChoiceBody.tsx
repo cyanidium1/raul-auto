@@ -14,7 +14,7 @@ const carTypes = [
 const CarChoiceBody = () => {
   return (
     <div className="pb-[88px]">
-      <h2 className="mobile:text-34 tablet:text-40 lg:text-56 desktop:text-64 text-center text-primary mobile:mt-10 mobile:mb-10 tablet:mb-20 flex justify-center">
+      <h2 className="mobile:text-34 tablet:text-40 lg:text-56 desktop:text-[64px] font-bold text-center text-primary mobile:mt-10 mobile:mb-10 tablet:mb-20 flex justify-center">
         Выбрать авто по кузову:
       </h2>
       <ul className="flex gap-8 flex-wrap justify-center">

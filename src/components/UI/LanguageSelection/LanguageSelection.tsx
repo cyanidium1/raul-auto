@@ -1,25 +1,30 @@
-import Image from 'next/image';
+import CustomSelect from '../CustomSelect/CustomSelect';
+
+interface Option {
+  label: string;
+  value: string;
+}
+
+const options = [
+  { label: 'RU', value: 'ru' },
+  { label: 'UA', value: 'ua' },
+  { label: 'EN', value: 'en' },
+];
 
 const LanguageSelection = () => {
+  const handleSelectChange = (label: string, value: Option) => {
+    console.log(label);
+    console.log(value);
+  };
   return (
-    <label htmlFor="language" className="flex items-center gap-[10px] relative">
-      <select
-        id="language"
-        name="language"
-        className="block appearance-none bg-transparent text-14 text-primary focus:outline-none w-full pr-[30px] cursor-pointer focus:outline-focus outline-none"
-      >
-        <option value="ru">RU</option>
-        <option value="ua">UA</option>
-        <option value="en">EN</option>
-      </select>
-      <Image
-        className="absolute left-[30px] pointer-events-none"
-        src="/select-icon.png"
-        alt="select icon"
-        width={18}
-        height={18}
-      />
-    </label>
+    <CustomSelect
+      currentSelectedOption={options[0].label}
+      onSelect={(value) => handleSelectChange(options[0].label, value)}
+      options={options}
+      selectClassName="ml-[10px] text-14 text-primary w-full cursor-pointer"
+      optionListClassName="top-full px-[0] flex flex-col justify-center items-center"
+      optionClassName="py-[5px]"
+    />
   );
 };
 

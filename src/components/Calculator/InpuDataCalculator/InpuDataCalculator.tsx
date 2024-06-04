@@ -77,6 +77,7 @@ const InpuDataCalculator = () => {
               </>
             ) : (
               <CustomSelect
+                currentSelectedOption={item.options[0].label}
                 label={item.label}
                 options={item.options}
                 containerClassName="w-full flex-1"
@@ -92,6 +93,7 @@ const InpuDataCalculator = () => {
           <Button
             className="flex items-center justify-center bg-gradient-red font-bold w-full h-[60px] rounded-sub-block-12 text-primary"
             type="submit"
+            onClick={handleSubmit}
           >
             Рассчёт по платежам
           </Button>

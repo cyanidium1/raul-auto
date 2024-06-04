@@ -14,7 +14,7 @@ const ContactUs = () => {
             height={220}
           />
           <div>
-            <div className="mobile:text-20 lg:text-34 mobile:text-center desktop:text-left fullhd:text-[38px] fullhd:text-40 text-primary max-w-[595px] mb-[40px]">
+            <div className="mobile:text-20 lg:text-34 mobile:text-center desktop:text-left fullhd:text-[38px] fullhd:text-40 text-primary font-bold max-w-[595px] mb-[40px]">
               <span className="block">Позвоните нам</span>
               <span className="block">и получите консультацию</span>
             </div>
@@ -30,7 +30,7 @@ const ContactUs = () => {
           <div className="flex items-center mb-[24px] mobile:w-[320px] desktop:w-[445px] h-[27px] bg-gradient-red p-2 rounded-sub-block-6 text-primary mobile:text-[11px] desktop:text-16">
             Не перезвоним за 30 минут - подарим скидку $99
           </div>
-          <div className="mobile:text-30 desktop:text-40 mobile:text-center desktop:text-left text-primary mb-[40px]">
+          <div className="mobile:text-30 desktop:text-40 mobile:text-center desktop:text-left text-primary font-bold mb-[40px]">
             <span className="block">Оставьте номер и мы</span>
             <span className="block">перезвоним Вам</span>
           </div>

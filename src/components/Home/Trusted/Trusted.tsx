@@ -16,7 +16,7 @@ const Trusted = () => {
 
   return (
     <div className="mobile:pb-[125px] desktop:pb-[225px] max-w-[1696px] mx-auto">
-      <h3 className="flex justify-center text-primary mobile:text-34 tablet:text-40 mobile:mb-[60px] tablet:mb-[90px]">
+      <h3 className="flex justify-center text-primary mobile:text-34 tablet:text-40 font-bold mobile:mb-[60px] tablet:mb-[90px]">
         Нам доверяют:
       </h3>
       <Marquee

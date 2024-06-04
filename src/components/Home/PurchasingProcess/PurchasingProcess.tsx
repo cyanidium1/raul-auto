@@ -69,7 +69,7 @@ const purchasingSteps = [
 const PurchasingProcess = () => {
   return (
     <div className="mobile:pb-[104px] desktop:pb-[204px]">
-      <h2 className="mobile:text-34 tablet:text-40 lg:text-56 desktop:text-64 text-center text-primary flex justify-center mobile:mb-10 tablet:mb-[96px]">
+      <h2 className="mobile:text-34 tablet:text-40 lg:text-56 desktop:text-[64px] font-bold text-center text-primary flex justify-center mobile:mb-10 tablet:mb-[96px]">
         Процесс покупки авто из США
       </h2>
       <ul className="flex items-center justify-center flex-wrap gap-[32px]">
@@ -90,10 +90,10 @@ const PurchasingProcess = () => {
                 {step.step}
               </div>
             </div>
-            <div className="text-28 leading-[48px] text-primary mb-[10px]">
+            <div className="text-[28px] font-bold leading-[48px] text-primary mb-[10px]">
               {step.title}
             </div>
-            <p className="w-full text-[16px] text-countCar">
+            <p className="w-full text-[16px] font-medium text-countCar">
               {step.description}
             </p>
           </li>

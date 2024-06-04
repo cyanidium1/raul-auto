@@ -4,7 +4,7 @@ const Proposals = () => {
   return (
     <div className="mobile:pb-[100px] desktop:pb-[200px]">
       <div className="relative flex flex-col ml-auto mr-auto gap-10 max-w-[1688px] mobile:rounded-sub-block-10 tablet:rounded-sub-block-42 bg-gradient-sub-block mobile:p-[20px] mobile:items-center mobile:justify-center desktop:items-start desktop:justify-start desktop:p-[30px] fullhd:p-[80px]">
-        <div className="mobile:text-center desktop:text-left mobile:text-34 mobile:max-w-[320px] desktop:text-64 text-primary desktop:max-w-[955px]">
+        <div className="mobile:text-center desktop:text-left mobile:text-34 mobile:max-w-[320px] desktop:text-64 font-bold text-primary desktop:max-w-[955px]">
           Ежедневные{' '}
           <span className="desktop:block fullhd:inline-block">предложения</span>{' '}
           по авто из США
