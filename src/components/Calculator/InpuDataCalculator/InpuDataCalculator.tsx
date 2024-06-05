@@ -57,7 +57,7 @@ const InpuDataCalculator = () => {
   };
   return (
     <div className="container mx-auto mobile:rounded-sub-block-10 tablet:rounded-sub-block-24 lg:rounded-sub-block-42 mobile:p-[20px] tablet:p-[40px] desktop:p-[80px] max-w-[832px] w-full bg-gradient-sub-block self-start">
-      <h2 className="text-primary mobile:text-28 tablet:text-40 font-medium mb-[72px] text-center">
+      <h2 className="text-primary mobile:text-28 tablet:text-40 font-bold mb-[72px] text-center">
         Входные данные
       </h2>
       <ul className="grid grid-cols-1 tablet:grid-cols-2 gap-6 justify-items-center">
@@ -65,14 +65,14 @@ const InpuDataCalculator = () => {
           <li key={index} className="w-full flex flex-col">
             {index === 0 ? (
               <>
-                <label className="text-secondary text-16 mb-[8px] truncate">
+                <label className="text-secondary text-16 font-semibold mb-[8px] truncate">
                   {item.label}
                 </label>
                 <input
                   type="text"
                   value={item.options[0].label}
                   readOnly
-                  className="border border-primary rounded-sub-block-12 bg-input w-full h-[60px] py-[18px] px-[20px] text-primary font-semibold focus:outline-focus outline-none"
+                  className="border border-primary rounded-sub-block-12 bg-input w-full h-[60px] py-[18px] px-[20px] text-primary text-18 font-semibold focus:outline-focus outline-none"
                 />
               </>
             ) : (
@@ -82,7 +82,7 @@ const InpuDataCalculator = () => {
                 options={item.options}
                 containerClassName="w-full flex-1"
                 labelClassName="text-secondary text-16 mb-[8px] truncate"
-                selectClassName="border border-primary rounded-sub-block-12 bg-input w-full h-[60px] py-[18px] px-[20px] text-primary font-semibold"
+                selectClassName="border border-primary rounded-sub-block-12 bg-input w-full h-[60px] py-[18px] px-[20px] text-primary text-18 font-semibold"
                 optionClassName="text-primary w-full"
                 onSelect={(option) => handleSelect(item.label, option)}
               />
@@ -91,7 +91,7 @@ const InpuDataCalculator = () => {
         ))}
         <li className="self-end w-full">
           <Button
-            className="flex items-center justify-center bg-gradient-red font-bold w-full h-[60px] rounded-sub-block-12 text-primary"
+            className="flex items-center justify-center bg-gradient-red font-bold w-full h-[60px] rounded-sub-block-12 text-18 text-primary"
             type="submit"
             onClick={handleSubmit}
           >

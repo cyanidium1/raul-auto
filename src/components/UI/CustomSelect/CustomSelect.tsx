@@ -64,7 +64,7 @@ const CustomSelect = ({
         </div>
         {isOpen && (
           <ul
-            className={`absolute mobile:max-h-[100px] tablet:max-h-[145px] top-[60%] left-0 right-0 py-[14px] px-[24px] bg-gradient-select border border-primary rounded-sub-block-10 z-[10] overflow-y-auto custom-scrollbar ${optionListClassName}`}
+            className={`absolute mobile:max-h-[100px] tablet:max-h-[145px] top-[70%] left-0 right-0 py-[14px] px-[24px] bg-gradient-select border border-primary rounded-sub-block-10 z-[10] overflow-y-auto custom-scrollbar ${optionListClassName}`}
           >
             {options.map((option, index) => (
               <li

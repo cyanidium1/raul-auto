@@ -24,14 +24,14 @@ const UserBar = () => {
       {!isScreenInRange && (
         <>
           <ul className="flex items-center">
-            <li className="text-primary desktop:text-14 mr-6">
+            <li className="text-primary desktop:text-14 font-semibold mr-6">
               Найти авто по VIN:
             </li>
             <li className="mr-10 relative">
               <input
                 type="text"
                 placeholder="Введите VIN номер"
-                className="placeholder:text-placeholderText placeholder:text-14 text-primary placeholder:font-[500] flex border-solid border-[1px] border-primary rounded-sub-block-10 bg-input px-[14px] py-4 w-[217px] h-[44px] focus:outline-focus outline-none"
+                className="placeholder:text-placeholderText placeholder:text-14 text-primary placeholder:font-medium flex border-solid border-[1px] border-primary rounded-sub-block-10 bg-input px-[14px] py-4 w-[217px] h-[44px] focus:outline-focus outline-none"
               />
               <Image
                 className="absolute top-1/2 right-[14px] transform translate-y-[-50%] cursor-pointer"
@@ -57,7 +57,7 @@ const UserBar = () => {
             <li className="relative">
               <Button
                 onClick={toggleModal}
-                className="bg-gradient-red text-14 py-4 px-[24px] mr-10 text-primary rounded-sub-block-10 h-[44px]"
+                className="bg-gradient-red text-14 font-bold py-4 px-[24px] mr-10 text-primary rounded-sub-block-10 h-[44px]"
                 type="button"
               >
                 Войти

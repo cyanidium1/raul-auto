@@ -14,7 +14,7 @@ const Navigation = () => {
       </Link>
       <div className="w-[1px] h-6 bg-decor ml-10 mr-10"></div>
       <ul className="mobile:hidden pointnav:flex items-center gap-10">
-        <li className="text-primary text-14">
+        <li className="text-primary text-14 font-semibold">
           <Link
             className={`transition-colors duration-300 ease-in-out hover:text-red-600 focus:text-red-600 outline-none ${
               pathname === '/calculator' ? isActiveClass : ''
@@ -24,7 +24,7 @@ const Navigation = () => {
             Калькулятор
           </Link>
         </li>
-        <li className="text-primary text-14">
+        <li className="text-primary text-14 font-semibold">
           <Link
             className={`transition-colors duration-300 ease-in-out hover:text-red-600 focus:text-red-600 outline-none ${
               pathname === '/partnership' ? isActiveClass : ''
@@ -34,7 +34,7 @@ const Navigation = () => {
             Сотруднечество
           </Link>
         </li>
-        <li className="text-primary text-14">
+        <li className="text-primary text-14 font-semibold">
           <Link
             className={`transition-colors duration-300 ease-in-out hover:text-red-600 focus:text-red-600 outline-none ${
               pathname === '/contacts' ? isActiveClass : ''
@@ -44,7 +44,7 @@ const Navigation = () => {
             Контакты
           </Link>
         </li>
-        <li className="text-primary text-14">
+        <li className="text-primary text-14 font-semibold">
           <Link
             className={`transition-colors duration-300 ease-in-out hover:text-red-600 focus:text-red-600 outline-none ${
               pathname === '/about' ? isActiveClass : ''

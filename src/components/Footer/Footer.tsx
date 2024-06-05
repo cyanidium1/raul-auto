@@ -9,11 +9,11 @@ const Footer = () => {
       <div className="w-[1525px] mobile:rounded-sub-block-10 tablet:rounded-sub-block-22 bg-gradient-sub-block mobile:p-[16px] desktop:p-[32px]">
         <div className="mobile:flex mobile:flex-col mobile:items-center mobile:justify-center mobile:gap-4 flex items-center desktop:flex-nowrap desktop:flex-row">
           <div className="flex flex-col gap-10 mr-auto ml-auto desktop:ml-0 desktop:mr:0">
-            <div className="mobile:text-center desktop:text-left text-24 text-primary">
+            <div className="mobile:text-center desktop:text-left text-[24px] font-bold text-primary">
               © Raulavto {currentYear}
             </div>
             <nav>
-              <ul className="mobile:flex mobile:flex-wrap mobile:gap-2 mobile:items-center mobile:justify-center desktop:justify-start desktop:flex text-14 text-secondary">
+              <ul className="mobile:flex mobile:flex-wrap mobile:gap-2 tablet:gap-[25px] fullhd:gap-[40px] mobile:items-center mobile:justify-center desktop:justify-start desktop:flex text-14 font-semibold text-secondary">
                 <li>
                   <Link
                     className="transition-colors duration-300 ease-in-out hover:text-red-600 focus:outline-focus outline-none"
@@ -51,7 +51,7 @@ const Footer = () => {
           </div>
           <div className="flex flex-col gap-4 mobile:mr-0 mr-4">
             <div className="flex justify-between items-center w-[318px] h-[54px] rounded-sub-block-12 bg-input py-[15px] px-[20px]">
-              <span className="block text-countCar text-16">
+              <span className="block text-countCar text-[16px] font-semibold">
                 hello@raulavto.ua
               </span>
               <button
@@ -62,11 +62,11 @@ const Footer = () => {
               </button>
             </div>
             <div className="flex justify-between items-center w-[318px] h-[54px] rounded-sub-block-12 bg-input py-[15px] px-[20px]">
-              <span className="block text-countCar text-16">
+              <span className="block text-countCar text-[16px] font-semibold">
                 ул. Филатова, 2, корп. 1
               </span>
               <button
-                className="flex items-center justify-center rounded-sub-block-6 w-[71px] h-[26px] py-[10px] px-[8px] text-8 text-primary bg-copybtn uppercase focus:outline-focus outline-none"
+                className="flex items-center justify-center rounded-sub-block-6 w-[71px] h-[26px] py-[10px] px-[8px] text-8 font-bold text-primary bg-copybtn uppercase focus:outline-focus outline-none"
                 type="button"
               >
                 Копировать

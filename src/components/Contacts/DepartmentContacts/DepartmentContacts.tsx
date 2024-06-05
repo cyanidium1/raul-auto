@@ -14,18 +14,18 @@ const DepartmentContacts = () => {
               height={120}
             />
             <div className="flex flex-col gap-[32px]">
-              <div className="text-[29px] text-primary font-extrabold">
+              <div className="text-[29px] text-primary font-bold">
                 Отдел подбора автомобилей
               </div>
               <div className="mobile:flex mobile:gap-4 mobile:flex-col mobile:items-center mobile:justify-center tablet:flex-row tablet:items-start tablet:justify-start">
                 <a
-                  className="w-[270px] h-[44px] flex items-center justify-center py-[14px] px-[24px] rounded-sub-block-10 bg-input text-16 text-primary transition duration-300 ease-in-out hover:scale-105 focus:outline-focus outline-none"
+                  className="w-[270px] h-[44px] flex items-center justify-center py-[14px] px-[24px] rounded-sub-block-10 bg-input text-16 text-primary font-bold transition duration-300 ease-in-out hover:scale-105 focus:outline-focus outline-none"
                   href="tel:+380737727373"
                 >
                   +380 73 772 73 73
                 </a>
                 <a
-                  className="w-[270px] h-[44px] flex items-center justify-center py-[14px] px-[24px] rounded-sub-block-10 bg-input text-16 text-primary transition duration-300 ease-in-out hover:scale-105 focus:outline-focus outline-none"
+                  className="w-[270px] h-[44px] flex items-center justify-center py-[14px] px-[24px] rounded-sub-block-10 bg-input text-16 text-primary font-bold transition duration-300 ease-in-out hover:scale-105 focus:outline-focus outline-none"
                   href="mailto:@raul_avto_search"
                 >
                   @raul_avto_search
@@ -42,18 +42,18 @@ const DepartmentContacts = () => {
               height={120}
             />
             <div className="flex flex-col gap-[32px]">
-              <div className="text-[29px] text-primary">
+              <div className="text-[29px] text-primary font-bold">
                 Отдел подбора запчастей
               </div>
               <div className="mobile:flex mobile:gap-4 mobile:flex-col mobile:items-center mobile:justify-center tablet:flex-row tablet:items-start tablet:justify-start">
                 <a
-                  className="w-[270px] h-[44px] flex items-center justify-center py-[14px] px-[24px] rounded-sub-block-10 bg-input text-16 text-primary transition duration-300 ease-in-out hover:scale-105 focus:outline-focus outline-none"
+                  className="w-[270px] h-[44px] flex items-center justify-center py-[14px] px-[24px] rounded-sub-block-10 bg-input text-16 text-primary font-bold transition duration-300 ease-in-out hover:scale-105 focus:outline-focus outline-none"
                   href="tel:+380737727373"
                 >
                   +380 73 772 73 73
                 </a>
                 <a
-                  className="w-[270px] h-[44px] flex items-center justify-center py-[14px] px-[24px] rounded-sub-block-10 bg-input text-16 text-primary transition duration-300 ease-in-out hover:scale-105 focus:outline-focus outline-none"
+                  className="w-[270px] h-[44px] flex items-center justify-center py-[14px] px-[24px] rounded-sub-block-10 bg-input text-16 text-primary font-bold transition duration-300 ease-in-out hover:scale-105 focus:outline-focus outline-none"
                   href="mailto: @raul_avto_parts"
                 >
                   @raul_avto_parts
@@ -72,18 +72,18 @@ const DepartmentContacts = () => {
               height={120}
             />
             <div className="flex flex-col gap-[32px]">
-              <div className="text-[29px] text-primary">
+              <div className="text-[29px] text-primary font-bold">
                 Отдел автомобильной логистики
               </div>
               <div className="mobile:flex mobile:gap-4 mobile:flex-col mobile:items-center mobile:justify-center tablet:flex-row tablet:items-start tablet:justify-start">
                 <a
-                  className="w-[270px] h-[44px] flex items-center justify-center py-[14px] px-[24px] rounded-sub-block-10 bg-input text-16 text-primary transition duration-300 ease-in-out hover:scale-105 focus:outline-focus outline-none"
+                  className="w-[270px] h-[44px] flex items-center justify-center py-[14px] px-[24px] rounded-sub-block-10 bg-input text-16 text-primary font-bold transition duration-300 ease-in-out hover:scale-105 focus:outline-focus outline-none"
                   href="tel:+380737727373"
                 >
                   +380 73 772 73 73
                 </a>
                 <a
-                  className="w-[270px] h-[44px] flex items-center justify-center py-[14px] px-[24px] rounded-sub-block-10 bg-input text-16 text-primary transition duration-300 ease-in-out hover:scale-105 focus:outline-focus outline-none"
+                  className="w-[270px] h-[44px] flex items-center justify-center py-[14px] px-[24px] rounded-sub-block-10 bg-input text-16 text-primary font-bold transition duration-300 ease-in-out hover:scale-105 focus:outline-focus outline-none"
                   href="mailto:@raul_avto_transport"
                 >
                   @raul_avto_transport

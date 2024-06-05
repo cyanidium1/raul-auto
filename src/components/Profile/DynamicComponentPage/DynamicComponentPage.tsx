@@ -143,13 +143,13 @@ const DynamicComponentPage = () => {
             <ul className="flex flex-col gap-4">
               <li className="text-[16px] text-secondary font-semibold">
                 Марка:{' '}
-                <span className="text-[16px] text-primary font-semibold">
+                <span className="text-[16px] text-primary font-semibold uppercase">
                   Audi
                 </span>
               </li>
               <li className="text-[16px] text-secondary font-semibold">
                 Модель:{' '}
-                <span className="text-[16px] text-primary font-semibold">
+                <span className="text-[16px] text-primary font-semibold uppercase">
                   A8
                 </span>
               </li>
@@ -161,7 +161,7 @@ const DynamicComponentPage = () => {
               </li>
               <li className="text-[16px] text-secondary font-semibold">
                 Номер лота:{' '}
-                <span className="text-[16px] text-primary font-semibold">
+                <span className="text-[16px] text-primary font-semibold uppercase">
                   HJDJJ44445HBJBKJBK
                 </span>
               </li>
@@ -210,13 +210,13 @@ const DynamicComponentPage = () => {
             <ul className="flex flex-col gap-4">
               <li className="text-[16px] text-secondary font-semibold">
                 Марка:{' '}
-                <span className="text-[16px] text-primary font-semibold">
+                <span className="text-[16px] text-primary font-semibold uppercase">
                   AUDI
                 </span>
               </li>
               <li className="text-[16px] text-secondary font-semibold">
                 Модель:{' '}
-                <span className="text-[16px] text-primary font-semibold">
+                <span className="text-[16px] text-primary font-semibold uppercase">
                   A8
                 </span>
               </li>
@@ -228,7 +228,7 @@ const DynamicComponentPage = () => {
               </li>
               <li className="text-[16px] text-secondary font-semibold">
                 Номер лота:{' '}
-                <span className="text-[16px] text-primary font-semibold">
+                <span className="text-[16px] text-primary font-semibold uppercase">
                   HJDJJ44445HBJBKJBK
                 </span>
               </li>
@@ -255,13 +255,13 @@ const DynamicComponentPage = () => {
             <ul className="flex flex-col gap-4">
               <li className="text-[16px] text-secondary font-semibold">
                 Номер контейнера:{' '}
-                <span className="text-[16px] text-primary font-semibold">
+                <span className="text-[16px] text-primary font-semibold uppercase">
                   FANU1321172
                 </span>
               </li>
               <li className="text-[16px] text-secondary font-semibold">
                 Линия перевозки:{' '}
-                <span className="text-[16px] text-primary font-semibold">
+                <span className="text-[16px] text-primary font-semibold uppercase">
                   HJHSHJ-JNEE
                 </span>
               </li>
@@ -304,7 +304,7 @@ const DynamicComponentPage = () => {
             <ul className="flex flex-col gap-4">
               <li className="text-[16px] text-secondary font-semibold">
                 Получатель:{' '}
-                <span className="text-[16px] text-primary font-semibold">
+                <span className="text-[16px] text-primary font-semibold uppercase">
                   MAMUKASURMANIDZE
                 </span>
               </li>

@@ -22,7 +22,7 @@ const LanguageSelection = () => {
       onSelect={(value) => handleSelectChange(options[0].label, value)}
       options={options}
       selectClassName="ml-[10px] text-14 text-primary w-full cursor-pointer"
-      optionListClassName="top-full px-[0] flex flex-col justify-center items-center"
+      optionListClassName="top-full px-[5px] flex flex-col justify-center items-center"
       optionClassName="py-[5px]"
     />
   );

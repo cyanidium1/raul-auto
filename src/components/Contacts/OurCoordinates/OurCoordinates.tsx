@@ -63,7 +63,7 @@ const OurCoordinates = () => {
   return (
     <div className="mobile:pt-[30px] tablet:pt-[40px] desktop:pt-[64px]">
       <div className="max-w-[1696px] mx-auto p-3">
-        <h1 className="text-primary mobile:text-40 tablet:text-56 desktop:text-64 mobile:mb-[33px] desktop:mb-[63px]">
+        <h1 className="text-primary mobile:text-40 tablet:text-56 desktop:text-64 font-bold mobile:mb-[33px] desktop:mb-[63px]">
           Контакты
         </h1>
       </div>
@@ -80,19 +80,19 @@ const OurCoordinates = () => {
         <ul className="flex flex-wrap items-center mobile:justify-around desktop:justify-center mobile:gap-[25px] tablet:gap-[40px] desktop:gap-[64px]">
           {locations.map((location, index) => (
             <li key={index} className="flex flex-col">
-              <div className="text-primary mobile:text-20 tablet:text-30">
+              <div className="text-primary mobile:text-20 tablet:text-30 font-bold">
                 {location.city}
               </div>
-              <div className="mobile:text-14 mobile:leading-10 tablet:text-16 text-secondary font-[500]">
+              <div className="mobile:text-14 mobile:leading-10 tablet:text-16 text-secondary font-medium">
                 {location.address}
               </div>
-              <div className="mobile:text-14 mobile:leading-10 tablet:text-16 text-secondary font-[500]">
+              <div className="mobile:text-14 mobile:leading-10 tablet:text-16 text-secondary font-medium">
                 {location.hours}
               </div>
-              <div className="mobile:text-14 mobile:leading-10 tablet:text-16 text-primary">
+              <div className="mobile:text-14 mobile:leading-10 tablet:text-16 font-bold text-primary">
                 {location.phone}
               </div>
-              <div className="mobile:text-14 mobile:leading-10 tablet:text-16 text-primary">
+              <div className="mobile:text-14 mobile:leading-10 tablet:text-16 font-bold text-primary">
                 {location.email}
               </div>
             </li>

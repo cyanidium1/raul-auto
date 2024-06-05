@@ -24,10 +24,10 @@ const CarChoiceBody = () => {
             className="mobile:rounded-sub-block-10 tablet:rounded-sub-block-24 bg-gradient-sub-block py-[39px] px-[32px] w-[400px] h-[294px]"
           >
             <div className="flex justify-between items-center">
-              <div className="mobile:text-30 tablet:text-34 text-primary">
+              <div className="mobile:text-30 tablet:text-34 font-bold text-primary">
                 {car.name}
               </div>
-              <div className="flex items-center justify-center min-w-[32px] h-[34px] rounded-sub-block-7 bg-input p-[10px] text-countCar text-20">
+              <div className="flex items-center justify-center min-w-[32px] h-[34px] rounded-sub-block-7 bg-input p-[10px] text-countCar text-20 font-semibold">
                 {car.count}
               </div>
             </div>
