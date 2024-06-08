@@ -39,7 +39,7 @@ const SideMenu = ({ isOpen, onClose }: SideMenuProps) => {
         <li className="p-2">
           <Link
             onClick={onClose}
-            className={`text-[20px] text-primary transition-colors duration-300 ease-in-out hover:text-red-600 focus:text-red-600 outline-none${
+            className={`text-[20px] text-primary transition-colors duration-300 ease-in-out hover:text-red-600 focus:text-red-600 outline-none ${
               pathname === '/partnership' ? isActive : ''
             }`}
             href="/partnership"

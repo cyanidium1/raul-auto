@@ -25,7 +25,7 @@ const UserContactsForm = () => {
       <DynamicForm initialValues={initialValues} onSubmit={handleSubmit}>
         {(formikProps) => (
           <div className="flex flex-col items-center">
-            <div className="flex flex-col md:flex-row gap-6 items-center mb-[24px] w-full">
+            <div className="flex flex-col md:flex-row mobile:gap-2 tablet:gap-6 items-center mb-[24px] w-full">
               <div className="flex-1 w-full">
                 <InputField
                   type="tel"
@@ -34,9 +34,7 @@ const UserContactsForm = () => {
                   inputClassName="placeholder:text-placeholderText placeholder:text-18 text-primary placeholder:font-semibold flex border-solid border-[1px] border-primary rounded-sub-block-12 bg-input px-[20px] py-[18px] w-full h-[60px]"
                 />
               </div>
-              <div className="text-primary text-18 font-semibold my-2 md:my-0">
-                Или
-              </div>
+              <div className="text-primary text-18 font-semibold">Или</div>
               <div className="flex-1 w-full">
                 <InputField
                   type="text"

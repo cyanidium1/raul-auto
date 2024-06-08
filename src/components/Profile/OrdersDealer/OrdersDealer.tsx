@@ -80,7 +80,7 @@ const OrdersDealer = () => {
                     alt={order.model}
                     width={240}
                     height={135}
-                    className="rounded-lg mobile:w-[700px] mobile:h-[300px] lg:w-[240px] lg:h-[135px]"
+                    className="rounded-lg mobile:w-[500px] mobile:h-[200px] tablet:w-[700px] tablet:h-[300px] lg:w-[240px] lg:h-[135px]"
                   />
                 </div>
                 <p className="flex items-center justify-center tablet:w-full lg:w-[240px] h-[46px] rounded-sub-block-8 bg-orderssubblock text-primary text-[16px] font-semibold">
@@ -98,13 +98,13 @@ const OrdersDealer = () => {
                   {order.vin}
                 </span>
               </p>
-              <p className="mobile:text-[23px] tablet:text-[30px] lg:text-[12px] desktop:text-16 text-secondary font-semibold mb-[24px] text-center">
+              <p className="mobile:text-[23px] tablet:text-[30px] lg:text-[12px] desktop:text-16 text-secondary font-semibold text-center">
                 Номер лота:{' '}
                 <span className="text-primary">{order.lotNumber}</span>
               </p>
               <Link
                 href={`/profile/${order.id}`}
-                className="flex items-center justify-center bg-gradient-red mobile:text-[22px] lg:text-[12px] desktop:text-14 font-bold text-primary px-[24px] py-[14px] rounded-sub-block-10 mobile:w-full lg:w-[116px] mobile:h-[60px] lg:h-[40px] mobile:mb-[30px] tablet:mb-[90px] lg:mb-0 focus:outline-focus outline-none"
+                className="flex items-center justify-center bg-gradient-red mobile:text-[22px] lg:text-[12px] desktop:text-14 font-bold text-primary px-[24px] py-[14px] rounded-sub-block-10 mobile:w-full lg:w-[116px] mobile:h-[60px] lg:h-[40px] mobile:mb-[30px] tablet:mb-[90px] lg:mb-0 mt-[10px] focus:outline-focus outline-none"
               >
                 Детально
               </Link>
@@ -143,7 +143,7 @@ const OrdersDealer = () => {
                 </p>
               </div>
             </div>
-            <div className="flex justify-center items-center flex-col gap-[12px] mobile:mb-[30px] lg:mb-0">
+            <div className="flex justify-center items-center flex-col gap-[12px] mobile:mb-[30px] lg:mb-0 mobile:w-full tablet:w-auto">
               <div className="flex items-center justify-center bg-balancegreen mobile:w-full lg:max-w-[250px] tablet:h-[60px] lg:h-[46px] text-primary tablet:text-[26px] lg:text-[12px] desktop:text-[16px] text-center leading-[22px] font-semibold p-[12px] rounded-sub-block-8">
                 Баланс: {order.balance}
               </div>
@@ -151,7 +151,7 @@ const OrdersDealer = () => {
                 Оплачено: {order.paid}
               </div>
             </div>
-            <div className="flex justify-between items-center flex-col gap-3">
+            <div className="flex justify-between items-center flex-col gap-3 mobile:w-full tablet:w-auto">
               <div className="flex items-center justify-center bg-balancegreen mobile:w-full lg:max-w-[92px] w-full tablet:h-[60px] lg:h-[56px] p-3 rounded-sub-block-8 tablet:text-[18px] lg:text-[8px] desktop:text-[10px] text-primary text-center font-semibold">
                 Отгружено {order.shippedDate}
               </div>

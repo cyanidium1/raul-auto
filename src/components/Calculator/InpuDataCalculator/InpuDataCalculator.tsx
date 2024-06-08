@@ -84,6 +84,7 @@ const InpuDataCalculator = () => {
                 labelClassName="text-secondary text-16 mb-[8px] truncate"
                 selectClassName="border border-primary rounded-sub-block-12 bg-input w-full h-[60px] py-[18px] px-[20px] text-primary text-18 font-semibold"
                 optionClassName="text-primary w-full"
+                optionListClassName="max-h-[90px]"
                 onSelect={(option) => handleSelect(item.label, option)}
               />
             )}
