@@ -51,7 +51,7 @@ const Footer = () => {
           </div>
           <div className="flex flex-col gap-4 mobile:mr-0 mr-4">
             <div className="flex justify-between items-center w-[318px] h-[54px] rounded-sub-block-12 bg-input py-[15px] px-[20px]">
-              <span className="block text-countCar text-[16px] font-semibold">
+              <span className="block text-countCar mobile:text-[14px] tablet:text-[16px] font-semibold">
                 hello@raulavto.ua
               </span>
               <button
@@ -62,7 +62,7 @@ const Footer = () => {
               </button>
             </div>
             <div className="flex justify-between items-center w-[318px] h-[54px] rounded-sub-block-12 bg-input py-[15px] px-[20px]">
-              <span className="block text-countCar text-[16px] font-semibold">
+              <span className="block text-countCar mobile:text-[14px] tablet:text-[16px] font-semibold">
                 ул. Филатова, 2, корп. 1
               </span>
               <button

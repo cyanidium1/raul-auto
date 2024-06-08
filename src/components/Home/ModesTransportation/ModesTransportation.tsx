@@ -32,7 +32,9 @@ const ModesTransportation = () => {
             className="w-[420px] h-[265px] relative bg-gradient-sub-block rounded-sub-block-24 p-[32px] overflow-hidden"
           >
             <div className="text-20 font-bold text-countCar">Доставим</div>
-            <div className="text-34 font-bold text-primary">{mode.title}</div>
+            <div className="mobile:text-28 tablet:text-34 font-bold text-primary">
+              {mode.title}
+            </div>
             <Image className="" src={mode.imgSrc} alt={mode.imgAlt} fill />
           </li>
         ))}

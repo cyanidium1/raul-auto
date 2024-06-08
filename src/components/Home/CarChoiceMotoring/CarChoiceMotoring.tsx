@@ -17,7 +17,7 @@ const CarChoiceMotoring = () => {
             key={index}
             className="w-[400px] h-[130px] mobile:rounded-sub-block-10 tablet:rounded-sub-block-24 flex justify-between items-center p-12 bg-gradient-sub-block"
           >
-            <div className="mobile:text-30 tablet:text-34 font-bold text-primary">
+            <div className="mobile:text-28 tablet:text-34 font-bold text-primary">
               {engine.name}
             </div>
             <div className="flex items-center justify-center rounded-sub-block-7 bg-input p-[10px] text-countCar text-20 font-semibold min-w-[34px] h-[32px]">

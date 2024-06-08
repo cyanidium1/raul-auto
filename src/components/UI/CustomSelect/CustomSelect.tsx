@@ -62,21 +62,23 @@ const CustomSelect = ({
             }`}
           />
         </div>
-        {isOpen && (
-          <ul
-            className={`absolute mobile:max-h-[100px] tablet:max-h-[145px] top-[70%] left-0 right-0 py-[14px] px-[24px] bg-gradient-select border border-primary rounded-sub-block-10 z-[10] overflow-y-auto custom-scrollbar ${optionListClassName}`}
-          >
-            {options.map((option, index) => (
-              <li
-                key={index}
-                className={`py-[14px] cursor-pointer transition duration-300 ease-in-out hover:bg-input border-t border-primary text-primary text-14 font-bold ${optionClassName}`}
-                onClick={() => handleOptionClick(option)}
-              >
-                {option.label}
-              </li>
-            ))}
-          </ul>
-        )}
+        <ul
+          className={`absolute top-[70%] left-0 right-0 py-[14px] px-[24px] bg-gradient-select border border-primary rounded-sub-block-10 z-[10] overflow-y-auto custom-scrollbar transition-all duration-300 ease-in-out transform ${
+            isOpen
+              ? 'max-h-[145px] opacity-100 translate-y-0'
+              : 'max-h-0 opacity-0 translate-y-[-10px]'
+          } ${optionListClassName}`}
+        >
+          {options.map((option, index) => (
+            <li
+              key={index}
+              className={`py-[14px] cursor-pointer transition duration-300 ease-in-out hover:bg-input border-t border-primary text-primary text-14 font-bold ${optionClassName}`}
+              onClick={() => handleOptionClick(option)}
+            >
+              {option.label}
+            </li>
+          ))}
+        </ul>
       </div>
     </>
   );
