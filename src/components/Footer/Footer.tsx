@@ -55,7 +55,7 @@ const Footer = () => {
                 hello@raulavto.ua
               </span>
               <button
-                className="flex items-center justify-center rounded-sub-block-6 w-[71px] h-[26px] py-[10px] px-[8px] text-8 text-primary bg-copybtn uppercase focus:outline-focus outline-none"
+                className="flex items-center justify-center rounded-sub-block-6 w-[71px] h-[26px] py-[10px] px-[8px] text-8 font-bold text-primary bg-copybtn uppercase focus:outline-focus outline-none"
                 type="button"
               >
                 Копировать
