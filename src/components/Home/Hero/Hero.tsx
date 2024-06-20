@@ -1,10 +1,14 @@
 'use client';
 import SearchAvto from '@/components/UI/SearchAvto/SearchAvto';
+import { useEffect, useState } from 'react';
 import { useMediaQuery } from 'usehooks-ts';
 const Hero = () => {
-  const isScreenInRange = useMediaQuery('(min-width: 1285px)', {
-    initializeWithValue: false,
-  });
+  const isScreenInRange = useMediaQuery('(min-width: 1285px)');
+  const [shouldRenderSearchAvto, setShouldRenderSearchAvto] = useState(false);
+
+  useEffect(() => {
+    setShouldRenderSearchAvto(true);
+  }, []);
   return (
     <>
       <div className="mobile:pt-8 mobile:bg-[url('/hero.png')] mobile:bg-no-repeat mobile:bg-right mobile:bg-contain tablet:bg-right desktop:bg-right desktop:bg-auto mobile:h-[200px] tablet:h-[350px] desktop:h-[800px] desktop:pt-[120px]">
@@ -15,10 +19,10 @@ const Hero = () => {
           <p className="mobile:text-center mobile:text-secondary mobile:ml-auto mobile:mr-auto tablet:ml-0 tablet:mr-0 tablet:text-left tablet:max-w-[400px] tablet:text-secondary mobile:text-[20px] tablet:text-[24px] desktop:font-[500] desktop:text-28 desktop:max-w-[610px] desktop:mb-[72px]">
             Прямые поставки с аукционов. Надёжность, качество, доступные цены.
           </p>
-          {isScreenInRange && <SearchAvto />}
+          {shouldRenderSearchAvto && (isScreenInRange ? <SearchAvto /> : null)}
         </div>
       </div>
-      {!isScreenInRange && <SearchAvto />}
+      {shouldRenderSearchAvto && (!isScreenInRange ? <SearchAvto /> : null)}
     </>
   );
 };

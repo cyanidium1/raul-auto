@@ -4,6 +4,7 @@ import Image from 'next/image';
 import LanguageSelection from '@/components/UI/LanguageSelection/LanguageSelection';
 import { Squash as Hamburger } from 'hamburger-react';
 import { usePathname } from 'next/navigation';
+import { useEffect } from 'react';
 type SideMenuProps = {
   isOpen: boolean;
   onClose: () => void;
@@ -12,9 +13,17 @@ const SideMenu = ({ isOpen, onClose }: SideMenuProps) => {
   const pathname = usePathname();
   const isActive = 'text-red-600 text-[20px]';
 
+  useEffect(() => {
+    if (isOpen) {
+      document.body.classList.add('no-scroll');
+    } else {
+      document.body.classList.remove('no-scroll');
+    }
+  }, [isOpen]);
+
   return (
     <div
-      className={`fixed inset-y-0 right-0 z-50 mobile:w-72 tablet:w-96 bg-gradient-sub-block shadow-lg transform transition-transform ${
+      className={`fixed inset-y-0 overflow-y-auto right-0 z-50 mobile:w-72 tablet:w-96 bg-gradient-sub-block shadow-lg transform transition-transform ${
         isOpen ? 'translate-x-0' : 'translate-x-full'
       }`}
     >

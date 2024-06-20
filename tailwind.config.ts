@@ -12,6 +12,7 @@ const config: Config = {
         mobile: '320px',
         tablet: '768px',
         desktop: '1285px',
+        pointuserbar: '960px',
         pointnav: '1340px',
         fullhd: '1920px',
       },
