@@ -1,7 +1,25 @@
+"use client";
+
 import Image from 'next/image';
 import Button from '@/components/UI/Button/Button';
+import { useState } from 'react';
+import { sendMessage } from '@/app/utils/sendMessage';
 
 const ContactUs = () => {
+
+  const [phoneNumber, setPhoneNumber] = useState<string>('');
+
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    const phoneMeText = 'Заявка на обратную связь. Телефон: '
+
+    if (phoneNumber.trim() !== '') {
+      sendMessage(phoneMeText + phoneNumber);
+      setPhoneNumber('');
+    }
+  };
+
   return (
     <div className="mobile:pb-[100px] desktop:pb-[567px]">
       <div className="flex justify-center items-center gap-[32px] mobile:flex-wrap tablet:flex-nowrap">
@@ -35,12 +53,14 @@ const ContactUs = () => {
             <span className="block">перезвоним Вам</span>
           </div>
           <div>
-            <div className="flex gap-4 items-center flex-wrap desktop:flex-nowrap justify-center">
-              <input
+            <form onSubmit={handleSubmit} className="flex gap-4 items-center flex-wrap desktop:flex-nowrap justify-center">
+            <input
                 className="text-primary placeholder:text-placeholderText placeholder:text-18 placeholder:font-[500] flex border-solid border-[1px] border-primary rounded-sub-block-12 bg-input px-[20px] py-[18px] mobile:w-full desktop:w-[315px] h-[60px] focus:outline-focus outline-none"
                 type="tel"
                 name="phone"
                 placeholder="Введите ваш номер"
+                value={phoneNumber}
+                onChange={(e) => setPhoneNumber(e.target.value)}
               />
               <Button
                 className="mobile:w-full desktop:w-[136px] h-[60px] rounded-sub-block-12 bg-gradient-red flex items-center justify-center text-primary text-18 px-[20px] py-[18px]"
@@ -48,7 +68,7 @@ const ContactUs = () => {
               >
                 Отправить
               </Button>
-            </div>
+            </form>
           </div>
         </div>
       </div>

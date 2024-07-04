@@ -3,16 +3,26 @@ import DynamicForm from '@/components/UI/DynamicForm/DynamicForm';
 import InputField from '@/components/UI/InputField/InputField';
 import Button from '@/components/UI/Button/Button';
 import { FormikValues } from 'formik';
+import { sendMessage } from '@/app/utils/sendMessage';
 
 const initialValues = {
   phone: '',
   name: '',
   comment: '',
 };
+
 const QuestionsForm = () => {
-  const handleSubmit = (value: FormikValues) => {
-    console.log(value);
+  const handleSubmit = (values: FormikValues) => {
+    console.log(values);
+
+    const { phone, name, comment } = values;
+    const contactInfo = `Имя: ${name}, Телефон: ${phone}, Комментарий: ${comment}`;
+
+    if (contactInfo.trim() !== '') {
+      sendMessage(`Заявка с вопросом. ${contactInfo}`);
+    }
   };
+
   return (
     <div>
       <DynamicForm initialValues={initialValues} onSubmit={handleSubmit}>

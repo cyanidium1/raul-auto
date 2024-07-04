@@ -27,14 +27,14 @@ const AdminContacts = () => {
             </a>
             <a
               className="max-w-full h-[44px] flex items-center justify-center py-[14px] px-[24px] rounded-sub-block-10 bg-input text-16 font-bold text-primary transition duration-300 ease-in-out hover:scale-105 focus:outline-focus outline-none"
-              href="mailto:@raul_avto"
+              href="https://t.me/RAUL_AVTO"
             >
               @raul_avto
             </a>
           </div>
           <ul className="flex gap-4 mobile:items-center mobile:justify-center">
             <li>
-              <a className="focus:outline-focus outline-none" href="/">
+              <a className="focus:outline-focus outline-none" href="https://t.me/RAUL_AVTO" rel='noreferrer'>
                 <Image
                   src="/telegram.png"
                   alt="icon telegram"

@@ -4,9 +4,9 @@ const CallUs = () => {
       <div className="text-24 font-bold text-primary">Позвоните нам</div>
       <a
         className="flex justify-center items-center w-[223px] h-[60px] rounded-sub-block-12 bg-gradient-red font-bold text-18 text-primary transform transition duration-300 ease-in-out hover:scale-105 hover:text-hoverprimary animate-pulse focus:outline-focus outline-none"
-        href="tel:+79990650404"
+        href="tel:+380737727373"
       >
-        + 7 999 065 04 04
+        +38 073 772 7373
       </a>
     </div>
   );

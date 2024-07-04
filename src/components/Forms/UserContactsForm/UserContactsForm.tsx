@@ -3,6 +3,7 @@ import DynamicForm from '@/components/UI/DynamicForm/DynamicForm';
 import InputField from '@/components/UI/InputField/InputField';
 import Button from '@/components/UI/Button/Button';
 import { FormikValues } from 'formik';
+import { sendMessage } from '@/app/utils/sendMessage';
 
 const initialValues = {
   phone: '',
@@ -11,8 +12,16 @@ const initialValues = {
 };
 
 const UserContactsForm = () => {
-  const handleSubmit = (value: FormikValues) => {
-    console.log(value);
+
+  const handleSubmit = (values: FormikValues) => {
+    console.log(values);
+
+    const { phone, telegram, name } = values;
+    const contactInfo = `Имя: ${name}, Телефон: ${phone}, Telegram: ${telegram}`;
+
+    if (contactInfo.trim() !== '') {
+      sendMessage(`Заявка на сотрудничество. ${contactInfo}`);
+    }
   };
 
   return (
