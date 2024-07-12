@@ -2,29 +2,28 @@ import React from 'react';
 import CustomSelect from '../CustomSelect/CustomSelect';
 import useStore from '../../../app/zustand/useStore';
 
-interface Option {
-  label: string;
-  value: 'ru' | 'ua' | 'en'; // Restricting value to specific language codes
-}
-
-const options: Option[] = [
+const options = [
   { label: 'RU', value: 'ru' },
   { label: 'UA', value: 'ua' },
   { label: 'EN', value: 'en' },
 ];
 
-const LanguageSelection: React.FC = () => {
+const LanguageSelection = () => {
   const setLanguage = useStore((state) => state.setLanguage);
+  const language = useStore((state) => state.language); // Получаем текущий язык
 
-  const handleSelectChange = (value: Option) => {
+  const handleSelectChange = (value) => {
     setLanguage(value.value);
     console.log('Selected label:', value.label);
     console.log('Selected value:', value.value);
   };
 
+  // Находим текущий выбранный язык
+  const currentSelectedOption = options.find((option) => option.value === language)?.label || options[0].label;
+
   return (
     <CustomSelect
-      currentSelectedOption={options[0].label} // Assuming you want the first option as default
+      currentSelectedOption={currentSelectedOption}
       onSelect={handleSelectChange}
       options={options}
       selectClassName="ml-[10px] text-14 text-primary w-full cursor-pointer"

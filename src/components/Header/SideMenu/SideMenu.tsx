@@ -23,9 +23,8 @@ const SideMenu = ({ isOpen, onClose }: SideMenuProps) => {
 
   return (
     <div
-      className={`fixed inset-y-0 overflow-y-auto right-0 z-50 mobile:w-72 tablet:w-96 bg-gradient-sub-block shadow-lg transform transition-transform ${
-        isOpen ? 'translate-x-0' : 'translate-x-full'
-      }`}
+      className={`fixed inset-y-0 overflow-y-auto right-0 z-50 mobile:w-72 tablet:w-96 bg-gradient-sub-block shadow-lg transform transition-transform ${isOpen ? 'translate-x-0' : 'translate-x-full'
+        }`}
     >
       <div className="flex justify-end p-4">
         <Hamburger toggled={isOpen} toggle={onClose} color="red" />
@@ -37,9 +36,8 @@ const SideMenu = ({ isOpen, onClose }: SideMenuProps) => {
         <li className="p-2">
           <Link
             onClick={onClose}
-            className={`text-[20px] text-primary transition-colors duration-300 ease-in-out hover:text-red-600 focus:text-red-600 outline-none ${
-              pathname === '/calculator' ? isActive : ''
-            }`}
+            className={`text-[20px] text-primary transition-colors duration-300 ease-in-out hover:text-red-600 focus:text-red-600 outline-none ${pathname === '/calculator' ? isActive : ''
+              }`}
             href="/calculator"
           >
             Калькулятор
@@ -48,9 +46,8 @@ const SideMenu = ({ isOpen, onClose }: SideMenuProps) => {
         <li className="p-2">
           <Link
             onClick={onClose}
-            className={`text-[20px] text-primary transition-colors duration-300 ease-in-out hover:text-red-600 focus:text-red-600 outline-none ${
-              pathname === '/partnership' ? isActive : ''
-            }`}
+            className={`text-[20px] text-primary transition-colors duration-300 ease-in-out hover:text-red-600 focus:text-red-600 outline-none ${pathname === '/partnership' ? isActive : ''
+              }`}
             href="/partnership"
           >
             Сотрудничество
@@ -59,9 +56,8 @@ const SideMenu = ({ isOpen, onClose }: SideMenuProps) => {
         <li className="p-2">
           <Link
             onClick={onClose}
-            className={`text-[20px] text-primary transition-colors duration-300 ease-in-out hover:text-red-600 focus:text-red-600 outline-none ${
-              pathname === '/contacts' ? isActive : ''
-            }`}
+            className={`text-[20px] text-primary transition-colors duration-300 ease-in-out hover:text-red-600 focus:text-red-600 outline-none ${pathname === '/contacts' ? isActive : ''
+              }`}
             href="/contacts"
           >
             Контакты
@@ -70,9 +66,8 @@ const SideMenu = ({ isOpen, onClose }: SideMenuProps) => {
         <li className="p-2">
           <Link
             onClick={onClose}
-            className={`text-[20px] text-primary transition-colors duration-300 ease-in-out hover:text-red-600 focus:text-red-600 outline-none ${
-              pathname === '/about' ? isActive : ''
-            }`}
+            className={`text-[20px] text-primary transition-colors duration-300 ease-in-out hover:text-red-600 focus:text-red-600 outline-none ${pathname === '/about' ? isActive : ''
+              }`}
             href="/about"
           >
             О нас
@@ -81,9 +76,8 @@ const SideMenu = ({ isOpen, onClose }: SideMenuProps) => {
         <li className="p-2">
           <Link
             onClick={onClose}
-            className={`text-[20px] text-primary transition-colors duration-300 ease-in-out hover:text-red-600 focus:text-red-600 outline-none ${
-              pathname === '/profile' ? isActive : ''
-            }`}
+            className={`text-[20px] text-primary transition-colors duration-300 ease-in-out hover:text-red-600 focus:text-red-600 outline-none ${pathname === '/profile' ? isActive : ''
+              }`}
             href="/profile"
           >
             Личный кабинет
