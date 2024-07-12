@@ -4,7 +4,7 @@ import useStore from '../../../app/zustand/useStore';
 
 interface Option {
   label: string;
-  value: string;
+  value: 'ru' | 'ua' | 'en'; // Restricting value to specific language codes
 }
 
 const options: Option[] = [
@@ -24,7 +24,7 @@ const LanguageSelection: React.FC = () => {
 
   return (
     <CustomSelect
-      currentSelectedOption={options[0].label}
+      currentSelectedOption={options[0].label} // Assuming you want the first option as default
       onSelect={handleSelectChange}
       options={options}
       selectClassName="ml-[10px] text-14 text-primary w-full cursor-pointer"
