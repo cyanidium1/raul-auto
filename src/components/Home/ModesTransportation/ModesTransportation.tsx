@@ -1,41 +1,52 @@
+"use client"
 import Image from 'next/image';
+import useStore from '../../../app/zustand/useStore';
+import translations from '../../../app/lang/hero.json';
 
-const ModesTransportation = () => {
-  const transportModes = [
+interface TransportMode {
+  title: string;
+  imgSrc: string;
+  imgAlt: string;
+}
+
+const ModesTransportation: React.FC = () => {
+  const language = useStore(state => state.language) || 'en'; // Default language fallback
+  const { deliver, car, moto, yacht, tractor } = translations[language];
+
+  const transportModes: TransportMode[] = [
     {
-      title: 'Машину',
+      title: car || 'Car',
       imgSrc: '/deliverycar.png',
       imgAlt: 'delivery car',
     },
     {
-      title: 'Мотоцикл',
+      title: moto || 'Motorcycle',
       imgSrc: '/deliverymoto.png',
       imgAlt: 'delivery moto',
     },
     {
-      title: 'Яхту',
+      title: yacht || 'Yacht',
       imgSrc: '/delivertyaht.png',
-      imgAlt: 'delivery yaht',
+      imgAlt: 'delivery yacht',
     },
     {
-      title: 'Трактор',
+      title: tractor || 'Tractor',
       imgSrc: '/diliverytractor.png',
       imgAlt: 'delivery tractor',
     },
   ];
+
   return (
-    <div className="mobile:pb-[80px] tablet:pb-[120px] desktop:pb-[241px]">
+    <div className="pb-[80px] tablet:pb-[120px] desktop:pb-[241px]">
       <ul className="flex justify-center items-center flex-wrap gap-[32px]">
         {transportModes.map((mode, index) => (
           <li
             key={index}
             className="w-[420px] h-[265px] relative bg-gradient-sub-block rounded-sub-block-24 p-[32px] overflow-hidden"
           >
-            <div className="text-20 font-bold text-countCar">Доставим</div>
-            <div className="mobile:text-28 tablet:text-34 font-bold text-primary">
-              {mode.title}
-            </div>
-            <Image className="" src={mode.imgSrc} alt={mode.imgAlt} fill />
+            <div className="text-20 font-bold text-countCar">{deliver || 'Deliver'}</div>
+            <div className="text-28 font-bold text-primary">{mode.title}</div>
+            <Image src={mode.imgSrc} alt={mode.imgAlt} width={400} height={265} />
           </li>
         ))}
       </ul>

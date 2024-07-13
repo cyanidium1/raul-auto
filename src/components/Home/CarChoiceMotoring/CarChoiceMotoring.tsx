@@ -1,18 +1,24 @@
+"use client"
+import React from 'react';
+import useStore from '../../../app/zustand/useStore';
+import engineTypes from '../../../app/lang/engineTypes.json';
+
+interface EngineType {
+  name: string;
+  count: number;
+}
+
 const CarChoiceMotoring = () => {
-  const engineTypes = [
-    { name: 'Бензин', count: 8 },
-    { name: 'Дизель', count: 467 },
-    { name: 'Гибрид', count: 64 },
-    { name: 'Электрика', count: 183 },
-  ];
+  const language = useStore((state) => state.language);
+  const { title, types }: { title: string; types: EngineType[] } = engineTypes[language];
 
   return (
     <div className="mobile:pb-[80px] tablet:pb-[160px]">
       <h2 className="mobile:text-34 tablet:text-40 lg:text-56 desktop:text-[64px] font-bold mobile:mb-10 tablet:mb-[80px] text-primary  text-center flex justify-center">
-        Выбрать авто по двигателю:
+        {title}
       </h2>
       <ul className="flex gap-8 flex-wrap items-center justify-center">
-        {engineTypes.map((engine, index) => (
+        {types.map((engine, index) => (
           <li
             key={index}
             className="w-[400px] h-[130px] mobile:rounded-sub-block-10 tablet:rounded-sub-block-24 flex justify-between items-center p-12 bg-gradient-sub-block"
