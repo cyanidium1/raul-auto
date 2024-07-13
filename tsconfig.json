@@ -33,7 +33,8 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "src/components/UI/LanguageSelection/LanguageSelection.jsx",
-    "src/app/zustand/useStore.js"
+    "src/app/zustand/useStore.js",
+    "src/components/Home/CarChoiceBody/CarChoiceBody.jsx"
   ],
   "exclude": [
     "node_modules"

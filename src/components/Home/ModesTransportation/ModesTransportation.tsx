@@ -1,7 +1,7 @@
-"use client"
+"use client";
 import Image from 'next/image';
 import useStore from '../../../app/zustand/useStore';
-import translations from '../../../app/lang/hero.json';
+import translations from '../../../app/lang/transportModes.json';
 
 interface TransportMode {
   title: string;
@@ -10,8 +10,12 @@ interface TransportMode {
 }
 
 const ModesTransportation: React.FC = () => {
-  const language = useStore(state => state.language) || 'en'; // Default language fallback
-  const { deliver, car, moto, yacht, tractor } = translations[language];
+  const language = useStore(state => state.language) || 'ru';
+  const { deliver, car, moto, yacht, tractor } = translations[language] || {};
+
+  console.log("Language:", language);
+  console.log("Translations:", translations[language]);
+  console.log("Deliver Text:", deliver);
 
   const transportModes: TransportMode[] = [
     {
@@ -44,7 +48,7 @@ const ModesTransportation: React.FC = () => {
             key={index}
             className="w-[420px] h-[265px] relative bg-gradient-sub-block rounded-sub-block-24 p-[32px] overflow-hidden"
           >
-            <div className="text-20 font-bold text-countCar">{deliver || 'Deliver'}</div>
+            <div className="text-20 font-bold text-countCar">{deliver || 'Доставим'}</div>
             <div className="text-28 font-bold text-primary">{mode.title}</div>
             <Image src={mode.imgSrc} alt={mode.imgAlt} width={400} height={265} />
           </li>

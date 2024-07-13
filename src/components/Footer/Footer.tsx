@@ -2,9 +2,26 @@
 import Link from 'next/link';
 import CallUs from './CallUs/CallUs';
 import { FC, useState } from 'react';
+import useStore from '../../app/zustand/useStore';
+import translations from '../../app/lang/footerTranslations.json';
 
 const Footer: FC = () => {
   const currentYear = new Date().getFullYear();
+
+  const language = useStore(state => state.language) || 'ru'; // Default language fallback
+  const {
+    companyName,
+    calculator,
+    partnership,
+    contacts,
+    about,
+    copyEmail,
+    copyAddress,
+    emailCopied: emailCopiedText,
+    addressCopied: addressCopiedText,
+    email,
+    address
+  } = translations[language] || {};
 
   const [emailCopied, setEmailCopied] = useState(false);
   const [addressCopied, setAddressCopied] = useState(false);
@@ -33,7 +50,7 @@ const Footer: FC = () => {
         <div className="mobile:flex mobile:flex-col mobile:items-center mobile:justify-center mobile:gap-4 flex items-center desktop:flex-nowrap desktop:flex-row">
           <div className="flex flex-col gap-10 mr-auto ml-auto desktop:ml-0 desktop:mr:0">
             <div className="mobile:text-center desktop:text-left text-[24px] font-bold text-primary">
-              © Raulavto {currentYear}
+              © {companyName} {currentYear}
             </div>
             <nav>
               <ul className="mobile:flex mobile:flex-wrap mobile:gap-2 tablet:gap-[25px] fullhd:gap-[40px] mobile:items-center mobile:justify-center desktop:justify-start desktop:flex text-14 font-semibold text-secondary">
@@ -42,7 +59,7 @@ const Footer: FC = () => {
                     className="transition-colors duration-300 ease-in-out hover:text-red-600 focus:outline-focus outline-none"
                     href="/calculator"
                   >
-                    Калькулятор
+                    {calculator}
                   </Link>
                 </li>
                 <li>
@@ -50,7 +67,7 @@ const Footer: FC = () => {
                     className="transition-colors duration-300 ease-in-out hover:text-red-600 focus:outline-focus outline-none"
                     href="/partnership"
                   >
-                    Сотрудничество
+                    {partnership}
                   </Link>
                 </li>
                 <li>
@@ -58,7 +75,7 @@ const Footer: FC = () => {
                     className="transition-colors duration-300 ease-in-out hover:text-red-600 focus:outline-focus outline-none"
                     href="/contacts"
                   >
-                    Контакты
+                    {contacts}
                   </Link>
                 </li>
                 <li>
@@ -66,7 +83,7 @@ const Footer: FC = () => {
                     className="transition-colors duration-300 ease-in-out hover:text-red-600 focus:outline-focus outline-none"
                     href="/about"
                   >
-                    О нас
+                    {about}
                   </Link>
                 </li>
               </ul>
@@ -74,27 +91,27 @@ const Footer: FC = () => {
           </div>
           <div className="flex flex-col gap-4 mobile:mr-0 mr-4">
             <div className="flex justify-between items-center w-[318px] h-[54px] rounded-sub-block-12 bg-input py-[15px] px-[20px]">
-              <a href='mailto:raulkogo@gmail.com' className="transition-colors duration-300 ease-in-out hover:text-red-600 focus:outline-focus outline-none block text-countCar mobile:text-[14px] tablet:text-[16px] font-semibold">
-                raulkogo@gmail.com
+              <a href={`mailto:${email}`} className="transition-colors duration-300 ease-in-out hover:text-red-600 focus:outline-focus outline-none block text-countCar mobile:text-[14px] tablet:text-[16px] font-semibold">
+                {email}
               </a>
               <button
                 className="flex items-center justify-center rounded-sub-block-6 w-[71px] h-[26px] py-[10px] px-[8px] text-8 font-bold text-primary bg-copybtn uppercase focus:outline-focus outline-none"
                 type="button"
-                onClick={() => copyToClipboard('raulkogo@gmail.com', 'email')}
+                onClick={() => copyToClipboard(email, 'email')}
               >
-                {emailCopied ? '✓' : 'Копировать'}
+                {emailCopied ? emailCopiedText : copyEmail}
               </button>
             </div>
             <div className="flex justify-between items-center w-[318px] h-[54px] rounded-sub-block-12 bg-input py-[15px] px-[20px]">
               <a href='https://www.google.com/maps/place/%D1%83%D0%BB.+%D0%9D%D0%BE%D0%B2%D0%BE%D0%BF%D0%B8%D1%80%D0%BE%D0%B3%D0%BE%D0%B2%D1%81%D0%BA%D0%B0%D1%8F,+58,+%D0%9A%D0%B8%D0%B5%D0%B2,+%D0%A3%D0%BA%D1%80%D0%B0%D0%B8%D0%BD%D0%B0,+02000/@50.3521665,30.5592367,17z/data=!3m1!4b1!4m6!3m5!1s0x40d4c65aa840af45:0x376782a11b3176b5!8m2!3d50.3521665!4d30.5592367!16s%2Fg%2F11f5k1z722?entry=ttu' target='_blank' rel='noreferrer' className="transition-colors duration-300 ease-in-out hover:text-red-600 focus:outline-focus outline-none block text-countCar mobile:text-[14px] tablet:text-[16px] font-semibold">
-                ул. Новопираговская 58 офис 502
+                {address}
               </a>
               <button
                 className="flex items-center justify-center rounded-sub-block-6 w-[71px] h-[26px] py-[10px] px-[8px] text-8 font-bold text-primary bg-copybtn uppercase focus:outline-focus outline-none"
                 type="button"
-                onClick={() => copyToClipboard('ул. Новопираговская 58 офис 502', 'address')}
+                onClick={() => copyToClipboard(address, 'address')}
               >
-                {addressCopied ? '✓' : 'Копировать'}
+                {addressCopied ? addressCopiedText : copyAddress}
               </button>
             </div>
           </div>

@@ -2,10 +2,15 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
+import useStore from '../../../app/zustand/useStore';
+import translations from '../../../app/lang/headerTranslations.json';
 
 const Navigation = () => {
   const pathname = usePathname();
   const isActiveClass = 'text-red-600 text-14';
+  const language = useStore(state => state.language) || 'ru'; // Default language fallback
+
+  const { calculator, partnership, contacts, about } = translations[language];
 
   return (
     <nav className="flex items-center">
@@ -16,42 +21,38 @@ const Navigation = () => {
       <ul className="mobile:hidden pointnav:flex items-center gap-10">
         <li className="text-primary text-14 font-semibold">
           <Link
-            className={`transition-colors duration-300 ease-in-out hover:text-red-600 focus:text-red-600 outline-none ${
-              pathname === '/calculator' ? isActiveClass : ''
-            }`}
+            className={`transition-colors duration-300 ease-in-out hover:text-red-600 focus:text-red-600 outline-none ${pathname === '/calculator' ? isActiveClass : ''
+              }`}
             href="/calculator"
           >
-            Калькулятор
+            {calculator}
           </Link>
         </li>
         <li className="text-primary text-14 font-semibold">
           <Link
-            className={`transition-colors duration-300 ease-in-out hover:text-red-600 focus:text-red-600 outline-none ${
-              pathname === '/partnership' ? isActiveClass : ''
-            }`}
+            className={`transition-colors duration-300 ease-in-out hover:text-red-600 focus:text-red-600 outline-none ${pathname === '/partnership' ? isActiveClass : ''
+              }`}
             href="/partnership"
           >
-            Сотруднечество
+            {partnership}
           </Link>
         </li>
         <li className="text-primary text-14 font-semibold">
           <Link
-            className={`transition-colors duration-300 ease-in-out hover:text-red-600 focus:text-red-600 outline-none ${
-              pathname === '/contacts' ? isActiveClass : ''
-            }`}
+            className={`transition-colors duration-300 ease-in-out hover:text-red-600 focus:text-red-600 outline-none ${pathname === '/contacts' ? isActiveClass : ''
+              }`}
             href="/contacts"
           >
-            Контакты
+            {contacts}
           </Link>
         </li>
         <li className="text-primary text-14 font-semibold">
           <Link
-            className={`transition-colors duration-300 ease-in-out hover:text-red-600 focus:text-red-600 outline-none ${
-              pathname === '/about' ? isActiveClass : ''
-            }`}
+            className={`transition-colors duration-300 ease-in-out hover:text-red-600 focus:text-red-600 outline-none ${pathname === '/about' ? isActiveClass : ''
+              }`}
             href="/about"
           >
-            О нас
+            {about}
           </Link>
         </li>
       </ul>

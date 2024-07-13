@@ -1,0 +1,23 @@
+{
+    "ru": {
+        "companyName": "Raulavto",
+        "calculator": "Калькулятор",
+        "partnership": "Сотрудничество",
+        "contacts": "Контакты",
+        "about": "О нас"
+    },
+    "en": {
+        "companyName": "Raulavto",
+        "calculator": "Calculator",
+        "partnership": "Partnership",
+        "contacts": "Contacts",
+        "about": "About Us"
+    },
+    "ua": {
+        "companyName": "Raulavto",
+        "calculator": "Калькулятор",
+        "partnership": "Співпраця",
+        "contacts": "Контакти",
+        "about": "Про нас"
+    }
+}
