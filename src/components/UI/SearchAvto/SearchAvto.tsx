@@ -2,6 +2,9 @@
 import Button from '../Button/Button';
 import CustomSelect from '@/components/UI/CustomSelect/CustomSelect';
 import { useState } from 'react';
+import useStore from '../../../app/zustand/useStore';
+import translations from '../../../app/lang/searchAvtoTranslations.json';
+
 interface Option {
   label: string;
   value: string;
@@ -24,6 +27,9 @@ const yearOptions = [
 ];
 
 const SearchAvto = () => {
+  const language = useStore((state) => state.language);
+  const t = translations[language];
+
   const [selectedOptions, setSelectedOptions] = useState({
     brandSelection: '',
     modelSelection: '',
@@ -45,13 +51,13 @@ const SearchAvto = () => {
   return (
     <div className="mobile:ml-auto mobile:mr-auto mobile:mt-8 tablet:mt-2 bg-gradient-sub-block rounded-lg lg:rounded-sub-block-22 p-4 lg:p-[38px] max-w-full sm:max-w-[640px] desktop:max-w-[490px] fullhd:max-w-[640px] desktop:ml-0 desktop:mr-0">
       <div className="text-[20px] lg:text-24 text-primary mb-4 lg:mb-[20px]">
-        Найдите автомобиль:
+        {t.find_car}
       </div>
       <div className="flex flex-col gap-4 lg:gap-5">
         <div className="flex flex-col sm:flex-row gap-4 lg:gap-5">
           <div className="w-full lg:w-[272px] h-[60px] mobile:z-[25] tablet:z-[20]">
             <CustomSelect
-              currentSelectedOption="Выберите марку"
+              currentSelectedOption={t.select_brand}
               containerClassName="w-full flex-1"
               onSelect={(value) => handleSelectChange('brandSelection', value)}
               options={brandOptions}
@@ -61,7 +67,7 @@ const SearchAvto = () => {
           </div>
           <div className="w-full lg:w-[272px] h-[60px] z-[20]">
             <CustomSelect
-              currentSelectedOption="Выберите модель"
+              currentSelectedOption={t.select_model}
               containerClassName="w-full flex-1"
               onSelect={(value) => handleSelectChange('modelSelection', value)}
               options={modelOptions}
@@ -73,7 +79,7 @@ const SearchAvto = () => {
         <div className="flex flex-col lg:flex-row gap-4 lg:gap-5">
           <div className="w-full lg:w-[160px] h-[60px] z-[15]">
             <CustomSelect
-              currentSelectedOption="Год от"
+              currentSelectedOption={t.year_from}
               containerClassName="w-full flex-1"
               onSelect={(value) => handleSelectChange('yearOf', value)}
               options={yearOptions}
@@ -83,7 +89,7 @@ const SearchAvto = () => {
           </div>
           <div className="w-full lg:w-[160px] h-[60px] z-[10]">
             <CustomSelect
-              currentSelectedOption="Год до"
+              currentSelectedOption={t.year_to}
               containerClassName="w-full flex-1"
               onSelect={(value) => handleSelectChange('yearTo', value)}
               options={yearOptions}
@@ -96,7 +102,7 @@ const SearchAvto = () => {
             type="submit"
             onClick={handleSubmit}
           >
-            Найти
+            {t.find}
           </Button>
         </div>
       </div>
