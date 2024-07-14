@@ -5,11 +5,18 @@ import LanguageSelection from '@/components/UI/LanguageSelection/LanguageSelecti
 import { Squash as Hamburger } from 'hamburger-react';
 import { usePathname } from 'next/navigation';
 import { useEffect } from 'react';
+import useStore from '../../../app/zustand/useStore';
+import translations from '../../../app/lang/headerTranslations.json';
+
 type SideMenuProps = {
   isOpen: boolean;
   onClose: () => void;
 };
+
 const SideMenu = ({ isOpen, onClose }: SideMenuProps) => {
+  const language = useStore(state => state.language);
+  const t = translations[language];
+
   const pathname = usePathname();
   const isActive = 'text-red-600 text-[20px]';
 
@@ -40,7 +47,7 @@ const SideMenu = ({ isOpen, onClose }: SideMenuProps) => {
               }`}
             href="/calculator"
           >
-            Калькулятор
+            {t.calculator}
           </Link>
         </li>
         <li className="p-2">
@@ -50,7 +57,7 @@ const SideMenu = ({ isOpen, onClose }: SideMenuProps) => {
               }`}
             href="/partnership"
           >
-            Сотрудничество
+            {t.partnership}
           </Link>
         </li>
         <li className="p-2">
@@ -60,7 +67,7 @@ const SideMenu = ({ isOpen, onClose }: SideMenuProps) => {
               }`}
             href="/contacts"
           >
-            Контакты
+            {t.contacts}
           </Link>
         </li>
         <li className="p-2">
@@ -70,7 +77,7 @@ const SideMenu = ({ isOpen, onClose }: SideMenuProps) => {
               }`}
             href="/about"
           >
-            О нас
+            {t.about}
           </Link>
         </li>
         <li className="p-2">
@@ -80,14 +87,14 @@ const SideMenu = ({ isOpen, onClose }: SideMenuProps) => {
               }`}
             href="/profile"
           >
-            Личный кабинет
+            {t.profile}
           </Link>
         </li>
-        <li className="text-primary text-14 mt-8">Найти авто по VIN:</li>
+        <li className="text-primary text-14 mt-8">{t.find_car_by_vin}</li>
         <li className="mb-4 relative">
           <input
             type="text"
-            placeholder="Введите VIN номер"
+            placeholder={t.enter_vin}
             className="placeholder:text-placeholderText placeholder:text-14 placeholder:font-[500] text-primary flex border-solid border-[1px] border-primary rounded-sub-block-10 bg-input px-[14px] py-4 w-[217px] h-[20px] focus:outline-focus outline-none"
           />
           <Image
@@ -100,7 +107,7 @@ const SideMenu = ({ isOpen, onClose }: SideMenuProps) => {
         </li>
         <li className="">
           <button className="flex ml-auto mr-auto bg-gradient-red text-14 py-4 px-[24px] w-[217px] h-[20px] text-primary rounded-sub-block-10 transform transition duration-300 ease-in-out hover:scale-105 hover:text-hoverprimary focus:outline-focus outline-none">
-            Войти
+            {t.login}
           </button>
         </li>
       </ul>

@@ -1,70 +1,25 @@
-const advantages = [
-  {
-    id: 1,
-    title: 'Полное сопровождение',
-    description:
-      'Наш представитель будет сопровождать лот из аукциона в один из портов США. Более того, он проследит за сохранностью вашего авто как на судне, так и во время транспортировки по Украине.',
-  },
-  {
-    id: 2,
-    title: 'Безопасность',
-    description:
-      'Подписанный нами договор имеет законную силу. Таким образом, ваш бизнес на авто из США с юридической точки зрения полностью защищен.',
-  },
-  {
-    id: 3,
-    title: 'Личный кабинет',
-    description:
-      'В нем вы сможете проследить за историей всех финансовых операций и сделок. Ознакомиться с каждой статьей расходов, а также изменять инвойсы и самостоятельно собирать контейнеры.',
-  },
-  {
-    id: 4,
-    title: 'Поддержка 24/7',
-    description:
-      'Ваш персональный менеджер всегда на связи и поможет вам на всех этапах доставки авто из США. К тому же наши сотрудники готовы дать ответы на любые вопросы, развеять все сомнения и открыты для ваших предложений.',
-  },
-  {
-    id: 5,
-    title: 'Гарантии',
-    description:
-      'Даем 100%-ную гарантию на сохранность вашего груза, оплату страховых случаев, а также в течение нескольких дней забираем машину с площадки аукциона.',
-  },
-  {
-    id: 6,
-    title: 'Детальные фото- и видеоотчеты',
-    description:
-      'Мы предоставим вам снимки и видео повреждений со всех ракурсов в максимальном разрешении. Также в вашем распоряжении будут подробные отчеты CARFAX и AutoCheck, что крайне важно в бизнесе на услугах по пригону авто из США. Вдобавок вы получите фото- и видеоотчеты на всех этапах погрузки и разгрузки машины. По вашему запросу проведем дополнительно еще и тест-драйв.',
-  },
-  {
-    id: 7,
-    title: 'Отсутствие рисков',
-    description:
-      'Стараемся сводить на нет все возможные потери. Проблемы решаем быстро, но, по возможности, вообще обходим их стороной.',
-  },
-  {
-    id: 8,
-    title: 'Авто в срок',
-    description:
-      'Работаем так, чтобы ваш автомобиль прибыл в Украину без задержек. Поэтому не ждем пока заполнятся все контейнеры, а проводим отправки 1-2 раза в неделю. Выгрузку и таможенное оформление выполняем в течение 5-7 дней.',
-  },
-];
+"use client";
+import useStore from '../../../app/zustand/useStore';
+import translations from '../../../app/lang/partnership.json';
 
 const Advantages = () => {
+  const language = useStore(state => state.language);
+  const t = translations[language];
+
   return (
     <div>
       <h2 className="text-center text-primary mobile:text-30 tablet:text-40 desktop:text-64 font-bold mobile:mb-[38px] tablet:mb-[58px] desktop:mb-[88px]">
-        Плюсы от сотрудничества с нами
+        {t.advantages_title}
       </h2>
       <ul className="flex flex-wrap justify-center gap-8">
-        {advantages.map((advantage) => (
+        {t.advantages.map((advantage, index) => (
           <li
-            key={advantage.id}
-            className={`max-w-[400px] h-[356px] p-[32px] bg-gradient-sub-block mobile:rounded-sub-block-10 tablet:rounded-sub-block-32 flex flex-col ${
-              advantage.id === 6 ? 'h-[520px]' : ''
-            }`}
+            key={index}
+            className={`max-w-[400px] p-[32px] bg-gradient-sub-block mobile:rounded-sub-block-10 tablet:rounded-sub-block-32 flex flex-col ${index === 5 ? 'h-[520px]' : 'h-[356px]'
+              }`}
           >
             <div className="p-4 w-[52px] h-[56px] rounded-sub-block-14 flex items-center justify-center bg-gradient-advantages text-34 text-primary font-bold mb-[32px]">
-              {advantage.id}
+              {index + 1}
             </div>
             <h3 className="text-[25px] font-bold text-primary mb-2">
               {advantage.title}

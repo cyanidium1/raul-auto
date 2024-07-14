@@ -1,0 +1,59 @@
+{
+    "en": {
+        "adminName": "Raul Gobadze",
+        "adminTitle": "Company Owner",
+        "bio": [
+            "My name is Raul. I was born in Batumi, Georgia. At the age of 12, I moved to Ukraine, graduated from school in Kyiv, and got an education in customs and logistics.",
+            "In 1994, my father started a cargo transportation business. I also started participating in the family business.",
+            "In 2012, I brought the first car from America and sold it for a profit. I started reselling cars and bringing them to order.",
+            "I opened a brokerage company in Ukraine. We are official partners of Mercedes-Benz, Lexus, KIA Motors, Hyundai, and more.",
+            "In 2017, I brought the first car for the Ukrainian market, and orders started coming in. In 2018, the monthly turnover exceeded 100 cars."
+        ],
+        "contactPhone": "+380 73 772 73 73",
+        "telegramLink": "@raul_avto",
+        "contactLinks": [
+            "https://t.me/RAUL_AVTO",
+            "/",
+            "https://wa.me/380737727373",
+            "viber://chat?number=%2B380737727373"
+        ]
+    },
+    "ru": {
+        "adminName": "Рауль Гобадзе",
+        "adminTitle": "Владелец компании",
+        "bio": [
+            "Меня зовут Рауль. Родом из Батуми, Грузия. В 12 лет переехал в Украину, окончил школу в Киеве, получил образование в 'таможне и логистике'.",
+            "В 1994 отец занялся грузовыми перевозками. Я тоже начал участвовать в семейном бизнесе.",
+            "В 2012 году привез первую машину из Америки и продал её с прибылью. Начал перепродавать машины, привозить их на заказ.",
+            "Открыл брокерскую компанию в Украине. Мы официальные партнёры 'Mercedes-Benz, Lexus, KIA Motors, Hyundai и более...'.",
+            "В 2017 привёз первую машину для украинского рынка, начали поступать заказы. В 2018 месячный оборот составил более 100 автомобилей."
+        ],
+        "contactPhone": "+380 73 772 73 73",
+        "telegramLink": "@raul_avto",
+        "contactLinks": [
+            "https://t.me/RAUL_AVTO",
+            "/",
+            "https://wa.me/380737727373",
+            "viber://chat?number=%2B380737727373"
+        ]
+    },
+    "ua": {
+        "adminName": "Рауль Гобадзе",
+        "adminTitle": "Власник компанії",
+        "bio": [
+            "Мене звуть Рауль. Я родом з Батумі, Грузія. У 12 років переїхав до України, закінчив школу в Києві, отримав освіту в галузі митниці та логістики.",
+            "У 1994 році мій батько почав займатися вантажними перевезеннями. Я також почав брати участь у сімейному бізнесі.",
+            "У 2012 році я привіз перший автомобіль з Америки та продав його з прибутком. Почав перепродувати автомобілі, привозити їх на замовлення.",
+            "Я відкрив брокерську компанію в Україні. Ми офіційні партнери Mercedes-Benz, Lexus, KIA Motors, Hyundai та інших.",
+            "У 2017 році я привіз перший автомобіль для українського ринку, і почали надходити замовлення. У 2018 році місячний оборот перевищив 100 автомобілів."
+        ],
+        "contactPhone": "+380 73 772 73 73",
+        "telegramLink": "@raul_avto",
+        "contactLinks": [
+            "https://t.me/RAUL_AVTO",
+            "/",
+            "https://wa.me/380737727373",
+            "viber://chat?number=%2B380737727373"
+        ]
+    }
+}

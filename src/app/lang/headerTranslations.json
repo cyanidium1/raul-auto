@@ -4,20 +4,32 @@
         "calculator": "Калькулятор",
         "partnership": "Сотрудничество",
         "contacts": "Контакты",
-        "about": "О нас"
+        "about": "О нас",
+        "profile": "Личный кабинет",
+        "find_car_by_vin": "Найти авто по VIN",
+        "enter_vin": "Введите VIN номер",
+        "login": "Войти"
     },
     "en": {
         "companyName": "Raulavto",
         "calculator": "Calculator",
         "partnership": "Partnership",
         "contacts": "Contacts",
-        "about": "About Us"
+        "about": "About Us",
+        "profile": "Profile",
+        "find_car_by_vin": "Find car by VIN",
+        "enter_vin": "Enter VIN number",
+        "login": "Login"
     },
     "ua": {
         "companyName": "Raulavto",
         "calculator": "Калькулятор",
         "partnership": "Співпраця",
         "contacts": "Контакти",
-        "about": "Про нас"
+        "about": "Про нас",
+        "profile": "Особистий кабінет",
+        "find_car_by_vin": "Знайти авто по VIN",
+        "enter_vin": "Введіть VIN номер",
+        "login": "Увійти"
     }
 }

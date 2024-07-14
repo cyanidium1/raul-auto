@@ -1,6 +1,12 @@
+'use client';
 import Image from 'next/image';
+import useStore from '../../../app/zustand/useStore';
+import translations from '../../../app/lang/contacts.json';
 
 const AdminContacts = () => {
+  const language = useStore((state) => state.language);
+  const t = translations[language];
+
   return (
     <div className="pt-[80px] pb-[96px]">
       <div className="relative max-w-[496px] mx-auto">
@@ -12,30 +18,31 @@ const AdminContacts = () => {
           height={643}
         />
         <div className="tablet:absolute mobile:mt-3 tablet:mt-0 mobile:mx-auto mobile:max-w-[496px] desktop:h-[351px] tablet:left-[270px] tablet:top-[320px] desktop:left-[408px] desktop:top-[136px] tablet:w-[339px] mobile:rounded-sub-block-10 tablet:rounded-sub-block-26 mobile:p-[32px] bg-mapbg">
-          <h2 className="text-[40px] leading-[35px] mb-[20px] text-primary text-center font-bold">
-            Raul Gobadze
+          <h2 className="text-[30px] leading-[35px] mb-[20px] text-primary text-center font-bold">
+            {t.title}
           </h2>
           <div className="font-medium text-[16px] text-secondary text-center mb-[22px] mx-auto">
-            Владелец компании
+            {t.subtitle}
           </div>
           <div className="flex flex-col gap-4 mb-[25px]">
             <a
               className="max-w-full h-[44px] flex items-center justify-center py-[14px] px-[24px] rounded-sub-block-10 bg-input text-16 font-bold text-primary transition duration-300 ease-in-out hover:scale-105 focus:outline-focus outline-none"
-              href="tel:+380737727373"
+              href={`tel:${t.phone}`}
             >
-              +380 73 772 73 73
+              {t.phone}
             </a>
             <a
               className="max-w-full h-[44px] flex items-center justify-center py-[14px] px-[24px] rounded-sub-block-10 bg-input text-16 font-bold text-primary transition duration-300 ease-in-out hover:scale-105 focus:outline-focus outline-none"
-              href="https://t.me/RAUL_AVTO"
+              href={`https://t.me/${t.telegram}`}
             >
-              @raul_avto
+              {t.telegram}
             </a>
           </div>
           <ul className="flex gap-4 mobile:items-center mobile:justify-center">
             <li>
-              <a className="focus:outline-focus outline-none" href="https://t.me/RAUL_AVTO" rel='noreferrer'>
+              <a className="focus:outline-focus outline-none " href={`https://t.me/${t.telegram}`} target='_blank' rel='noreferrer'>
                 <Image
+                  className='hover:scale-110 duration-300'
                   src="/telegram.png"
                   alt="icon telegram"
                   width={56}
@@ -44,8 +51,9 @@ const AdminContacts = () => {
               </a>
             </li>
             <li>
-              <a className="focus:outline-focus outline-none" href="/">
+              <a className="focus:outline-focus outline-none" href="/" target='_blank' rel='noreferrer'>
                 <Image
+                  className='hover:scale-110 duration-300'
                   src="/massages.png"
                   alt="icon messanger"
                   width={56}
@@ -54,8 +62,9 @@ const AdminContacts = () => {
               </a>
             </li>
             <li>
-              <a className="focus:outline-focus outline-none" href="/">
+              <a className="focus:outline-focus outline-none" href={`https://wa.me/${t.phone}`} target='_blank' rel='noreferrer'>
                 <Image
+                  className='hover:scale-110 duration-300'
                   src="/WhatsApp.png"
                   alt="icon whatsapp"
                   width={56}
@@ -64,8 +73,9 @@ const AdminContacts = () => {
               </a>
             </li>
             <li>
-              <a className="focus:outline-focus outline-none" href="/">
+              <a className="focus:outline-focus outline-none" href={`viber://chat?number=%2B${t.phone.replace(/\s+/g, '')}`} target='_blank' rel='noreferrer'>
                 <Image
+                  className='hover:scale-110 duration-300'
                   src="/viber.png"
                   alt="icon viber"
                   width={56}

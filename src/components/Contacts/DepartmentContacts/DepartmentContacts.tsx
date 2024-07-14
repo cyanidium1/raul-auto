@@ -1,6 +1,12 @@
+'use client';
 import Image from 'next/image';
+import useStore from '../../../app/zustand/useStore';
+import translations from '../../../app/lang/departmentContacts.json';
 
 const DepartmentContacts = () => {
+  const language = useStore((state) => state.language);
+  const t = translations[language];
+
   return (
     <div className="pb-[104px]">
       <div className="flex flex-col gap-[32px]">
@@ -15,20 +21,20 @@ const DepartmentContacts = () => {
             />
             <div className="flex flex-col gap-[32px]">
               <div className="text-[29px] text-primary font-bold">
-                Отдел подбора автомобилей
+                {t.selection_title}
               </div>
               <div className="mobile:flex mobile:gap-4 mobile:flex-col mobile:items-center mobile:justify-center tablet:flex-row tablet:items-start tablet:justify-start">
                 <a
                   className="w-[270px] h-[44px] flex items-center justify-center py-[14px] px-[24px] rounded-sub-block-10 bg-input text-16 text-primary font-bold transition duration-300 ease-in-out hover:scale-105 focus:outline-focus outline-none"
-                  href="tel:+380737727373"
+                  href={`tel:${t.phone}`}
                 >
-                  +380 73 772 73 73
+                  {t.phone}
                 </a>
                 <a
                   className="w-[270px] h-[44px] flex items-center justify-center py-[14px] px-[24px] rounded-sub-block-10 bg-input text-16 text-primary font-bold transition duration-300 ease-in-out hover:scale-105 focus:outline-focus outline-none"
-                  href="mailto:@raul_avto_search"
+                  href={`http://t.me/${t.telegram_selection}`} target='_blank' rel='noreferrer'
                 >
-                  @raul_avto_search
+                  {t.telegram_selection}
                 </a>
               </div>
             </div>
@@ -43,20 +49,20 @@ const DepartmentContacts = () => {
             />
             <div className="flex flex-col gap-[32px]">
               <div className="text-[29px] text-primary font-bold">
-                Отдел подбора запчастей
+                {t.parts_title}
               </div>
               <div className="mobile:flex mobile:gap-4 mobile:flex-col mobile:items-center mobile:justify-center tablet:flex-row tablet:items-start tablet:justify-start">
                 <a
                   className="w-[270px] h-[44px] flex items-center justify-center py-[14px] px-[24px] rounded-sub-block-10 bg-input text-16 text-primary font-bold transition duration-300 ease-in-out hover:scale-105 focus:outline-focus outline-none"
-                  href="tel:+380737727373"
+                  href={`tel:${t.phone}`}
                 >
-                  +380 73 772 73 73
+                  {t.phone}
                 </a>
                 <a
                   className="w-[270px] h-[44px] flex items-center justify-center py-[14px] px-[24px] rounded-sub-block-10 bg-input text-16 text-primary font-bold transition duration-300 ease-in-out hover:scale-105 focus:outline-focus outline-none"
-                  href="mailto: @raul_avto_parts"
+                  href={`http://t.me/${t.telegram_parts}`} target='_blank' rel='noreferrer'
                 >
-                  @raul_avto_parts
+                  {t.telegram_parts}
                 </a>
               </div>
             </div>
@@ -73,20 +79,20 @@ const DepartmentContacts = () => {
             />
             <div className="flex flex-col gap-[32px]">
               <div className="text-[29px] text-primary font-bold">
-                Отдел автомобильной логистики
+                {t.logistics_title}
               </div>
               <div className="mobile:flex mobile:gap-4 mobile:flex-col mobile:items-center mobile:justify-center tablet:flex-row tablet:items-start tablet:justify-start">
                 <a
                   className="w-[270px] h-[44px] flex items-center justify-center py-[14px] px-[24px] rounded-sub-block-10 bg-input text-16 text-primary font-bold transition duration-300 ease-in-out hover:scale-105 focus:outline-focus outline-none"
-                  href="tel:+380737727373"
+                  href={`tel:${t.phone}`}
                 >
-                  +380 73 772 73 73
+                  {t.phone}
                 </a>
                 <a
                   className="w-[270px] h-[44px] flex items-center justify-center py-[14px] px-[24px] rounded-sub-block-10 bg-input text-16 text-primary font-bold transition duration-300 ease-in-out hover:scale-105 focus:outline-focus outline-none"
-                  href="mailto:@raul_avto_transport"
+                  href={`http://t.me/${t.telegram_logistics}`} target='_blank' rel='noreferrer'
                 >
-                  @raul_avto_transport
+                  {t.telegram_logistics}
                 </a>
               </div>
             </div>

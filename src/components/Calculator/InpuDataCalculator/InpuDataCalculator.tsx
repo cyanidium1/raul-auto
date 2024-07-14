@@ -2,45 +2,67 @@
 import CustomSelect from '@/components/UI/CustomSelect/CustomSelect';
 import Button from '@/components/UI/Button/Button';
 import { useState } from 'react';
-
-const selectOptions = [
-  {
-    label: 'Стоимость транспорта на аукционе',
-    options: [{ label: '$ 38,860', value: '$ 38,860' }],
-  },
-  { label: 'Тип транспорта', options: [{ label: 'Авто', value: 'auto' }] },
-  { label: 'Тип двигателя', options: [{ label: 'Электро', value: 'electro' }] },
-  { label: 'Объем двигателя', options: [{ label: '389 см³', value: '389' }] },
-  { label: 'Год выпуска', options: [{ label: '2023', value: '2023' }] },
-  { label: 'Аукцион', options: [{ label: 'COPART', value: 'copart' }] },
-  {
-    label: 'Площадка аукциона',
-    options: [{ label: 'CA-MARTINEZ', value: 'ca-martinez' }],
-  },
-  {
-    label: 'Возможный порт отгрузки',
-    options: [
-      { label: 'LOS_ANGELES 18', value: 'los_angeles_18' },
-      { label: 'SAN_FRANCISCO 19', value: 'san_francisco_19' },
-      { label: 'MIAMI 20', value: 'miami_20' },
-      { label: 'LOS_ANGELES 18', value: 'los_angeles_18' },
-      { label: 'SAN_FRANCISCO 19', value: 'san_francisco_19' },
-      { label: 'MIAMI 20', value: 'miami_20' },
-      { label: 'LOS_ANGELES 18', value: 'los_angeles_18' },
-      { label: 'SAN_FRANCISCO 19', value: 'san_francisco_19' },
-      { label: 'MIAMI 20', value: 'miami_20' },
-    ],
-  },
-  {
-    label: 'Возможный порт выгрузки',
-    options: [{ label: 'KRAKOW_22', value: 'krakow_22' }],
-  },
-];
+import useStore from '../../../app/zustand/useStore'; // Путь к вашему Zustand store
+import translations from '../../../app/lang/calculator.json'; // Путь к вашему JSON файлу с переводами
 
 const InpuDataCalculator = () => {
-  const [selectedOptions, setSelectedOptions] = useState<
-    Record<string, string>
-  >({});
+  const language = useStore(state => state.language); // Предположим, что вы храните язык в состоянии Zustand
+
+  // Проверяем, что выбранный язык существует в translations
+  if (!translations[language]) {
+    throw new Error(`Translations for language "${language}" not found.`);
+  }
+
+  const {
+    inputData,
+    calculatePayments,
+    auctionCost,
+    transportType,
+    engineType,
+    engineCapacity,
+    yearOfManufacture,
+    auction,
+    auctionSite,
+    possibleShippingPort,
+    possibleUnloadingPort,
+    options,
+  } = translations[language];
+
+  const selectOptions = [
+    {
+      label: auctionCost,
+      options: [{ label: options.cost, value: options.cost }],
+    },
+    { label: transportType, options: [{ label: options.auto, value: 'auto' }] },
+    { label: engineType, options: [{ label: options.electro, value: 'electro' }] },
+    { label: engineCapacity, options: [{ label: options.capacity, value: '389' }] },
+    { label: yearOfManufacture, options: [{ label: options.year, value: '2023' }] },
+    { label: auction, options: [{ label: options.copart, value: 'copart' }] },
+    {
+      label: auctionSite,
+      options: [{ label: options.caMartinez, value: 'ca-martinez' }],
+    },
+    {
+      label: possibleShippingPort,
+      options: [
+        { label: options.losAngeles, value: 'los_angeles_18' },
+        { label: options.sanFrancisco, value: 'san_francisco_19' },
+        { label: options.miami, value: 'miami_20' },
+        { label: options.losAngeles, value: 'los_angeles_18' },
+        { label: options.sanFrancisco, value: 'san_francisco_19' },
+        { label: options.miami, value: 'miami_20' },
+        { label: options.losAngeles, value: 'los_angeles_18' },
+        { label: options.sanFrancisco, value: 'san_francisco_19' },
+        { label: options.miami, value: 'miami_20' },
+      ],
+    },
+    {
+      label: possibleUnloadingPort,
+      options: [{ label: options.krakow, value: 'krakow_22' }],
+    },
+  ];
+
+  const [selectedOptions, setSelectedOptions] = useState<Record<string, string>>({});
 
   const handleSelect = (
     label: string,
@@ -55,10 +77,11 @@ const InpuDataCalculator = () => {
   const handleSubmit = () => {
     console.log(selectedOptions);
   };
+
   return (
     <div className="container mx-auto mobile:rounded-sub-block-10 tablet:rounded-sub-block-24 lg:rounded-sub-block-42 mobile:p-[20px] tablet:p-[40px] desktop:p-[80px] max-w-[832px] w-full bg-gradient-sub-block self-start">
       <h2 className="text-primary mobile:text-28 tablet:text-40 font-bold mb-[72px] text-center">
-        Входные данные
+        {inputData}
       </h2>
       <ul className="grid grid-cols-1 tablet:grid-cols-2 gap-6 justify-items-center">
         {selectOptions.map((item, index) => (
@@ -96,7 +119,7 @@ const InpuDataCalculator = () => {
             type="submit"
             onClick={handleSubmit}
           >
-            Рассчёт по платежам
+            {calculatePayments}
           </Button>
         </li>
       </ul>

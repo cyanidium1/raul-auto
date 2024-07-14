@@ -1,11 +1,18 @@
+'use client';
+import useStore from '../../../app/zustand/useStore';
+import translations from '../../../app/lang/calcResult.json';
+
 const TotalAmountCalculator = () => {
+  const language = useStore((state) => state.language);
+  const t = translations[language];
+
   return (
     <div className="mobile:rounded-sub-block-10 tablet:rounded-sub-block-24 lg:rounded-sub-block-42 mobile:p-[20px] tablet:p-[80px] max-w-[940px] w-full bg-gradient-sub-block">
       <ul className="flex flex-col">
         <li className="border-b-[1px] border-solid border-primary">
           <div className="flex justify-between items-center">
             <div className="mobile:text-14 tablet:text-18 text-secondary font-semibold">
-              Начальная ставка в США
+              {t.initial_bid}
             </div>
             <div className="mobile:text-14 tablet:text-18 text-primary font-semibold">
               $ 38,860
@@ -14,7 +21,7 @@ const TotalAmountCalculator = () => {
           <ul className="mobile:ml-0 tablet:ml-[72px]">
             <li className="flex items-center justify-between">
               <div className="mobile:text-[14px] leading-[48px] tablet:text-16 text-secondary font-semibold">
-                Сбор аукциона
+                {t.auction_fee}
               </div>
               <div className="flex-grow mx-[16px] h-[1px] bg-primary"></div>
               <div className="mobile:text-[14px] leading-[48px] tablet:text-16 text-secondary font-semibold">
@@ -26,7 +33,7 @@ const TotalAmountCalculator = () => {
         <li className="border-b-[1px] border-solid border-primary pt-4">
           <div className="flex justify-between items-center mb-4">
             <div className="mobile:text-14 tablet:text-18 text-secondary font-semibold">
-              Наши услуги
+              {t.our_services}
             </div>
             <div className="mobile:text-14 tablet:text-18 text-primary font-semibold">
               $ 2,570
@@ -36,7 +43,7 @@ const TotalAmountCalculator = () => {
         <li className="border-b-[1px] border-solid border-primary pt-4">
           <div className="flex justify-between items-center">
             <div className="mobile:text-14 tablet:text-18 text-secondary font-semibold">
-              Доставка
+              {t.delivery}
             </div>
             <div className="mobile:text-14 tablet:text-18 text-primary font-semibold">
               $ 4,913
@@ -45,7 +52,7 @@ const TotalAmountCalculator = () => {
           <ul className="mobile:ml-0 tablet:ml-[72px]">
             <li className="flex items-center justify-between">
               <div className="mobile:text-[14px] leading-[48px] tablet:text-16 text-secondary font-semibold">
-                Комплекс в порту
+                {t.port_complex}
               </div>
               <div className="flex-grow mx-[16px] h-[1px] bg-primary"></div>
               <div className="mobile:text-[14px] leading-[48px] tablet:text-16 text-secondary font-semibold">
@@ -54,7 +61,7 @@ const TotalAmountCalculator = () => {
             </li>
             <li className="flex items-center justify-between">
               <div className="mobile:text-[14px] leading-[48px] tablet:text-16 text-secondary font-semibold">
-                Стоянка в порту
+                {t.port_parking}
               </div>
               <div className="flex-grow mx-[16px] h-[1px] bg-primary"></div>
               <div className="mobile:text-[14px] leading-[48px] tablet:text-16 text-secondary font-semibold">
@@ -63,7 +70,7 @@ const TotalAmountCalculator = () => {
             </li>
             <li className="flex items-center justify-between">
               <div className="mobile:text-[14px] leading-[48px] tablet:text-16 text-secondary font-semibold">
-                Доставка транспортного средства
+                {t.vehicle_delivery}
               </div>
               <div className="flex-grow mx-[16px] h-[1px] bg-primary"></div>
               <div className="mobile:text-[14px] leading-[48px] tablet:text-16 text-secondary font-semibold">
@@ -75,7 +82,7 @@ const TotalAmountCalculator = () => {
         <li className="border-b-[1px] border-solid border-primary pt-4">
           <div className="flex justify-between items-center">
             <div className="mobile:text-14 tablet:text-18 text-secondary font-semibold">
-              Таможенное оформление
+              {t.customs_clearance}
             </div>
             <div className="mobile:text-14 tablet:text-18 text-primary font-semibold">
               $ 241
@@ -84,7 +91,7 @@ const TotalAmountCalculator = () => {
           <ul className="mobile:ml-0 tablet:ml-[72px]">
             <li className="flex items-center justify-between">
               <div className="mobile:text-[14px] leading-[48px] tablet:text-16 text-secondary font-semibold">
-                Брокер
+                {t.broker}
               </div>
               <div className="flex-grow mx-[16px] h-[1px] bg-primary"></div>
               <div className="mobile:text-[14px] leading-[48px] tablet:text-16 text-secondary font-semibold">
@@ -93,7 +100,7 @@ const TotalAmountCalculator = () => {
             </li>
             <li className="flex items-center justify-between">
               <div className="mobile:text-[14px] leading-[48px] tablet:text-16 text-secondary font-semibold">
-                Сумма официальных платежей
+                {t.official_payments}
               </div>
               <div className="flex-grow mx-[16px] h-[1px] bg-primary"></div>
               <div className="mobile:text-[14px] leading-[48px] tablet:text-16 text-secondary font-semibold">
@@ -102,7 +109,7 @@ const TotalAmountCalculator = () => {
             </li>
             <li className="flex items-center justify-between">
               <div className="mobile:text-[14px] leading-[48px] tablet:text-16 text-secondary font-semibold">
-                Ввозная (импортная) пошлина
+                {t.import_duty}
               </div>
               <div className="flex-grow mx-[16px] h-[1px] bg-primary"></div>
               <div className="mobile:text-[14px] leading-[48px] tablet:text-16 text-secondary font-semibold">
@@ -111,7 +118,7 @@ const TotalAmountCalculator = () => {
             </li>
             <li className="flex items-center justify-between">
               <div className="mobile:text-[14px] leading-[48px] tablet:text-16 text-secondary font-semibold">
-                Акцизный сбор
+                {t.excise_tax}
               </div>
               <div className="flex-grow mx-[16px] h-[1px] bg-primary"></div>
               <div className="mobile:text-[14px] leading-[48px] tablet:text-16 text-secondary font-semibold">
@@ -120,7 +127,7 @@ const TotalAmountCalculator = () => {
             </li>
             <li className="flex items-center justify-between">
               <div className="mobile:text-[14px] leading-[48px] tablet:text-16 text-secondary font-semibold">
-                Налог на добавленную стоимость (НДС)
+                {t.vat}
               </div>
               <div className="flex-grow mx-[16px] h-[1px] bg-primary"></div>
               <div className="mobile:text-[14px] leading-[48px] tablet:text-16 text-secondary font-semibold">
@@ -132,7 +139,7 @@ const TotalAmountCalculator = () => {
         <li className="border-b-[1px] border-solid border-primary pt-4">
           <div className="flex justify-between items-center">
             <div className="mobile:text-14 tablet:text-18 text-secondary font-semibold">
-              Постановка на учёт
+              {t.registration}
             </div>
             <div className="mobile:text-14 tablet:text-18 text-primary font-semibold">
               $ 241
@@ -141,7 +148,7 @@ const TotalAmountCalculator = () => {
           <ul className="mobile:ml-0 tablet:ml-[72px]">
             <li className="flex items-center justify-between">
               <div className="mobile:text-[14px] leading-[48px] tablet:text-16 text-secondary font-semibold">
-                Сертификация
+                {t.certification}
               </div>
               <div className="flex-grow mx-[16px] h-[1px] bg-primary"></div>
               <div className="mobile:text-[14px] leading-[48px] tablet:text-16 text-secondary font-semibold">
@@ -150,7 +157,7 @@ const TotalAmountCalculator = () => {
             </li>
             <li className="flex items-center justify-between">
               <div className="mobile:text-[14px] leading-[48px] tablet:text-16 text-secondary font-semibold">
-                Пенсионный фонд
+                {t.pension_fund}
               </div>
               <div className="flex-grow mx-[16px] h-[1px] bg-primary"></div>
               <div className="mobile:text-[14px] leading-[48px] tablet:text-16 text-secondary font-semibold">
@@ -163,19 +170,15 @@ const TotalAmountCalculator = () => {
       <div className="pt-[24px]">
         <div className="flex items-center justify-between mb-[12px]">
           <div className="text-primary text-20 font-semibold">
-            Общая стоимость
+            {t.total_cost}
           </div>
           <div className="text-primary text-20 font-semibold">$ 48,164</div>
         </div>
-        <p className="max-w-[380px] mb-[40px] text-12 text-secondary font-semibold opacity-[0.5]">
-          Предварительная сумма может незначительно меняться в зависимости от
-          курса валюты и ситуации в мире.
+        <p className="max-w-[380px] mb-[40px] text-12 text-secondary">
+          {t.disclaimer}
         </p>
-        <button
-          className="py-[18px] px-[20px] w-full h-[60px] rounded-sub-block-12 bg-input text-primary text-18 font-bold transform transition duration-300 ease-in-out hover:scale-105 hover:text-hoverprimary focus:outline-focus outline-none"
-          type="button"
-        >
-          Подробнее
+        <button className="bg-primary text-white font-semibold py-[10px] px-[24px] rounded-lg">
+          {t.more_details}
         </button>
       </div>
     </div>

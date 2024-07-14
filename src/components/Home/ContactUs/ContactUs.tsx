@@ -22,7 +22,7 @@ const ContactUs = () => {
   };
 
   return (
-    <div className="mobile:pb-[100px] desktop:pb-[567px]">
+    <div className="mobile:pb-[20px] desktop:pb-[80px]">
       <div className="flex justify-center items-center gap-[32px] mobile:flex-wrap tablet:flex-nowrap">
         <div className="mobile:flex mobile:flex-col mobile:items-center mobile:justify-center mobile:h-auto desktop:flex-row desktop:justify-normal desktop:w-[976px] desktop:h-[355px] mobile:rounded-sub-block-10 tablet:rounded-sub-block-42 bg-gradient-sub-block p-16 gap-16">
           <Image
@@ -49,7 +49,7 @@ const ContactUs = () => {
           <div className="flex items-center mb-[24px] mobile:w-[320px] desktop:w-[445px] h-[27px] bg-gradient-red p-2 rounded-sub-block-6 text-primary mobile:text-[11px] desktop:text-16">
             {texts.noCallBack}
           </div>
-          <div className="mobile:text-30 desktop:text-40 mobile:text-center desktop:text-left text-primary font-bold mb-[40px]">
+          <div className="mobile:text-30 desktop:text-40 mobile:text-center desktop:text-left text-primary font-bold mb-[20px]">
             <span className="block">{texts.leaveNumber}</span>
             <span className="block">{texts.willCallBack}</span>
           </div>

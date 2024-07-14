@@ -4,6 +4,8 @@ import InputField from '@/components/UI/InputField/InputField';
 import Button from '@/components/UI/Button/Button';
 import { FormikValues } from 'formik';
 import { sendMessage } from '@/app/utils/sendMessage';
+import useStore from '../../../app/zustand/useStore';
+import translations from '../../../app/lang/partForms.json';
 
 const initialValues = {
   phone: '',
@@ -12,6 +14,9 @@ const initialValues = {
 };
 
 const QuestionsForm = () => {
+  const language = useStore(state => state.language);
+  const t = translations[language];
+
   const handleSubmit = (values: FormikValues) => {
     console.log(values);
 
@@ -32,8 +37,8 @@ const QuestionsForm = () => {
               <InputField
                 type="tel"
                 name="phone"
-                label="Номер телефона"
-                placeholder="+ 380 000 00 00"
+                label={t.form_phone}
+                placeholder={t.form_phone_placeholder}
                 labelClassName="text-16 mb-[16px] font-semibold"
                 inputClassName="placeholder:text-placeholderText placeholder:text-18 text-primary placeholder:font-semibold flex border-solid border-[1px] border-primary rounded-sub-block-12 bg-input px-[20px] py-[18px] w-full h-[60px]"
               />
@@ -42,8 +47,8 @@ const QuestionsForm = () => {
               <InputField
                 type="text"
                 name="name"
-                label="Имя"
-                placeholder="Фамилия Имя"
+                label={t.form_name}
+                placeholder={t.form_name_placeholder}
                 labelClassName="text-16 mb-[16px] font-semibold"
                 inputClassName="placeholder:text-placeholderText placeholder:text-18 text-primary placeholder:font-semibold flex border-solid border-[1px] border-primary rounded-sub-block-12 bg-input px-[20px] py-[18px] w-full h-[60px]"
               />
@@ -52,8 +57,8 @@ const QuestionsForm = () => {
               <InputField
                 as="textarea"
                 name="comment"
-                label="Комментарий"
-                placeholder="Комментарий"
+                label={t.form_comment}
+                placeholder={t.form_comment_placeholder}
                 labelClassName="text-16 mb-[16px] font-semibold"
                 inputClassName="placeholder:text-placeholderText placeholder:text-18 text-primary placeholder:font-semibold border-solid border-[1px] border-primary rounded-sub-block-12 bg-input px-[20px] py-[18px] w-full h-[108px]"
               />
@@ -62,7 +67,7 @@ const QuestionsForm = () => {
               className="bg-gradient-red text-primary text-18 font-bold rounded-sub-block-16 flex items-center justify-center px-[20px] py-[18px] w-full h-[60px]"
               type="submit"
             >
-              Отправить
+              {t.form_submit}
             </Button>
           </div>
         )}
