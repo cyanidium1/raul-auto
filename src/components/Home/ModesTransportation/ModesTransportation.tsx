@@ -46,7 +46,7 @@ const ModesTransportation: React.FC = () => {
         {transportModes.map((mode, index) => (
           <li
             key={index}
-            className="w-[420px] h-[265px] relative bg-gradient-sub-block rounded-sub-block-24 p-[32px] overflow-hidden"
+            className="w-[420px] relative bg-gradient-sub-block rounded-sub-block-24 p-[32px] overflow-hidden"
           >
             <div className="text-20 font-bold text-countCar">{deliver || 'Доставим'}</div>
             <div className="text-28 font-bold text-primary">{mode.title}</div>

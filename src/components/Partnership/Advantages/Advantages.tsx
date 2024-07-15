@@ -21,8 +21,7 @@ const Advantages = () => {
         {t.advantages.map((advantage, index) => (
           <motion.li
             key={index}
-            className={`max-w-[400px] p-[32px] bg-gradient-sub-block mobile:rounded-sub-block-10 tablet:rounded-sub-block-32 flex flex-col ${index === 5 ? 'h-[520px]' : 'h-[356px]'
-              }`}
+            className={`max-w-[400px] p-[32px] bg-gradient-sub-block mobile:rounded-sub-block-10 tablet:rounded-sub-block-32 flex flex-col h-[356px]}`}
             initial="hidden"
             whileInView="visible"
             variants={blockVariants}
