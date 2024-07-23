@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import { myFontPanagram } from './fonts';
 import './globals.css';
 import '../components/Loader/loader.css'
-import Loader from '@/components/Loader/Loader';
+// import Loader from '@/components/Loader/Loader';
 
 
 export const metadata: Metadata = {
@@ -21,7 +21,7 @@ export default function RootLayout({
       <link rel="apple-touch-icon" href="/logo.png"></link>
       <link rel="manifest" href="/manifest.json"></link>
       <body className={myFontPanagram.className}>
-      <Loader />
+        {/* <Loader /> */}
         <Header />
         <main>{children}</main>
       </body>
