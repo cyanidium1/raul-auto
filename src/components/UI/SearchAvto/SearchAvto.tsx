@@ -6,11 +6,6 @@ import CustomSelect from '@/components/UI/CustomSelect/CustomSelect';
 import useStore from '../../../app/zustand/useStore';
 import translations from '../../../app/lang/searchAvtoTranslations.json';
 
-interface Option {
-  label: string;
-  value: string;
-}
-
 const yearOptions = [
   { label: '0-3', value: '0-3' },
   { label: '0-5', value: '0-5' },
@@ -31,8 +26,8 @@ const SearchAvto = () => {
 
   const router = useRouter();
 
-  const [brandOptions, setBrandOptions] = useState<Option[]>([]);
-  const [modelOptions, setModelOptions] = useState<Option[]>([]);
+  const [brandOptions, setBrandOptions] = useState([]);
+  const [modelOptions, setModelOptions] = useState([]);
   const [loadingModels, setLoadingModels] = useState(false);
   const [selectedOptions, setSelectedOptions] = useState({
     brandSelection: '',
@@ -43,13 +38,7 @@ const SearchAvto = () => {
 
   useEffect(() => {
     const fetchBrandOptions = () => {
-      fetch('http://91.228.56.250:7246/api/auction/make', {
-        method: 'GET',
-        headers: {
-          'accept': 'text/json',
-          'Bot-Token': 'Qi7nffIhoI6sHHzvyXqwRFWExPxKMxL'
-        }
-      })
+      fetch('/api/proxy?type=make')
         .then(response => {
           if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
@@ -57,7 +46,7 @@ const SearchAvto = () => {
           return response.json();
         })
         .then(data => {
-          const formattedOptions = data.data.map((item: any) => ({
+          const formattedOptions = data.data.map(item => ({
             label: item.name,
             value: item.name
           }));
@@ -71,15 +60,9 @@ const SearchAvto = () => {
     fetchBrandOptions();
   }, []);
 
-  const fetchModelOptions = (brand: string) => {
+  const fetchModelOptions = (brand) => {
     setLoadingModels(true);
-    fetch(`http://91.228.56.250:7246/api/auction/model/${brand}`, {
-      method: 'GET',
-      headers: {
-        'accept': 'text/json',
-        'Bot-Token': 'Qi7nffIhoI6sHHzvyXqwRFWExPxKMxL'
-      }
-    })
+    fetch(`/api/proxy?type=model&brand=${brand}`)
       .then(response => {
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
@@ -87,7 +70,7 @@ const SearchAvto = () => {
         return response.json();
       })
       .then(data => {
-        const formattedOptions = data.data.map((item: any) => ({
+        const formattedOptions = data.data.map(item => ({
           label: item.name,
           value: item.name
         }));
@@ -100,11 +83,11 @@ const SearchAvto = () => {
       });
   };
 
-  const handleSelectChange = (key: string, value: Option) => {
-    setSelectedOptions((prevState) => ({
+  const handleSelectChange = (key, value) => {
+    setSelectedOptions(prevState => ({
       ...prevState,
       [key]: value.value,
-      ...(key === 'brandSelection' && { modelSelection: '' }), // Clear modelSelection when brand changes
+      ...(key === 'brandSelection' && { modelSelection: '' }),
     }));
 
     if (key === 'brandSelection') {
@@ -115,16 +98,11 @@ const SearchAvto = () => {
 
   const handleSubmit = () => {
     const { brandSelection, modelSelection, yearOf, odo } = selectedOptions;
-    const [YearFrom, YearTo] = yearOf.split('-').map(Number);
-    const [OdometerMin, OdometerMax] = odo.split('-').map(v => parseInt(v.replace('K', '000'), 10));
-
     const query = new URLSearchParams({
-      Make: brandSelection,
-      Model: modelSelection,
-      YearFrom: YearFrom ? YearFrom.toString() : '',
-      YearTo: YearTo ? YearTo.toString() : '',
-      OdometerMin: OdometerMin ? OdometerMin.toString() : '',
-      OdometerMax: OdometerMax ? OdometerMax.toString() : '',
+      brandSelection,
+      modelSelection,
+      yearOf,
+      odo,
     }).toString();
 
     router.push(`/search?${query}`);
