@@ -1,7 +1,8 @@
 'use client';
+import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import Button from '../Button/Button';
 import CustomSelect from '@/components/UI/CustomSelect/CustomSelect';
-import { useState } from 'react';
 import useStore from '../../../app/zustand/useStore';
 import translations from '../../../app/lang/searchAvtoTranslations.json';
 
@@ -10,42 +11,123 @@ interface Option {
   value: string;
 }
 
-const brandOptions = [
-  { label: 'Audi', value: 'audi' },
-  { label: 'Bmw', value: 'bmw' },
-  { label: 'Nisan', value: 'nisan' },
-];
-
-const modelOptions = [
-  { label: 'Q7', value: 'q7' },
-  { label: 'R8', value: 'r8' },
-];
-
 const yearOptions = [
-  { label: '1970', value: '1970' },
-  { label: '2024', value: '2024' },
+  { label: '0-3', value: '0-3' },
+  { label: '0-5', value: '0-5' },
+  { label: '0-10', value: '0-10' },
+  { label: '10+', value: '10+' },
+];
+
+const odoOptions = [
+  { label: '0-50K', value: '0-50K' },
+  { label: '0-100K', value: '0-100K' },
+  { label: '0-150K', value: '0-150K' },
+  { label: '200K+', value: '200K+' },
 ];
 
 const SearchAvto = () => {
   const language = useStore((state) => state.language);
   const t = translations[language];
 
+  const router = useRouter();
+
+  const [brandOptions, setBrandOptions] = useState<Option[]>([]);
+  const [modelOptions, setModelOptions] = useState<Option[]>([]);
+  const [loadingModels, setLoadingModels] = useState(false);
   const [selectedOptions, setSelectedOptions] = useState({
     brandSelection: '',
     modelSelection: '',
     yearOf: '',
-    yearTo: '',
+    odo: '',
   });
+
+  useEffect(() => {
+    const fetchBrandOptions = () => {
+      fetch('http://91.228.56.250:7246/api/auction/make', {
+        method: 'GET',
+        headers: {
+          'accept': 'text/json',
+          'Bot-Token': 'Qi7nffIhoI6sHHzvyXqwRFWExPxKMxL'
+        }
+      })
+        .then(response => {
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+          return response.json();
+        })
+        .then(data => {
+          const formattedOptions = data.data.map((item: any) => ({
+            label: item.name,
+            value: item.name
+          }));
+          setBrandOptions(formattedOptions);
+        })
+        .catch(error => {
+          console.error('Error fetching brand options:', error);
+        });
+    };
+
+    fetchBrandOptions();
+  }, []);
+
+  const fetchModelOptions = (brand: string) => {
+    setLoadingModels(true);
+    fetch(`http://91.228.56.250:7246/api/auction/model/${brand}`, {
+      method: 'GET',
+      headers: {
+        'accept': 'text/json',
+        'Bot-Token': 'Qi7nffIhoI6sHHzvyXqwRFWExPxKMxL'
+      }
+    })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then(data => {
+        const formattedOptions = data.data.map((item: any) => ({
+          label: item.name,
+          value: item.name
+        }));
+        setModelOptions(formattedOptions);
+        setLoadingModels(false);
+      })
+      .catch(error => {
+        console.error('Error fetching model options:', error);
+        setLoadingModels(false);
+      });
+  };
 
   const handleSelectChange = (key: string, value: Option) => {
     setSelectedOptions((prevState) => ({
       ...prevState,
-      [key]: value,
+      [key]: value.value,
+      ...(key === 'brandSelection' && { modelSelection: '' }), // Clear modelSelection when brand changes
     }));
+
+    if (key === 'brandSelection') {
+      setModelOptions([{ label: 'Loading...', value: '' }]);
+      fetchModelOptions(value.value);
+    }
   };
 
   const handleSubmit = () => {
-    console.log(selectedOptions);
+    const { brandSelection, modelSelection, yearOf, odo } = selectedOptions;
+    const [YearFrom, YearTo] = yearOf.split('-').map(Number);
+    const [OdometerMin, OdometerMax] = odo.split('-').map(v => parseInt(v.replace('K', '000'), 10));
+
+    const query = new URLSearchParams({
+      Make: brandSelection,
+      Model: modelSelection,
+      YearFrom: YearFrom ? YearFrom.toString() : '',
+      YearTo: YearTo ? YearTo.toString() : '',
+      OdometerMin: OdometerMin ? OdometerMin.toString() : '',
+      OdometerMax: OdometerMax ? OdometerMax.toString() : '',
+    }).toString();
+
+    router.push(`/search?${query}`);
   };
 
   return (
@@ -67,7 +149,7 @@ const SearchAvto = () => {
           </div>
           <div className="w-full lg:w-[272px] h-[60px] z-[20]">
             <CustomSelect
-              currentSelectedOption={t.select_model}
+              currentSelectedOption={selectedOptions.modelSelection || t.select_model}
               containerClassName="w-full flex-1"
               onSelect={(value) => handleSelectChange('modelSelection', value)}
               options={modelOptions}
@@ -91,16 +173,18 @@ const SearchAvto = () => {
             <CustomSelect
               currentSelectedOption={t.year_to}
               containerClassName="w-full flex-1"
-              onSelect={(value) => handleSelectChange('yearTo', value)}
-              options={yearOptions}
+              onSelect={(value) => handleSelectChange('odo', value)}
+              options={odoOptions}
               selectClassName="w-full appearance-none desktop:text-[13px] fullhd:text-18 bg-input text-primary border border-primary py-2 lg:py-[18px] px-3 lg:px-[20px] focus:outline-none cursor-pointer rounded-lg lg:rounded-sub-block-12 focus:outline-focus outline-none"
               optionClassName="z-[10]"
             />
           </div>
+
           <Button
-            className="w-full lg:w-[207px] h-[60px] bg-gradient-red text-primary text-[16px] lg:text-18 rounded-lg lg:rounded-sub-block-12"
+            className="w-full lg:w-[207px] h-[60px]  text-primary text-[16px] lg:text-18 rounded-lg lg:rounded-sub-block-12"
             type="submit"
             onClick={handleSubmit}
+            disabled={!selectedOptions.brandSelection}
           >
             {t.find}
           </Button>

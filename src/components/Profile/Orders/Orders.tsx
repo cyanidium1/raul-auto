@@ -49,9 +49,8 @@ const OrderTable = () => {
       {orders.map((order, index) => (
         <div
           key={index}
-          className={`grid lg:grid-cols-8 sm:grid-cols-4 grid-cols-2 py-[32px] border-t border-primary ${
-            index === orders.length - 1 ? 'pb-0' : ''
-          }`}
+          className={`grid lg:grid-cols-8 sm:grid-cols-4 grid-cols-2 py-[32px] border-t border-primary ${index === orders.length - 1 ? 'pb-0' : ''
+            }`}
         >
           <div className="text-center mobile:text-12 tablet:text-18 lg:text-12 desktop:text-[13px] fullhd:text-18 text-primary font-semibold">
             {order.orderNumber}

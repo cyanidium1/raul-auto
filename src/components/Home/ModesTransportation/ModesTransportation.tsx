@@ -13,10 +13,6 @@ const ModesTransportation: React.FC = () => {
   const language = useStore(state => state.language) || 'ru';
   const { deliver, car, moto, yacht, tractor } = translations[language] || {};
 
-  console.log("Language:", language);
-  console.log("Translations:", translations[language]);
-  console.log("Deliver Text:", deliver);
-
   const transportModes: TransportMode[] = [
     {
       title: car || 'Car',

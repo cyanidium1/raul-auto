@@ -1,4 +1,3 @@
-// next.config.mjs
 
 export default {
     typescript: {
@@ -7,5 +6,7 @@ export default {
     eslint: {
         ignoreDuringBuilds: true,
     },
-    // другие настройки...
+    images: {
+        domains: ['vis.iaai.com'],
+    },
 };

@@ -42,8 +42,6 @@ const PurchasingProcess = () => {
     },
   ];
 
-  console.log("Language:", language);
-  console.log("Translations:", translations[language]);
 
   return (
     <div className="mobile:pb-[104px] desktop:pb-[204px]">

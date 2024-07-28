@@ -3,24 +3,24 @@
         "find_car": "Найдите автомобиль:",
         "select_brand": "Выберите марку",
         "select_model": "Выберите модель",
-        "year_from": "Год от",
-        "year_to": "Год до",
+        "year_from": "Возраст",
+        "year_to": "Пробег",
         "find": "Найти"
     },
     "en": {
         "find_car": "Find a car:",
         "select_brand": "Select brand",
         "select_model": "Select model",
-        "year_from": "Year from",
-        "year_to": "Year to",
+        "year_from": "Age",
+        "year_to": "Odo",
         "find": "Find"
     },
     "ua": {
         "find_car": "Знайдіть автомобіль:",
         "select_brand": "Виберіть марку",
         "select_model": "Виберіть модель",
-        "year_from": "Рік від",
-        "year_to": "Рік до",
+        "year_from": "Вік",
+        "year_to": "Пробiг",
         "find": "Знайти"
     }
 }
