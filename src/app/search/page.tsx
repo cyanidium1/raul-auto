@@ -1,5 +1,5 @@
 'use client';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import SearchResults from '@/components/Search/SearchResults';
 
@@ -43,7 +43,6 @@ const SearchPage = () => {
                 return response.json();
             })
             .then(data => {
-                console.log('Response data:', data);
                 if (Array.isArray(data.data)) {
                     setResults(data.data);
                 } else {
@@ -76,4 +75,10 @@ const SearchPage = () => {
     );
 };
 
-export default SearchPage;
+const SearchPageWrapper = () => (
+    <Suspense fallback={<div className='text-white'>Loading search data...</div>}>
+        <SearchPage />
+    </Suspense>
+);
+
+export default SearchPageWrapper;
