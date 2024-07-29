@@ -50,7 +50,7 @@ const LotData = () => {
                 </div>
             </div>
             <div className="flex mobile:items-center mobile:justify-center lg:items-start lg:justify-start mobile:flex-wrap lg:flex-nowrap gap-[32px] w-full ">
-                <div className=" flex flex-col  gap-[18px] self-start mobile:rounded-sub-block-10 tablet:rounded-sub-block-26 bg-gradient-sub-block p-[38px] mobile:max-w-full w-full">
+                <div className=" flex flex-col  gap-[18px] self-start mobile:rounded-sub-block-10 tablet:rounded-sub-block-26 bg-gradient-sub-block p-[18px] mobile:max-w-full w-full">
                     <Image
                         className="rounded-sub-block-18 mobile:w-full"
                         src={images[0] || '/default-car-image.png'}
@@ -58,7 +58,7 @@ const LotData = () => {
                         width={627}
                         height={352}
                     />
-                    <ul className="flex flex-wrap  gap-[18px]">
+                    <ul className="flex flex-wrap gap-[18px]">
                         {images.map((image, index) => (
                             <li key={index}>
                                 <Image
