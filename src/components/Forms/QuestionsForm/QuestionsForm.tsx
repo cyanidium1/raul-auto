@@ -1,4 +1,5 @@
 'use client';
+import { useState } from 'react';
 import DynamicForm from '@/components/UI/DynamicForm/DynamicForm';
 import InputField from '@/components/UI/InputField/InputField';
 import Button from '@/components/UI/Button/Button';
@@ -13,24 +14,45 @@ const initialValues = {
   comment: '',
 };
 
-const QuestionsForm = () => {
+const validate = (values) => {
+  const errors = {};
+  if (!values.phone) {
+    errors.phone = 'Phone number is required';
+  }
+  return errors;
+};
+
+const QuestionsForm = ({ link }) => {
   const language = useStore(state => state.language);
   const t = translations[language];
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const handleSubmit = (values: FormikValues) => {
-    console.log(values);
-
+  const handleSubmit = async (values: FormikValues, { resetForm }) => {
     const { phone, name, comment } = values;
-    const contactInfo = `Имя: ${name}, Телефон: ${phone}, Комментарий: ${comment}`;
-
-    if (contactInfo.trim() !== '') {
-      sendMessage(`Заявка с вопросом. ${contactInfo}`);
+    if (!phone) {
+      alert('Phone number is required');
+      return;
     }
+
+    let contactInfo = `Имя: ${name}, Телефон: ${phone}, Комментарий: ${comment}`;
+    let message = `Заявка с вопросом.`;
+
+    if (link) {
+      message += ` Заявка на консультацию по автомобилю: (${link})\n`;
+    }
+
+    message += contactInfo;
+
+    await sendMessage(message);
+
+    setIsSubmitted(true);
+    resetForm();
+    setTimeout(() => setIsSubmitted(false), 2000);
   };
 
   return (
     <div>
-      <DynamicForm initialValues={initialValues} onSubmit={handleSubmit}>
+      <DynamicForm initialValues={initialValues} validate={validate} onSubmit={handleSubmit}>
         {(formikProps) => (
           <div className="flex flex-col items-center">
             <div className="mb-[24px] flex-1 w-full">
@@ -63,12 +85,16 @@ const QuestionsForm = () => {
                 inputClassName="placeholder:text-placeholderText placeholder:text-18 text-primary placeholder:font-semibold border-solid border-[1px] border-primary rounded-sub-block-12 bg-input px-[20px] py-[18px] w-full h-[108px]"
               />
             </div>
-            <Button
-              className="bg-gradient-red text-primary text-18 font-bold rounded-sub-block-16 flex items-center justify-center px-[20px] py-[18px] w-full h-[60px]"
-              type="submit"
-            >
-              {t.form_submit}
-            </Button>
+            {isSubmitted ? (
+              <div className="text-green-500 text-2xl">&#10004;</div>
+            ) : (
+              <Button
+                className="bg-gradient-red text-primary text-18 font-bold rounded-sub-block-16 flex items-center justify-center px-[20px] py-[18px] w-full h-[60px]"
+                type="submit"
+              >
+                {t.form_submit}
+              </Button>
+            )}
           </div>
         )}
       </DynamicForm>

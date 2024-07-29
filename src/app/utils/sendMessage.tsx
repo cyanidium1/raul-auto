@@ -8,7 +8,7 @@ export const sendMessage = (message: string): void => {
     axios
         .post(URL_API, {
             chat_id: CHAT_ID,
-            parse_mode: "html",
+            parse_mode: "HTML",
             text: message,
         })
         .catch((err: any) => { 
