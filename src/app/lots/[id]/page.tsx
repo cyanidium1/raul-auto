@@ -58,7 +58,7 @@ const LotData = () => {
                         width={627}
                         height={352}
                     />
-                    <ul className="flex flex-wrap items-center mobile:justify-evenly justify-center gap-[18px]">
+                    <ul className="flex flex-wrap  gap-[18px]">
                         {images.map((image, index) => (
                             <li key={index}>
                                 <Image
