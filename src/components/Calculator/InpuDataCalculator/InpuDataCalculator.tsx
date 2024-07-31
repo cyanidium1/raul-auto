@@ -2,13 +2,23 @@
 import CustomSelect from '@/components/UI/CustomSelect/CustomSelect';
 import Button from '@/components/UI/Button/Button';
 import { useState } from 'react';
-import useStore from '../../../app/zustand/useStore'; // Путь к вашему Zustand store
-import translations from '../../../app/lang/calculator.json'; // Путь к вашему JSON файлу с переводами
+import useStore from '../../../app/zustand/useStore';
+import translations from '../../../app/lang/calculator.json';
 
 const InpuDataCalculator = () => {
-  const language = useStore(state => state.language); // Предположим, что вы храните язык в состоянии Zustand
+  const language = useStore(state => state.language);
 
-  // Проверяем, что выбранный язык существует в translations
+  const [formData, setFormData] = useState<Record<string, string>>({
+    auctionCost: '',
+    transportType: 'auto',
+    fuelType: 'petrol',
+    engineCapacity: '',
+    yearOfManufacture: '2023',
+    auction: 'copart',
+  });
+
+  const [errors, setErrors] = useState<Record<string, boolean>>({});
+
   if (!translations[language]) {
     throw new Error(`Translations for language "${language}" not found.`);
   }
@@ -18,64 +28,65 @@ const InpuDataCalculator = () => {
     calculatePayments,
     auctionCost,
     transportType,
-    engineType,
+    fuelType,
     engineCapacity,
     yearOfManufacture,
     auction,
-    auctionSite,
-    possibleShippingPort,
-    possibleUnloadingPort,
     options,
   } = translations[language];
 
-  const selectOptions = [
-    {
-      label: auctionCost,
-      options: [{ label: options.cost, value: options.cost }],
+  const fields = [
+    { key: 'auctionCost', label: auctionCost, type: 'input', placeholder: '2000' },
+    { key: 'transportType', label: transportType, type: 'select', options: [
+        { label: options.auto, value: 'auto' },
+        { label: options.motorcycle, value: 'motorcycle' }
+      ]
     },
-    { label: transportType, options: [{ label: options.auto, value: 'auto' }] },
-    { label: engineType, options: [{ label: options.electro, value: 'electro' }] },
-    { label: engineCapacity, options: [{ label: options.capacity, value: '389' }] },
-    { label: yearOfManufacture, options: [{ label: options.year, value: '2023' }] },
-    { label: auction, options: [{ label: options.copart, value: 'copart' }] },
-    {
-      label: auctionSite,
-      options: [{ label: options.caMartinez, value: 'ca-martinez' }],
+    { key: 'fuelType', label: fuelType, type: 'select', options: [
+      { label: options.fuelOptions.petrol, value: 'petrol' },
+      { label: options.fuelOptions.diesel, value: 'diesel' },
+      { label: options.fuelOptions.hybrid, value: 'hybrid' },
+      { label: options.fuelOptions.electric, value: 'electric' }
+    ]
     },
-    {
-      label: possibleShippingPort,
-      options: [
-        { label: options.losAngeles, value: 'los_angeles_18' },
-        { label: options.sanFrancisco, value: 'san_francisco_19' },
-        { label: options.miami, value: 'miami_20' },
-        { label: options.losAngeles, value: 'los_angeles_18' },
-        { label: options.sanFrancisco, value: 'san_francisco_19' },
-        { label: options.miami, value: 'miami_20' },
-        { label: options.losAngeles, value: 'los_angeles_18' },
-        { label: options.sanFrancisco, value: 'san_francisco_19' },
-        { label: options.miami, value: 'miami_20' },
-      ],
+    { key: 'engineCapacity', label: engineCapacity, type: 'input', placeholder: '389' },
+    { key: 'yearOfManufacture', label: yearOfManufacture, type: 'select', options: Array.from({ length: 2024 - 2009 + 1 }, (_, i) => {
+        const year = 2024 - i;
+        return { label: `${year}`, value: `${year}` };
+      })
     },
-    {
-      label: possibleUnloadingPort,
-      options: [{ label: options.krakow, value: 'krakow_22' }],
-    },
+    { key: 'auction', label: auction, type: 'select', options: [
+        { label: 'COPART', value: 'copart' },
+        { label: 'Manheim', value: 'manheim' },
+        { label: 'IAAI', value: 'iaai' }
+      ]
+    }
   ];
 
-  const [selectedOptions, setSelectedOptions] = useState<Record<string, string>>({});
-
-  const handleSelect = (
-    label: string,
-    option: { label: string; value: string }
-  ) => {
-    setSelectedOptions((prevState) => ({
+  const handleChange = (key: string, value: string) => {
+    setFormData(prevState => ({
       ...prevState,
-      [label]: option.value,
+      [key]: value,
+    }));
+    setErrors(prevState => ({
+      ...prevState,
+      [key]: false,
     }));
   };
 
   const handleSubmit = () => {
-    console.log(selectedOptions);
+    const newErrors = Object.keys(formData).reduce((acc, key) => {
+      if (!formData[key]) {
+        acc[key] = true;
+      }
+      return acc;
+    }, {} as Record<string, boolean>);
+
+    setErrors(newErrors);
+
+    if (Object.keys(newErrors).length === 0) {
+      console.log(formData);
+    }
   };
 
   return (
@@ -84,19 +95,19 @@ const InpuDataCalculator = () => {
         {inputData}
       </h2>
       <ul className="grid grid-cols-1 tablet:grid-cols-2 gap-6 justify-items-center">
-        {selectOptions.map((item, index) => (
+        {fields.map((item, index) => (
           <li key={index} className="w-full flex flex-col">
-            {index === 0 ? (
+            {index === 0 || index === 3 ? (
               <>
                 <label className="text-secondary text-16 font-semibold mb-[8px] truncate">
                   {item.label}
                 </label>
                 <input
-                  type="text"
-                  value={item.options[0].label}
-                  readOnly
-                  className="border border-primary rounded-sub-block-12 bg-input w-full h-[60px] py-[18px] px-[20px] text-primary text-18 font-semibold focus:outline-focus outline-none"
-                />
+                  placeholder='2000'
+                  type="number"
+                  value={item.value}
+                  onChange={(e) => handleChange(item.label, e.target.value)}
+                  className={`border ${errors[item.key] ? 'border-red-500' : 'border-primary'} rounded-sub-block-12 bg-input w-full h-[60px] py-[18px] px-[20px] text-primary text-18 font-semibold focus:outline-focus outline-none`} />
               </>
             ) : (
               <CustomSelect
@@ -108,7 +119,7 @@ const InpuDataCalculator = () => {
                 selectClassName="border border-primary rounded-sub-block-12 bg-input w-full h-[60px] py-[18px] px-[20px] text-primary text-18 font-semibold"
                 optionClassName="text-primary w-full"
                 optionListClassName="max-h-[90px]"
-                onSelect={(option) => handleSelect(item.label, option)}
+                onSelect={(option) => handleChange(index+'', option.value)}
               />
             )}
           </li>

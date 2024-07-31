@@ -7,6 +7,8 @@ import Questions from '@/components/Partnership/Questions/Questions';
 import { useEffect, useState } from 'react';
 import Lightbox from 'yet-another-react-lightbox';
 import 'yet-another-react-lightbox/styles.css'; // Import the Lightbox styles
+import useStore from '../../../app/zustand/useStore';
+import translations from '../../../app/lang/lotData.json'; // Assuming a separate translation file for LotData
 
 const LotData = () => {
     const searchParams = useSearchParams();
@@ -15,13 +17,15 @@ const LotData = () => {
     const [currentUrl, setCurrentUrl] = useState('');
     const [isOpen, setIsOpen] = useState(false);
     const [photoIndex, setPhotoIndex] = useState(0);
+    const language = useStore(state => state.language);
+    const t = translations[language];
 
     useEffect(() => {
         setCurrentUrl(window.location.href);
     }, []);
 
     if (!lot) {
-        return <div>Lot not found</div>;
+        return <div>{t.lotNotFound}</div>;
     }
 
     const {
@@ -37,21 +41,18 @@ const LotData = () => {
         odometer,
         vinCode,
         saleDate,
-        preAccidentValue,
-        series,
-        state
     } = lot;
 
     return (
         <div className='mobile:p-2 p-4'>
             <div className="max-w-[1348px] mx-auto">
-                <div className="mb-[40px] flex mobile:flex-wrap items-center mobile:gap-[20px] tablet:gap-[32px] mt-10">
+                <div className="mb-[40px] flex mobile:flex-wrap items-center justify-center lg:justify-normal mobile:gap-[20px] tablet:gap-[32px] mt-10">
                     <h1 className="text-primary mobile:text-30 tablet:text-40 font-bold">
                         {year} {make} {model}
                     </h1>
-                    <div className="flex items-center justify-center bg-gradient-sub-block max-w-[139px] h-[44px] rounded-sub-block-10 py-[14px] px-[24px] text-primary text-14 font-bold">
+                    {/* <div className="flex items-center justify-center bg-gradient-sub-block max-w-[139px] h-[44px] rounded-sub-block-10 py-[14px] px-[24px] text-primary text-14 font-bold">
                         {new Date(saleDate).toLocaleDateString()}
-                    </div>
+                    </div> */}
                 </div>
                 <div className="flex mobile:items-center mobile:justify-center lg:items-start lg:justify-start mobile:flex-wrap lg:flex-nowrap gap-[32px] w-full">
                     <div className="flex flex-col gap-[18px] self-start mobile:rounded-sub-block-10 tablet:rounded-sub-block-26 bg-gradient-sub-block p-[18px] mobile:max-w-full w-full">
@@ -63,11 +64,11 @@ const LotData = () => {
                             height={352}
                             onClick={() => setIsOpen(true)}
                         />
-                        <ul className="flex flex-wrap gap-[18px]">
+                        <ul className="flex flex-wrap gap-2 lg:gap-[18px]">
                             {images.map((image, index) => (
                                 <li key={index}>
                                     <Image
-                                        className="rounded-sub-block-11 w-[111px] h-[111px] cursor-pointer"
+                                        className="rounded-sub-block-11 w-24 h-24 lg:w-[111px] lg:h-[111px] cursor-pointer"
                                         src={image}
                                         alt={`Thumbnail ${index + 1} of ${make} ${model}`}
                                         width={111}
@@ -79,43 +80,43 @@ const LotData = () => {
                         </ul>
                     </div>
                     <div className="flex flex-col gap-[32px] mobile:max-w-full lg:max-w-[462px] w-full">
-                        <div className="mobile:rounded-sub-block-10 tablet:rounded-sub-block-26 bg-gradient-sub-block p-[38px] w-full">
+                        <div className="mobile:rounded-sub-block-10 tablet:rounded-sub-block-26 bg-gradient-sub-block p-5 lg:p-[38px] w-full">
                             <h2 className="text-24 text-primary font-bold mb-[32px]">
-                                Информация об автомобиле
+                                {t.carInformation}
                             </h2>
                             <ul className="flex flex-col gap-4">
                                 <li className="text-[16px] text-secondary font-semibold">
-                                    Марка: <span className="text-[16px] text-primary font-semibold uppercase">{make}</span>
+                                    {t.make}: <span className="text-[16px] text-primary font-semibold uppercase">{make}</span>
                                 </li>
                                 <li className="text-[16px] text-secondary font-semibold">
-                                    Модель: <span className="text-[16px] text-primary font-semibold uppercase">{model}</span>
+                                    {t.model}: <span className="text-[16px] text-primary font-semibold uppercase">{model}</span>
                                 </li>
                                 <li className="text-[16px] text-secondary font-semibold">
-                                    Год: <span className="text-[16px] text-primary font-semibold">{year}</span>
+                                    {t.year}: <span className="text-[16px] text-primary font-semibold">{year}</span>
                                 </li>
                                 <li className="text-[16px] text-secondary font-semibold">
-                                    Номер лота: <span className="text-[16px] text-primary font-semibold uppercase">{id}</span>
+                                    {t.lotNumber}: <span className="text-[16px] text-primary font-semibold uppercase">{id}</span>
                                 </li>
                                 <li className="text-[16px] text-secondary font-semibold">
-                                    Вин код: <span className="text-[16px] text-primary font-semibold">{vinCode}</span>
+                                    {t.vinCode}: <span className="text-[16px] text-primary font-semibold">{vinCode}</span>
                                 </li>
                                 <li className="text-[16px] text-secondary font-semibold">
-                                    Название аукциона: <span className="text-[16px] text-primary font-semibold">{city}</span>
+                                    {t.auctionName}: <span className="text-[16px] text-primary font-semibold">{city}</span>
                                 </li>
                                 <li className="text-[16px] text-secondary font-semibold">
-                                    Дата покупки: <span className="text-[16px] text-primary font-semibold">{new Date(saleDate).toLocaleDateString()}</span>
+                                    {t.purchaseDate}: <span className="text-[16px] text-primary font-semibold">{new Date(saleDate).toLocaleDateString()}</span>
                                 </li>
                                 <li className="text-[16px] text-secondary font-semibold">
-                                    Двигатель: <span className="text-[16px] text-primary font-semibold">{engine}</span>
+                                    {t.engine}: <span className="text-[16px] text-primary font-semibold">{engine}</span>
                                 </li>
                                 <li className="text-[16px] text-secondary font-semibold">
-                                    Топливо: <span className="text-[16px] text-primary font-semibold">{fuel}</span>
+                                    {t.fuel}: <span className="text-[16px] text-primary font-semibold">{fuel}</span>
                                 </li>
                                 <li className="text-[16px] text-secondary font-semibold">
-                                    Пробег: <span className="text-[16px] text-primary font-semibold">{odometer} mi</span>
+                                    {t.odometer}: <span className="text-[16px] text-primary font-semibold">{odometer} mi</span>
                                 </li>
                                 <li className="text-[16px] text-secondary font-semibold">
-                                    Ущерб: <span className="text-[16px] text-primary font-semibold">{damage}</span>
+                                    {t.damage}: <span className="text-[16px] text-primary font-semibold">{damage}</span>
                                 </li>
                             </ul>
                         </div>

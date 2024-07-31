@@ -13,7 +13,7 @@ const Questions = ({ link }) => {
   const description = link ? t.questions_description_with_link : t.questions_description;
 
   return (
-    <div className="pt-[128px] pb-[160px]">
+    <div className="pt-6 lg:pt-[128px] lg:pb-[160px]">
       <div className="flex mobile:rounded-sub-block-10 tablet:rounded-sub-block-32 lg:rounded-sub-block-42 bg-gradient-sub-block">
         <div className="py-[60px] mobile:pl-[20px] mobile:pr-[20px] tablet:pr-0 tablet:pl-[80px] mobile:mr-0 tablet:mr-[80px] max-w-[829px] w-full">
           <h3 className="font-bold text-primary mobile:text-24 tablet:text-34 desktop:text-64 mb-[40px]">
