@@ -131,7 +131,6 @@ const TotalAmountCalculator = ({data}) => {
 
   if (seaDelivery > 0) {
     seaDelivery = seaDelivery * 1 + 400; 
-
   }
 
   let groundDelivery = 0;
@@ -144,7 +143,6 @@ const TotalAmountCalculator = ({data}) => {
 
   // customs 
 
- // Ввозная пошлина
   let importDuty = 0;
   if (transportType !== 'electric') {
     importDuty = auctionCost * 0.1;
@@ -153,7 +151,6 @@ const TotalAmountCalculator = ({data}) => {
   const currentYear = new Date().getFullYear();
   const vehicleAge = currentYear - parseInt(yearOfManufacture, 10);
 
-  // Акцизный сбор
   let exciseTax = 0;
   if (fuelType === 'petrol') {
     exciseTax = engineCapacity / 1000 * (engineCapacity <= 3000 ? 50 : 100);
@@ -165,7 +162,6 @@ const TotalAmountCalculator = ({data}) => {
 
   exciseTax *= vehicleAge <= 5 ? 1 : vehicleAge - 5;
 
-  // НДС
   let vat = 0;
   if (transportType !== 'electric') {
     vat = (auctionCost *1 + importDuty * 1 + exciseTax *1) * 0.2;
@@ -174,8 +170,6 @@ const TotalAmountCalculator = ({data}) => {
   const totalCustomsFees = importDuty * 1 + exciseTax * 1 + vat * 1;
 
   const pension = 0.04 * auctionCost
-
-
 
   const totalDeliveryWithParking = totalDelivery + 330 + 30
 
@@ -382,7 +376,7 @@ const TotalAmountCalculator = ({data}) => {
             $ {totalCustomsFees ? 150 + 150 + pension + totalCustomsFees + totalDeliveryWithParking + ourFee + auctionCost * 1 + auctionFee : 0}
             </div>
         </div>
-        <p className="max-w-[380px] mb-[40px] text-12 text-secondary">
+        <p className="max-w-[380px] -mb-6 text-12 text-secondary">
           {t.disclaimer}
         </p>
         {/* <button className="bg-primary text-white font-semibold py-[10px] px-[24px] rounded-lg">

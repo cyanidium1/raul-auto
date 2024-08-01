@@ -4,6 +4,7 @@ import { useSearchParams } from 'next/navigation';
 import SearchResults from '@/components/Search/SearchResults';
 import useStore from '../../app/zustand/useStore';
 import translations from '../../app/lang/searchResults.json';
+import Footer from '@/components/Footer/Footer';
 
 const getRandomFact = (carFacts) => {
     return carFacts[Math.floor(Math.random() * carFacts.length)];
@@ -79,6 +80,7 @@ const SearchPageWrapper = () => {
     return (
         <Suspense fallback={<div className='text-white'>{t.loadingMessage}</div>}>
             <SearchPage t={t} />
+            <Footer />
         </Suspense>
     );
 };

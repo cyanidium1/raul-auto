@@ -21,7 +21,7 @@ const SearchResults = ({ orders }) => {
                             key={`${order.id}-${i}`} // Unique key
                         >
                             <div 
-                                className="cursor-pointer relative flex flex-col items-center justify-center overflow-hidden rounded-2xl bg-white text-gray-700 shadow-lg group h-full"
+                                className="h-56 cursor-pointer relative flex flex-col items-center justify-center overflow-hidden rounded-2xl text-gray-700 shadow-lg group tablet:h-full"
                             >
                                 <div className="absolute inset-0 w-full h-full overflow-hidden">
                                     <Image
@@ -34,21 +34,22 @@ const SearchResults = ({ orders }) => {
                                     />
                                     <div className="absolute inset-0 w-full h-full bg-gradient-to-t from-black/80 via-black/50"></div>
                                 </div>
-                                <div className="relative p-6 w-3/4 mt-28 text-center">
-                                    <h2 className="mb-3 text-2xl font-semibold text-white transition-transform duration-300 group-hover:scale-105">
+                                <div className="relative p-4 tablet:p-6 w-3/4 mt-20 tablet:mt-28 text-center">
+                                    <h2 className="mb-1.5 tablet:mb-3 text-lg tablet:text-2xl font-semibold text-white transition-transform duration-300 group-hover:scale-105">
                                         {order.year} {order.make} {order.model}
                                     </h2>
-                                    <p className="mb-2 text-xl text-gray-400 transition-transform duration-300 group-hover:scale-105">
+                                    <p className="mb-1 tablet:mb-2 text-sm tablet:text-xl text-gray-400 transition-transform duration-300 group-hover:scale-105">
                                         {order.engine} - {order.fuel}
                                     </p>
                                     <div className='flex w-full justify-between'>
-                                        <p className="text-lg text-gray-300 transition-transform duration-300 group-hover:scale-105">{order.odometer} mi</p>
-                                        <p className="text-lg text-gray-300 transition-transform duration-300 group-hover:scale-105">{order.damage}</p>
-                                        <p className="text-lg text-gray-300 transition-transform duration-300 group-hover:scale-105">{order.city}</p>
+                                        <p className="text-sm tablet:text-lg text-gray-300 transition-transform duration-300 group-hover:scale-105">{order.odometer} mi</p>
+                                        <p className="text-sm tablet:text-lg text-gray-300 transition-transform duration-300 group-hover:scale-105">{order.damage}</p>
+                                        <p className="text-sm tablet:text-lg text-gray-300 transition-transform duration-300 group-hover:scale-105">{order.city}</p>
                                     </div>
                                 </div>
                             </div>
                         </Link>
+
                     ))
                 ))}
             </ul>

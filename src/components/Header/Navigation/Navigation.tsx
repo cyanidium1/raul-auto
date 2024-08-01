@@ -15,7 +15,7 @@ const Navigation = () => {
   return (
     <nav className="flex items-center">
       <Link href="/" className="focus:outline-focus outline-none">
-        <Image src="/logo.png" alt="logo icon" width={100} height={43} />
+        <Image src="/logoBig.png" alt="logo icon" width={100} height={43} />
       </Link>
       <div className="w-[1px] h-6 bg-decor ml-10 mr-10"></div>
       <ul className="mobile:hidden pointnav:flex items-center gap-10">
