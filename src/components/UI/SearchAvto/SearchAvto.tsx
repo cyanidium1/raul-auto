@@ -5,6 +5,7 @@ import Button from '../Button/Button';
 import CustomSelect from '@/components/UI/CustomSelect/CustomSelect';
 import useStore from '../../../app/zustand/useStore';
 import translations from '../../../app/lang/searchAvtoTranslations.json';
+import { Autocomplete, AutocompleteItem } from '@nextui-org/react';
 
 const yearOptions = [
   { label: '0-3', value: '0-3' },
@@ -76,6 +77,7 @@ const SearchAvto = () => {
         }));
         setModelOptions(formattedOptions);
         setLoadingModels(false);
+        console.log(formattedOptions);
       })
       .catch(error => {
         console.error('Error fetching model options:', error);
@@ -84,15 +86,17 @@ const SearchAvto = () => {
   };
 
   const handleSelectChange = (key, value) => {
+    console.log(`handleSelectChange called with key: ${key}, value: ${value}`);
+
     setSelectedOptions(prevState => ({
       ...prevState,
-      [key]: value.value,
+      [key]: value,
       ...(key === 'brandSelection' && { modelSelection: '' }),
     }));
 
     if (key === 'brandSelection') {
       setModelOptions([{ label: 'Loading...', value: '' }]);
-      fetchModelOptions(value.value);
+      fetchModelOptions(value);
     }
   };
 
@@ -108,7 +112,7 @@ const SearchAvto = () => {
 
     const query = params.toString();
     router.push(`/search?${query}`);
-};
+  };
 
   return (
     <div className="mobile:ml-auto mobile:mr-auto mobile:mt-8 tablet:mt-2 bg-gradient-sub-block rounded-lg lg:rounded-sub-block-22 p-4 lg:p-[38px] max-w-full sm:max-w-[640px] desktop:max-w-[490px] fullhd:max-w-[640px] desktop:ml-0 desktop:mr-0">
@@ -118,24 +122,31 @@ const SearchAvto = () => {
       <div className="flex flex-col gap-4 lg:gap-5">
         <div className="flex flex-col sm:flex-row gap-4 lg:gap-5">
           <div className="w-full lg:w-[272px] h-[60px] mobile:z-[25] tablet:z-[20]">
-            <CustomSelect
-              currentSelectedOption={t.select_brand}
-              containerClassName="w-full flex-1"
-              onSelect={(value) => handleSelectChange('brandSelection', value)}
-              options={brandOptions}
-              selectClassName="w-full appearance-none desktop:text-[13px] fullhd:text-18 bg-input text-primary border border-primary py-2 lg:py-[18px] px-3 lg:px-[20px] focus:outline-none cursor-pointer rounded-lg lg:rounded-sub-block-12 focus:outline-focus outline-none"
-              optionClassName="mobile:z-[25] tablet:z-[20]"
-            />
+            <Autocomplete
+              label={t.select_brand}
+              className="w-full flex-1"
+              onSelectionChange={(value) => handleSelectChange('brandSelection', value)}
+              value={selectedOptions.brandSelection}
+            >
+              {brandOptions.map((option) => (
+                <AutocompleteItem key={option.value} value={option.value}>
+                  {option.label}
+                </AutocompleteItem>
+              ))}
+            </Autocomplete>
           </div>
           <div className="w-full lg:w-[272px] h-[60px] z-[20]">
-            <CustomSelect
-              currentSelectedOption={selectedOptions.modelSelection || t.select_model}
-              containerClassName="w-full flex-1"
-              onSelect={(value) => handleSelectChange('modelSelection', value)}
-              options={modelOptions}
-              selectClassName="w-full appearance-none desktop:text-[13px] fullhd:text-18 bg-input text-primary border border-primary py-2 lg:py-[18px] px-3 lg:px-[20px] focus:outline-none cursor-pointer rounded-lg lg:rounded-sub-block-12 focus:outline-focus outline-none"
-              optionClassName="z-[20]"
-            />
+            <Autocomplete
+              label={t.select_model}
+              onSelectionChange={(value) => handleSelectChange('modelSelection', value)}
+              value={selectedOptions.modelSelection}
+            >
+              {modelOptions.map((option) => (
+                <AutocompleteItem key={option.value} value={option.value}>
+                  {option.label}
+                </AutocompleteItem>
+              ))}
+            </Autocomplete>
           </div>
         </div>
         <div className="flex flex-col lg:flex-row gap-4 lg:gap-5">
@@ -159,9 +170,8 @@ const SearchAvto = () => {
               optionClassName="z-[10]"
             />
           </div>
-
           <Button
-            className="w-full lg:w-[207px] h-[60px]  text-primary text-[16px] lg:text-18 rounded-lg lg:rounded-sub-block-12"
+            className="w-full lg:w-[207px] h-[60px] text-primary text-[16px] lg:text-18 rounded-lg lg:rounded-sub-block-12"
             type="submit"
             onClick={handleSubmit}
             disabled={!selectedOptions.brandSelection}
