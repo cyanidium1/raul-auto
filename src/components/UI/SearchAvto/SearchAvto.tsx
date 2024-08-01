@@ -77,7 +77,6 @@ const SearchAvto = () => {
         }));
         setModelOptions(formattedOptions);
         setLoadingModels(false);
-        console.log(formattedOptions);
       })
       .catch(error => {
         console.error('Error fetching model options:', error);
@@ -86,8 +85,6 @@ const SearchAvto = () => {
   };
 
   const handleSelectChange = (key, value) => {
-    console.log(`handleSelectChange called with key: ${key}, value: ${value}`);
-
     setSelectedOptions(prevState => ({
       ...prevState,
       [key]: value,
@@ -123,6 +120,9 @@ const SearchAvto = () => {
         <div className="flex flex-col sm:flex-row gap-4 lg:gap-5">
           <div className="w-full lg:w-[272px] h-[60px] mobile:z-[25] tablet:z-[20]">
             <Autocomplete
+              listboxProps={{
+                emptyContent: loadingModels ? 'Loading...' : 'No items found'
+              }}
               label={t.select_brand}
               className="w-full flex-1"
               onSelectionChange={(value) => handleSelectChange('brandSelection', value)}
@@ -137,6 +137,9 @@ const SearchAvto = () => {
           </div>
           <div className="w-full lg:w-[272px] h-[60px] z-[20]">
             <Autocomplete
+              listboxProps={{
+                emptyContent: loadingModels ? 'Loading...' : 'No items found'
+              }}
               label={t.select_model}
               onSelectionChange={(value) => handleSelectChange('modelSelection', value)}
               value={selectedOptions.modelSelection}
