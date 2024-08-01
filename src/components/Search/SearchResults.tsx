@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import useStore from '../../app/zustand/useStore';
-import translations from '../../app/lang/searchResults.json'; // Adjust the path as needed
+import translations from '../../app/lang/searchResults.json'; 
 
 const SearchResults = ({ orders }) => {
     const language = useStore(state => state.language);
@@ -11,7 +11,7 @@ const SearchResults = ({ orders }) => {
         <div className="p-[38px] bg-gradient-sub-block mobile:rounded-sub-block-10 tablet:rounded-sub-block-26 mt-[32px] text-white">
             <h2 className="text-24 text-center text-primary font-bold mb-[32px]">{t.foundLots}</h2>
             <ul className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6 max-w-[1500px] mx-auto">
-            {Array.from({ length: 6 }, (_, i) => (
+            {Array.from({ length: 1 }, (_, i) => (
                     orders?.map((order) => (
                         <Link 
                             href={{

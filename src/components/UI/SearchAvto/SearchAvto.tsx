@@ -98,15 +98,17 @@ const SearchAvto = () => {
 
   const handleSubmit = () => {
     const { brandSelection, modelSelection, yearOf, odo } = selectedOptions;
-    const query = new URLSearchParams({
-      brandSelection,
-      modelSelection,
-      yearOf,
-      odo,
-    }).toString();
+    const params = new URLSearchParams();
 
+    if (brandSelection) params.append('brandSelection', brandSelection.toUpperCase());
+    if (modelSelection) params.append('modelSelection', modelSelection.toUpperCase());
+    if (yearOf) params.append('yearOf', yearOf);
+    if (odo) params.append('odo', odo);
+    params.append('Count', '72');
+
+    const query = params.toString();
     router.push(`/search?${query}`);
-  };
+};
 
   return (
     <div className="mobile:ml-auto mobile:mr-auto mobile:mt-8 tablet:mt-2 bg-gradient-sub-block rounded-lg lg:rounded-sub-block-22 p-4 lg:p-[38px] max-w-full sm:max-w-[640px] desktop:max-w-[490px] fullhd:max-w-[640px] desktop:ml-0 desktop:mr-0">

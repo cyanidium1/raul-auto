@@ -7,6 +7,6 @@ export default {
         ignoreDuringBuilds: true,
     },
     images: {
-        domains: ['vis.iaai.com'],
+        domains: ['vis.iaai.com', 'cs.copart.com'],
     },
 };
