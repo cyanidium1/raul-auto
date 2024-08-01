@@ -1,5 +1,8 @@
 {
     "en": {
+      "auctionLoc": "Auction location",
+      "deliveryPort": "Delivery port",
+      "departPort": "Depart Port",
       "inputData": "Input Data",
       "calculatePayments": "Calculate Payments",
       "auctionCost": "Auction Cost",
@@ -28,6 +31,9 @@
       }
     },
     "ru": {
+      "auctionLoc": "Локация аукциона",
+      "deliveryPort": "Порт доставки",
+      "departPort": "Порт отправки",
       "inputData": "Ввод данных",
       "calculatePayments": "Рассчитать платежи",
       "auctionCost": "Стоимость аукциона",
@@ -56,6 +62,9 @@
       }
     },
     "ua": {
+      "auctionLoc": "Локація аукціону",
+      "deliveryPort": "Порт отримання",
+      "departPort": "Порт відправлення",
       "inputData": "Введення даних",
       "calculatePayments": "Розрахувати платежі",
       "auctionCost": "Вартість аукціону",
