@@ -92,7 +92,7 @@ const TotalAmountCalculator = ({data}) => {
   // our fee
   let ourFee = 0;
 
-  if (auctionCost < 10001) {
+  if (auctionCost < 10001 || !auctionCost) {
     ourFee = 300;
   } else if (auctionCost > 10000 && auctionCost < 15000) {
     ourFee = 400
@@ -129,7 +129,10 @@ const TotalAmountCalculator = ({data}) => {
     }
   }
 
-  seaDelivery = seaDelivery * 1 + 400; 
+  if (seaDelivery > 0) {
+    seaDelivery = seaDelivery * 1 + 400; 
+
+  }
 
   let groundDelivery = 0;
 
@@ -147,6 +150,9 @@ const TotalAmountCalculator = ({data}) => {
     importDuty = auctionCost * 0.1;
   }
 
+  const currentYear = new Date().getFullYear();
+  const vehicleAge = currentYear - parseInt(yearOfManufacture, 10);
+
   // Акцизный сбор
   let exciseTax = 0;
   if (fuelType === 'petrol') {
@@ -156,6 +162,8 @@ const TotalAmountCalculator = ({data}) => {
   } else if (fuelType === 'hybrid') {
     exciseTax = engineCapacity / 1000 * 50; 
   }
+
+  exciseTax *= vehicleAge <= 5 ? 1 : vehicleAge - 5;
 
   // НДС
   let vat = 0;
@@ -180,7 +188,7 @@ const TotalAmountCalculator = ({data}) => {
               {t.total}
             </div>
             <div className="mobile:text-14 tablet:text-18 text-primary font-semibold">
-              $ {auctionCost ? auctionCost * 1 + auctionFee: '1000'}
+              $ {auctionCost ? auctionCost * 1 + auctionFee: '0'}
             </div>
           </div>
           <ul className="mobile:ml-0 tablet:ml-[72px]">
@@ -190,7 +198,7 @@ const TotalAmountCalculator = ({data}) => {
               </div>
               <div className="flex-grow mx-[16px] h-[1px] bg-primary"></div>
               <div className="mobile:text-[14px] leading-[48px] tablet:text-16 text-secondary font-semibold">
-                $ {auctionCost ? auctionCost : '1000'}
+                $ {auctionCost ? auctionCost : '0'}
               </div>
             </li>
             <li className="flex items-center justify-between">
@@ -199,7 +207,7 @@ const TotalAmountCalculator = ({data}) => {
               </div>
               <div className="flex-grow mx-[16px] h-[1px] bg-primary"></div>
               <div className="mobile:text-[14px] leading-[48px] tablet:text-16 text-secondary font-semibold">
-                $ {auctionFee ? auctionFee : '100'}
+                $ {auctionFee ? auctionFee : '0'}
               </div>
             </li>
           </ul>
@@ -231,7 +239,7 @@ const TotalAmountCalculator = ({data}) => {
               </div>
               <div className="flex-grow mx-[16px] h-[1px] bg-primary"></div>
               <div className="mobile:text-[14px] leading-[48px] tablet:text-16 text-secondary font-semibold">
-                $ {usaDelivery ? usaDelivery : 500}
+                $ {usaDelivery ? usaDelivery : 0}
               </div>
             </li>
 
@@ -340,7 +348,7 @@ const TotalAmountCalculator = ({data}) => {
               {t.registration}
             </div>
             <div className="mobile:text-14 tablet:text-18 text-primary font-semibold">
-              $ {150 + pension}
+              $ {pension ? 150 + pension : 0}
             </div>
           </div>
           <ul className="mobile:ml-0 tablet:ml-[72px]">
@@ -371,7 +379,7 @@ const TotalAmountCalculator = ({data}) => {
             {t.total_cost}
           </div>
           <div className="text-primary text-20 font-semibold">
-            $ { 150 + pension + totalCustomsFees + totalDeliveryWithParking + ourFee + auctionCost * 1 + auctionFee}
+            $ {totalCustomsFees ? 150 + 150 + pension + totalCustomsFees + totalDeliveryWithParking + ourFee + auctionCost * 1 + auctionFee : 0}
             </div>
         </div>
         <p className="max-w-[380px] mb-[40px] text-12 text-secondary">
