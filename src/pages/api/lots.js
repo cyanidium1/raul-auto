@@ -15,6 +15,7 @@ export default async function handler(req, res) {
           accept: 'text/plain',
           'Bot-Token': 'Qi7nffIhoI6sHHzvyXqwRFWExPxKMxL',
         },
+        timeout: 30000, 
       }
     );
 
