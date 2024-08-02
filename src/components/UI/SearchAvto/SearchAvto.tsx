@@ -97,7 +97,7 @@ const SearchAvto = () => {
 
     params.append('Count', '12');
     if (brandSelection) params.append('Make', brandSelection.toUpperCase());
-    if (modelSelection) params.append('Model', modelSelection.toUpperCase());
+    // if (modelSelection) params.append('Model', modelSelection.toUpperCase());
     // if (yearOf) {
     //   params.append('YearFrom', yearOf[0].toString());
     //   params.append('YearTo', yearOf[1].toString());
