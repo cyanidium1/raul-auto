@@ -95,17 +95,17 @@ const SearchAvto = () => {
     const { brandSelection, modelSelection, yearOf, odo } = selectedOptions;
     const params = new URLSearchParams();
 
-    params.append('Count', '18');
+    params.append('Count', '12');
     if (brandSelection) params.append('Make', brandSelection.toUpperCase());
     if (modelSelection) params.append('Model', modelSelection.toUpperCase());
     // if (yearOf) {
     //   params.append('YearFrom', yearOf[0].toString());
     //   params.append('YearTo', yearOf[1].toString());
     // }
-    if (odo) {
-      params.append('OdometerMin', odo[0].toString());
-      params.append('OdometerMax', odo[1].toString());
-    }
+    // if (odo) {
+    //   params.append('OdometerMin', odo[0].toString());
+    //   params.append('OdometerMax', odo[1].toString());
+    // }
 
     const query = params.toString();
     router.push(`/search?${query}`);
