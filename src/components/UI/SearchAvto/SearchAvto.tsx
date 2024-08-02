@@ -63,7 +63,6 @@ const SearchAvto = () => {
         }));
         setModelOptions(formattedOptions);
         setLoadingModels(false);
-        console.log(formattedOptions);
       })
       .catch(error => {
         console.error('Error fetching model options:', error);
@@ -72,7 +71,6 @@ const SearchAvto = () => {
   };
 
   const handleSelectChange = (key, value) => {
-    console.log(`handleSelectChange called with key: ${key}, value: ${value}`);
 
     setSelectedOptions(prevState => ({
       ...prevState,
@@ -97,7 +95,7 @@ const SearchAvto = () => {
     const { brandSelection, modelSelection, yearOf, odo } = selectedOptions;
     const params = new URLSearchParams();
 
-    params.append('Count', '72');
+    params.append('Count', '18');
     if (brandSelection) params.append('Make', brandSelection.toUpperCase());
     if (modelSelection) params.append('Model', modelSelection.toUpperCase());
     // if (yearOf) {
