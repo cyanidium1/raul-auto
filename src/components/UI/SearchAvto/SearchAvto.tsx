@@ -97,18 +97,24 @@ const SearchAvto = () => {
     const { brandSelection, modelSelection, yearOf, odo } = selectedOptions;
     const params = new URLSearchParams();
 
-    if (brandSelection) params.append('brandSelection', brandSelection.toUpperCase());
-    if (modelSelection) params.append('modelSelection', modelSelection.toUpperCase());
-    if (yearOf) params.append('yearOf', `${yearOf[0]}-${yearOf[1]}`);
-    if (odo) params.append('odo', `${odo[0]}-${odo[1]}`);
     params.append('Count', '72');
+    if (brandSelection) params.append('Make', brandSelection.toUpperCase());
+    if (modelSelection) params.append('Model', modelSelection.toUpperCase());
+    // if (yearOf) {
+    //   params.append('YearFrom', yearOf[0].toString());
+    //   params.append('YearTo', yearOf[1].toString());
+    // }
+    if (odo) {
+      params.append('OdometerMin', odo[0].toString());
+      params.append('OdometerMax', odo[1].toString());
+    }
 
     const query = params.toString();
     router.push(`/search?${query}`);
   };
 
   return (
-    <div className="mobile:ml-auto mobile:mr-auto mobile:mt-8 tablet:mt-2 bg-gradient-sub-block rounded-lg lg:rounded-sub-block-22 p-4 lg:p-[38px] max-w-full sm:max-w-[640px] desktop:max-w-[490px] fullhd:max-w-[640px] desktop:ml-0 desktop:mr-0">
+    <div className="mobile:ml-auto mobile:mr-auto mobile:mt-8 tablet:mt-2 bg-gradient-sub-block rounded-lg lg:rounded-sub-block-22 p-4 lg:p-[38px] max-w-full sm:max-w-[640px]  fullhd:max-w-[640px] desktop:ml-0 desktop:mr-0">
       <div className="text-[20px] lg:text-24 text-primary mb-4 lg:mb-[20px]">
         {t.find_car}
       </div>
