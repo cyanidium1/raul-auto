@@ -5,21 +5,7 @@ import Button from '../Button/Button';
 import CustomSelect from '@/components/UI/CustomSelect/CustomSelect';
 import useStore from '../../../app/zustand/useStore';
 import translations from '../../../app/lang/searchAvtoTranslations.json';
-import { Autocomplete, AutocompleteItem } from '@nextui-org/react';
-
-const yearOptions = [
-  { label: '0-3', value: '0-3' },
-  { label: '0-5', value: '0-5' },
-  { label: '0-10', value: '0-10' },
-  { label: '10+', value: '10+' },
-];
-
-const odoOptions = [
-  { label: '0-50K', value: '0-50K' },
-  { label: '0-100K', value: '0-100K' },
-  { label: '0-150K', value: '0-150K' },
-  { label: '200K+', value: '200K+' },
-];
+import { Autocomplete, AutocompleteItem, Slider } from '@nextui-org/react';
 
 const SearchAvto = () => {
   const language = useStore((state) => state.language);
@@ -33,8 +19,8 @@ const SearchAvto = () => {
   const [selectedOptions, setSelectedOptions] = useState({
     brandSelection: '',
     modelSelection: '',
-    yearOf: '',
-    odo: '',
+    yearOf: [0, 15], // Default range for year of manufacture
+    odo: [0, 300000], // Default range for odometer reading
   });
 
   useEffect(() => {
@@ -77,6 +63,7 @@ const SearchAvto = () => {
         }));
         setModelOptions(formattedOptions);
         setLoadingModels(false);
+        console.log(formattedOptions);
       })
       .catch(error => {
         console.error('Error fetching model options:', error);
@@ -85,6 +72,8 @@ const SearchAvto = () => {
   };
 
   const handleSelectChange = (key, value) => {
+    console.log(`handleSelectChange called with key: ${key}, value: ${value}`);
+
     setSelectedOptions(prevState => ({
       ...prevState,
       [key]: value,
@@ -92,9 +81,16 @@ const SearchAvto = () => {
     }));
 
     if (key === 'brandSelection') {
-      setModelOptions([{ label: 'Loading...', value: '' }]);
+      setLoadingModels(true);
       fetchModelOptions(value);
     }
+  };
+
+  const handleSliderChange = (key, value) => {
+    setSelectedOptions(prevState => ({
+      ...prevState,
+      [key]: value,
+    }));
   };
 
   const handleSubmit = () => {
@@ -103,8 +99,8 @@ const SearchAvto = () => {
 
     if (brandSelection) params.append('brandSelection', brandSelection.toUpperCase());
     if (modelSelection) params.append('modelSelection', modelSelection.toUpperCase());
-    if (yearOf) params.append('yearOf', yearOf);
-    if (odo) params.append('odo', odo);
+    if (yearOf) params.append('yearOf', `${yearOf[0]}-${yearOf[1]}`);
+    if (odo) params.append('odo', `${odo[0]}-${odo[1]}`);
     params.append('Count', '72');
 
     const query = params.toString();
@@ -120,11 +116,11 @@ const SearchAvto = () => {
         <div className="flex flex-col sm:flex-row gap-4 lg:gap-5">
           <div className="w-full lg:w-[272px] h-[60px] mobile:z-[25] tablet:z-[20]">
             <Autocomplete
+              label={t.select_brand}
+              className="w-full flex-1"
               listboxProps={{
                 emptyContent: loadingModels ? 'Loading...' : 'No items found'
               }}
-              label={t.select_brand}
-              className="w-full flex-1"
               onSelectionChange={(value) => handleSelectChange('brandSelection', value)}
               value={selectedOptions.brandSelection}
             >
@@ -137,10 +133,10 @@ const SearchAvto = () => {
           </div>
           <div className="w-full lg:w-[272px] h-[60px] z-[20]">
             <Autocomplete
+              label={ t.select_model}
               listboxProps={{
                 emptyContent: loadingModels ? 'Loading...' : 'No items found'
               }}
-              label={t.select_model}
               onSelectionChange={(value) => handleSelectChange('modelSelection', value)}
               value={selectedOptions.modelSelection}
             >
@@ -154,23 +150,30 @@ const SearchAvto = () => {
         </div>
         <div className="flex flex-col lg:flex-row gap-4 lg:gap-5">
           <div className="w-full lg:w-[160px] h-[60px] z-[15]">
-            <CustomSelect
-              currentSelectedOption={t.year_from}
-              containerClassName="w-full flex-1"
-              onSelect={(value) => handleSelectChange('yearOf', value)}
-              options={yearOptions}
-              selectClassName="w-full appearance-none desktop:text-[13px] fullhd:text-18 bg-input text-primary border border-primary py-2 lg:py-[18px] px-3 lg:px-[20px] focus:outline-none cursor-pointer rounded-lg lg:rounded-sub-block-12 focus:outline-focus outline-none"
-              optionClassName="z-[15]"
+            {/* <div>{t.year_from}</div> */}
+            <Slider
+              label={t.year_range}
+              step={1}
+              minValue={0}
+              maxValue={15}
+              defaultValue={selectedOptions.yearOf}
+              onChange={(value) => handleSliderChange('yearOf', value)}
+              className="max-w-md text-white"
+              aria-label="Year Range"
             />
           </div>
           <div className="w-full lg:w-[160px] h-[60px] z-[10]">
-            <CustomSelect
-              currentSelectedOption={t.year_to}
-              containerClassName="w-full flex-1"
-              onSelect={(value) => handleSelectChange('odo', value)}
-              options={odoOptions}
-              selectClassName="w-full appearance-none desktop:text-[13px] fullhd:text-18 bg-input text-primary border border-primary py-2 lg:py-[18px] px-3 lg:px-[20px] focus:outline-none cursor-pointer rounded-lg lg:rounded-sub-block-12 focus:outline-focus outline-none"
-              optionClassName="z-[10]"
+            {/* <div>{t.year_to}</div> */}
+            <Slider
+              label={t.odo_range}
+              step={1000}
+              minValue={0}
+              maxValue={300000}
+              defaultValue={selectedOptions.odo}
+              // formatOptions={{ style: 'unit', unit: 'kilometer', unitDisplay: 'long' }}
+              onChange={(value) => handleSliderChange('odo', value)}
+              className="max-w-md text-white"
+              aria-label="Odometer Range"
             />
           </div>
           <Button
