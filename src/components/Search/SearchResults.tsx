@@ -56,7 +56,7 @@ const SearchResults = ({ orders }) => {
                     <Link 
                         href={{
                             pathname: `/lots/${order.id}`,
-                            query: { lotData: JSON.stringify(order) }
+                            // query: { lotData: JSON.stringify(order) }
                         }}
                         key={order.id}
                     >

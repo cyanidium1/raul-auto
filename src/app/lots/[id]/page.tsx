@@ -1,28 +1,58 @@
 'use client';
 
-import { useSearchParams } from 'next/navigation';
+import { useParams, useSearchParams } from 'next/navigation';
 import Image from 'next/image';
 import Footer from '@/components/Footer/Footer';
 import Questions from '@/components/Partnership/Questions/Questions';
 import { useEffect, useState } from 'react';
 import Lightbox from 'yet-another-react-lightbox';
 import 'yet-another-react-lightbox/styles.css'; // Import the Lightbox styles
+import axios from 'axios';
 import useStore from '../../../app/zustand/useStore';
 import translations from '../../../app/lang/lotData.json'; // Assuming a separate translation file for LotData
 
 const LotData = () => {
-    const searchParams = useSearchParams();
-    const lotData = searchParams.get('lotData');
-    const lot = lotData ? JSON.parse(lotData) : null;
+    const searchParams = useParams();
+    let {id} = searchParams
+    const [lot, setLot] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
     const [currentUrl, setCurrentUrl] = useState('');
     const [isOpen, setIsOpen] = useState(false);
     const [photoIndex, setPhotoIndex] = useState(0);
     const language = useStore(state => state.language);
     const t = translations[language];
 
+    id = id.replace(/\D/g, '');
+
     useEffect(() => {
-        setCurrentUrl(window.location.href);
+        if (window) setCurrentUrl(window.location.href);
     }, []);
+
+    useEffect(() => {
+        console.log(id);
+        if (id) {
+            console.log('Fetching lot data for ID:', id);
+            axios.get(`/api/lot?id=${id}`)
+                .then(response => {
+                    console.log('Lot data received:', response.data);
+                    setLot(response.data);
+                    setLoading(false);
+                })
+                .catch(error => {
+                    setError(error.message);
+                    setLoading(false);
+                });
+        }
+    }, []);
+
+    if (loading) {
+        return <div>Loading...</div>;
+    }
+
+    if (error) {
+        return <div>Error: {error}</div>;
+    }
 
     if (!lot) {
         return <div>{t.lotNotFound}</div>;
@@ -32,7 +62,6 @@ const LotData = () => {
         make,
         model,
         year,
-        id,
         images,
         city,
         damage,
@@ -41,7 +70,7 @@ const LotData = () => {
         odometer,
         vinCode,
         saleDate,
-    } = lot;
+    } = lot.data;
 
     return (
         <div className='mobile:p-2 p-4'>
@@ -50,22 +79,19 @@ const LotData = () => {
                     <h1 className="text-primary mobile:text-30 tablet:text-40 font-bold">
                         {year} {make} {model}
                     </h1>
-                    {/* <div className="flex items-center justify-center bg-gradient-sub-block max-w-[139px] h-[44px] rounded-sub-block-10 py-[14px] px-[24px] text-primary text-14 font-bold">
-                        {new Date(saleDate).toLocaleDateString()}
-                    </div> */}
                 </div>
                 <div className="flex mobile:items-center mobile:justify-center lg:items-start lg:justify-start mobile:flex-wrap lg:flex-nowrap gap-[32px] w-full">
                     <div className="flex flex-col gap-[18px] self-start mobile:rounded-sub-block-10 tablet:rounded-sub-block-26 bg-gradient-sub-block p-[18px] mobile:max-w-full w-full">
                         <Image
                             className="rounded-sub-block-18 mobile:w-full cursor-pointer"
-                            src={images[0] || '/default-car-image.png'}
+                            src={images?.[0] || '/default-car-image.png'}
                             alt={`Image of ${make} ${model}`}
                             width={627}
                             height={352}
                             onClick={() => setIsOpen(true)}
                         />
                         <ul className="flex flex-wrap gap-2 lg:gap-[18px]">
-                            {images.map((image, index) => (
+                            {images?.map((image, index) => (
                                 <li key={index}>
                                     <Image
                                         className="rounded-sub-block-11 w-24 h-24 lg:w-[111px] lg:h-[111px] cursor-pointer"
