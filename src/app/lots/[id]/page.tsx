@@ -47,15 +47,15 @@ const LotData = () => {
     }, []);
 
     if (loading) {
-        return <div>Loading...</div>;
+        return <div className='h-screen text-white w-full text-center text-2xl mt-20'>Loading...</div>;
     }
 
     if (error) {
-        return <div>Error: {error}</div>;
+        return <div className='h-screen text-white w-full text-center text-2xl mt-20'>Error: {error}</div>;
     }
 
     if (!lot) {
-        return <div>{t.lotNotFound}</div>;
+        return <div className='h-screen text-white w-full text-center text-2xl mt-20'>Not found</div>;
     }
 
     const {

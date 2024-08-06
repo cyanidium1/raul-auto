@@ -38,7 +38,7 @@ const QuestionsForm = ({ link }) => {
     let message = `Заявка с вопросом.`;
 
     if (link) {
-      message += ` Заявка на консультацию по автомобилю: (${link})\n`;
+      message = ` Заявка на консультацию по автомобилю: ${link}\n`;
     }
 
     message += contactInfo;
