@@ -95,7 +95,7 @@ const SearchAvto = () => {
     const { brandSelection, modelSelection, yearOf, odo } = selectedOptions;
     const params = new URLSearchParams();
 
-    params.append('Count', '12');
+    params.append('Count', '36');
     if (brandSelection) params.append('Make', brandSelection.toUpperCase());
     if (modelSelection) params.append('Model', modelSelection.toUpperCase());
     // if (yearOf) {

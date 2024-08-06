@@ -45,7 +45,7 @@ const Footer: FC = () => {
   };
 
   return (
-    <footer className="mobie:flex mobile:flex-wrap ml-auto mr-auto flex items-center justify-center gap-4 desktop:flex-nowrap">
+    <footer className="mobie:flex mobile:flex-wrap ml-auto mr-auto flex items-center justify-center gap-4 desktop:flex-nowrap max-w-screen-fullhd">
       <div className="w-[1525px] mobile:rounded-sub-block-10 tablet:rounded-sub-block-22 bg-gradient-sub-block mobile:p-[16px] desktop:p-[32px]">
         <div className="mobile:flex mobile:flex-col mobile:items-center mobile:justify-center mobile:gap-4 flex items-center desktop:flex-nowrap desktop:flex-row">
           <div className="flex flex-col gap-10 mr-auto ml-auto desktop:ml-0 desktop:mr:0">

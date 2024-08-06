@@ -54,12 +54,16 @@ const SearchPage = ({ t }) => {
     }
 
     if (error) {
-        return <div className='text-white'>Error: {error}</div>;
+        return <div className='text-white h-[90vh]'>Error: {error}</div>;
     }
 
     return (
         <div className='text-white'>
-            <SearchResults orders={results} />
+            {results?.length === 0 ? (
+                <p className='text-center mt-10'>404: No results found</p>
+            ) : (
+                <SearchResults orders={results} />
+            )}
         </div>
     );
 };
