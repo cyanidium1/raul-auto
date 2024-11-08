@@ -1,21 +1,24 @@
 import type { Config } from 'tailwindcss';
 
-const {nextui} = require("@nextui-org/react");
+const { nextui } = require('@nextui-org/react');
 
 const config: Config = {
   content: [
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
-    "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}"
+    './node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
     extend: {
       screens: {
         mobile: '320px',
+        mobileplus: '480px',
         tablet: '768px',
-        desktop: '1285px',
+        tabletplus: '880px',
         pointuserbar: '960px',
+        mac: '1280px',
+        desktop: '1285px',
         pointnav: '1340px',
         fullhd: '1920px',
       },
@@ -30,6 +33,7 @@ const config: Config = {
         dynamicblock: '#060606',
       },
       backgroundImage: {
+        'gradient-input': 'linear-gradient(83deg, #333333 2.3%, #0f0f0f 70%)',
         'gradient-contact-btn':
           'linear-gradient(90deg, #b9000b 0%, #ea001c 100%), #272a2e',
         'gradient-sub-block':
@@ -118,7 +122,7 @@ const config: Config = {
       },
     },
   },
-  darkMode: "class",
+  darkMode: 'class',
   plugins: [nextui()],
 };
 export default config;

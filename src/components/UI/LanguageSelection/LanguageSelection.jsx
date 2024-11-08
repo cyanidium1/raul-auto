@@ -1,3 +1,4 @@
+'use client';
 import React from 'react';
 import CustomSelect from '../CustomSelect/CustomSelect';
 import useStore from '../../../app/zustand/useStore';
@@ -19,7 +20,9 @@ const LanguageSelection = () => {
   };
 
   // Находим текущий выбранный язык
-  const currentSelectedOption = options.find((option) => option.value === language)?.label || options[0].label;
+  const currentSelectedOption =
+    options.find((option) => option.value === language)?.label ||
+    options[0].label;
 
   return (
     <CustomSelect

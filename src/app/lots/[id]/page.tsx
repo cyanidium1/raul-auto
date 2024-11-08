@@ -2,7 +2,6 @@
 
 import { useParams, useSearchParams } from 'next/navigation';
 import Image from 'next/image';
-import Footer from '@/components/Footer/Footer';
 import Questions from '@/components/Partnership/Questions/Questions';
 import { useEffect, useState } from 'react';
 import Lightbox from 'yet-another-react-lightbox';
@@ -160,7 +159,6 @@ const LotData = () => {
                     <Questions link={currentUrl} />
                 </div>
                 <div className='mt-16'>
-                    <Footer />
                 </div>
             </div>
         </div>

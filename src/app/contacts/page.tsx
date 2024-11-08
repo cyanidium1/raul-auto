@@ -3,7 +3,6 @@ import { motion } from 'framer-motion';
 import OurCoordinates from '@/components/Contacts/OurCoordinates/OurCoordinates';
 import AdminContacts from '@/components/Contacts/AdminContacts/AdminContacts';
 import DepartmentContacts from '@/components/Contacts/DepartmentContacts/DepartmentContacts';
-import Footer from '@/components/Footer/Footer';
 
 const blockVariants = {
   hidden: { opacity: 0, y: 20 },
@@ -27,7 +26,6 @@ const ContactsPage = () => {
     <OurCoordinates />,
     <AdminContacts />,
     <DepartmentContacts />,
-    <Footer />
   ];
 
   return (

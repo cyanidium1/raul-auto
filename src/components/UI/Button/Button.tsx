@@ -17,10 +17,11 @@ export default function Button({
 }: ButtonProps) {
   return (
     <button
-      className={`transform transition duration-300 ease-in-out focus:outline-focus outline-none ${className} ${disabled
-        ? 'bg-gray-400 text-gray-600 cursor-not-allowed '
-        : 'hover:scale-105 hover:text-hoverprimary bg-gradient-red'
-        }`}
+      className={`transform transition duration-300 ease-in-out focus:outline-focus outline-none ${className} ${
+        disabled
+          ? 'bg-gray-400 text-gray-600 cursor-not-allowed'
+          : `${!className.includes('hover:') ? 'hover:scale-105 hover:text-hoverprimary' : ''}`
+      } ${!className.includes('bg-') ? 'bg-gradient-red' : ''}`}
       type={type}
       onClick={onClick}
       disabled={disabled}
