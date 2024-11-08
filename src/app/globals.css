@@ -9,9 +9,12 @@
     margin: 0;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     margin: 0;
-    padding-bottom: 40px;
     background-color: #000000;
 }
 
@@ -80,4 +83,121 @@ button {
 /* Стили для ползунка скроллбара при наведении */
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
     background-color: #6a6969;
+}
+
+/* for input */
+.opacity-gradient {
+    background: linear-gradient(83deg, #333333 2.3%, #0f0f0f 70%);
+    opacity: 0.8;
+}
+
+.mobile-block-gradient {
+    background: radial-gradient(circle at top left, #660000 0%, transparent 40%),
+        radial-gradient(circle at bottom right, #660000 0%, transparent 40%),
+        #000000;
+}
+
+.mobile-block-gradient-proposition {
+    background: radial-gradient(circle at center, #660000 0%, transparent 70%),
+        radial-gradient(circle at bottom right, #660000 0%, transparent 50%),
+        #000000;
+}
+
+.mobile-block-gradient-for-proposition {
+    background: radial-gradient(circle at bottom center, #660000 0%, transparent 100%),
+        #000000;
+}
+
+.mobile-block-gradient-for-proposition-left {
+    background: linear-gradient(to top right, #660000 0%, transparent 50%),
+        #000000;
+}
+
+/* Скрывает скролл для всех браузеров */
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+    /* Chrome, Safari и Opera */
+}
+
+.scrollbar-hide {
+    -ms-overflow-style: none;
+    /* IE и Edge */
+    scrollbar-width: none;
+    /* Firefox */
+}
+
+/* стили ползунков в форме */
+input[type="range"] {
+    -webkit-appearance: none;
+    /* Убирает стандартный стиль */
+    width: 100%;
+    height: 2px;
+    /* Высота линии */
+    background: red;
+    position: relative;
+}
+
+/* Линия */
+input[type="range"]::-webkit-slider-runnable-track {
+    height: 2px;
+    background-color: red;
+    border-radius: 2px;
+}
+
+/* Бегунок */
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 16px;
+    width: 16px;
+    background-color: red;
+    border-radius: 50%;
+    cursor: pointer;
+    position: relative;
+    z-index: 10;
+    border: 1px solid white;
+}
+
+/* Точки по краям */
+input[type="range"]::before,
+input[type="range"]::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 16px;
+    width: 16px;
+    background-color: red;
+    border-radius: 50%;
+    box-shadow: 0 0 0 4px white;
+}
+
+input[type="range"]::before {
+    left: 0;
+}
+
+input[type="range"]::after {
+    right: 0;
+}
+
+.input-order-bg {
+    background: rgba(212, 212, 216, 0.4);
+}
+
+.bg-input-for-form-call {
+    background: rgba(212, 212, 216, 0.4);
+}
+
+/* плавное появление формы модалки */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.animate-fadeIn {
+    animation: fadeIn 1s ease-out forwards;
 }

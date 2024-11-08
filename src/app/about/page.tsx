@@ -8,12 +8,11 @@ import ModesTransportation from '@/components/Home/ModesTransportation/ModesTran
 import PurchasingProcess from '@/components/Home/PurchasingProcess/PurchasingProcess';
 import ContactUs from '@/components/Home/ContactUs/ContactUs';
 import Proposals from '@/components/Home/Proposals/Proposals';
-import Footer from '@/components/Footer/Footer';
 import About from '@/components/About/About';
 
 const blockVariants = {
   hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0 }
+  visible: { opacity: 1, y: 0 },
 };
 
 const AnimatedSection = ({ children, index }) => (
@@ -29,11 +28,7 @@ const AnimatedSection = ({ children, index }) => (
 );
 
 export default function Home() {
-  const components = [
-    <About />,
-    <ContactUs />,
-    <Footer />
-  ];
+  const components = [<About />, <ContactUs />];
 
   return (
     <section>

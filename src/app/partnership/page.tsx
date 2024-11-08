@@ -1,13 +1,12 @@
-'use client'
+'use client';
 import { motion } from 'framer-motion';
 import HeroPartnership from '../../components/Partnership/HeroPartnership/HeroPartnership';
 import Advantages from '@/components/Partnership/Advantages/Advantages';
 import Questions from '@/components/Partnership/Questions/Questions';
-import Footer from '@/components/Footer/Footer';
 
 const blockVariants = {
   hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0 }
+  visible: { opacity: 1, y: 0 },
 };
 
 const AnimatedSection = ({ children }) => (
@@ -36,7 +35,6 @@ const PartnershipPage = () => {
           <Questions />
         </AnimatedSection>
       </div>
-      <Footer />
     </section>
   );
 };
