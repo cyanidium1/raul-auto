@@ -5,18 +5,20 @@ import Container from '@/components/Container/Container';
 import LanguageSelection from '@/components/UI/LanguageSelection/LanguageSelection';
 const Header = () => {
   return (
-    <Container>
-      <header className="mobile:pt-[13px] tablet:pt-[20px] pb-[12px] flex justify-between items-center">
-        <Navigation />
-        <UserBar />
-        <div className="flex items-center gap-[16px]">
-          <div className="pointuserbar:hidden">
-            <LanguageSelection />
+    <header className="mobile:pt-[13px] tablet:pt-[20px] pb-[12px]">
+      <Container>
+        <div className='flex items-center justify-between'>
+          <Navigation />
+          <UserBar />
+          <div className="flex items-center gap-[16px]">
+            <div className="pointuserbar:hidden">
+              <LanguageSelection />
+            </div>
+            <Burger />
           </div>
-          <Burger />
         </div>
-      </header>
-    </Container>
+      </Container>
+    </header>
   );
 };
 

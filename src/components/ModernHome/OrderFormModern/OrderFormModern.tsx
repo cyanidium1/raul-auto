@@ -5,20 +5,20 @@ import DynamicForm from '@/components/UI/DynamicForm/DynamicForm';
 import Container from '@/components/Container/Container';
 import { FormikValues } from 'formik';
 import { useState } from 'react';
+import { Slider } from '@nextui-org/react';
 
 const initialValues = {
   name: '',
   phoneNumber: '',
   brand: '',
   model: '',
-  mileage: 50000,
-  year: 2020,
+  mileage: [0, 2000000],
+  year: [0, new Date().getFullYear()],
 };
 
 const OrderFormModern = () => {
-  const [mileage, setMileage] = useState(50000);
-  const [year, setYear] = useState(2020);
-  const currentYear = new Date().getFullYear();
+  const [mileage, setMileage] = useState([0, 2000000]);
+  const [year, setYear] = useState([0, new Date().getFullYear()]);
 
   const handleSubmit = (value: FormikValues) => {
     console.log(value);
@@ -71,45 +71,57 @@ const OrderFormModern = () => {
               </div>
               <div className="tablet:flex tablet:gap-[20px] tablet:w-full tablet:mb-[50px]">
                 <div className="max-w-[243px] tablet:w-full mb-[20px] tablet:mb-0">
-                  <label className="text-[12px] mb-[8px] font-medium">
-                    Пробіг
-                  </label>
-                  <input
-                    type="range"
-                    name="mileage"
-                    min="0"
-                    max="2000000"
-                    step="5000"
-                    value={mileage}
-                    onChange={(e) => {
-                      setMileage(Number(e.target.value));
-                      formikProps.setFieldValue('mileage', e.target.value);
+                  <Slider
+                    label="Пробіг"
+                    step={5000}
+                    minValue={0}
+                    maxValue={2000000}
+                    defaultValue={[mileage[0], mileage[1]]}
+                    onChange={(values: number[]) => {
+                      setMileage(values);
+                      formikProps.setFieldValue('mileage', values);
                     }}
-                    className="w-full h-[2px]"
+                    formatOptions={{ style: 'unit', unit: 'kilometer' }}
+                    classNames={{
+                      track: 'h-[2px]', // Линия слайдера
+                      filler: 'bg-red-600', // Заполнение слева до ползунка
+                      label: 'text-[12px] mb-[8px] font-medium', // Лейбл
+                    }}
+                    renderThumb={(props) => (
+                      <div
+                        {...props}
+                        className="group p-1 top-1/2 bg-background rounded-full cursor-grab data-[dragging=true]:cursor-grabbing"
+                      >
+                        <span className="bg-red-600 w-4 h-4 rounded-full block group-data-[dragging=true]:scale-90" />
+                      </div>
+                    )}
                   />
-                  <div className="text-center mt-2 text-[#a1a1aa]">
-                    {mileage} км
-                  </div>
                 </div>
                 <div className="max-w-[243px] tablet:w-full mb-[36px] tablet:mb-0">
-                  <label className="text-[12px] mb-[8px] font-medium">
-                    Рік випуску
-                  </label>
-                  <input
-                    type="range"
-                    name="year"
-                    min="1970"
-                    max={currentYear}
-                    value={year}
-                    onChange={(e) => {
-                      setYear(Number(e.target.value));
-                      formikProps.setFieldValue('year', e.target.value);
+                  <Slider
+                    label="Рік випуску"
+                    step={1}
+                    minValue={1970}
+                    maxValue={new Date().getFullYear()}
+                    defaultValue={[year[0], year[1]]}
+                    onChange={(values: number[]) => {
+                      setYear(values);
+                      formikProps.setFieldValue('year', values);
                     }}
-                    className="w-full h-[2px]"
+                    classNames={{
+                      track: 'h-[2px]', // Линия слайдера
+                      filler: 'bg-red-600', // Заполнение слева до ползунка
+                      label: 'text-[12px] mb-[8px] font-medium', // Лейбл
+                    }}
+                    renderThumb={(props) => (
+                      <div
+                        {...props}
+                        className="group p-1 top-1/2 bg-background rounded-full cursor-grab data-[dragging=true]:cursor-grabbing"
+                      >
+                        <span className="bg-red-600 w-4 h-4 rounded-full block group-data-[dragging=true]:scale-90" />
+                      </div>
+                    )}
                   />
-                  <div className="text-center mt-2 text-[#a1a1aa]">
-                    {year} рік
-                  </div>
                 </div>
               </div>
               <div className="mx-auto w-full max-w-[313px] tablet:max-w-[205px]">

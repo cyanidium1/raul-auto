@@ -7,7 +7,6 @@ import { myFontPanagram } from './fonts';
 import './globals.css';
 import '../components/Loader/loader.css';
 import dynamic from 'next/dynamic';
-// import Loader from '@/components/Loader/Loader';
 const ReduxProvider = dynamic(() => import('../Providers/ReduxProvider'), {
   ssr: false,
 });
@@ -28,7 +27,6 @@ export default function RootLayout({
       <link rel="manifest" href="/manifest.json"></link>
       <body className={myFontPanagram.className}>
         <ReduxProvider>
-          {/* <Loader /> */}
           <Header />
           <main>{children}</main>
           <ButtonFeedback />
