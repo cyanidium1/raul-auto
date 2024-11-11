@@ -1,4 +1,5 @@
 'use client';
+import { motion } from 'framer-motion';
 import InputField from '@/components/UI/InputField/InputField';
 import Button from '@/components/UI/Button/Button';
 import DynamicForm from '@/components/UI/DynamicForm/DynamicForm';
@@ -14,19 +15,59 @@ const ContactsBlock = () => {
   };
 
   return (
-    <section className="relative py-[64px] px-[40px] lg:py-[52px] lg:px-[] mobile:bg-[url('/contacs-mobile.jpg')] sm:bg-[url('/contacs-desktop.jpg')] mobile:bg-no-repeat mobile:bg-center mobile:bg-cover">
-      <div className="absolute top-0 left-0 right-0 h-[40px] bg-gradient-to-b from-black to-transparent pointer-events-none"></div>
-      <div className="absolute bottom-0 left-0 right-0 h-[40px] bg-gradient-to-b from-transparent to-black pointer-events-none"></div>
+    <motion.section
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      transition={{ duration: 1.5, delay: 0.5 }}
+      viewport={{ once: true, amount: 0.3 }}
+      className="relative py-[64px] px-[40px] lg:py-[52px] mobile:bg-[url('/contacs-mobile.jpg')] sm:bg-[url('/contacs-desktop.jpg')] mobile:bg-no-repeat mobile:bg-center mobile:bg-cover"
+    >
+      <motion.div
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 0.5, delay: 1.5 }}
+        viewport={{ once: true, amount: 0.3 }}
+        className="absolute top-0 left-0 right-0 h-[40px] bg-gradient-to-b from-black to-transparent pointer-events-none"
+      ></motion.div>
+
+      <motion.div
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 0.5, delay: 1.8 }}
+        viewport={{ once: true, amount: 0.3 }}
+        className="absolute bottom-0 left-0 right-0 h-[40px] bg-gradient-to-b from-transparent to-black pointer-events-none"
+      ></motion.div>
+
       <DynamicForm initialValues={initialValues} onSubmit={handleSubmit}>
         {(formikProps) => (
           <div>
-            <h2 className="max-w-[270px] lg:max-w-[650px] mb-[16px] mx-auto text-[28px] lg:text-[48px] text-white uppercase text-center font-bold">
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.7 }}
+              viewport={{ once: true, amount: 0.3 }}
+              className="max-w-[270px] lg:max-w-[650px] mb-[16px] mx-auto text-[28px] lg:text-[48px] text-white uppercase text-center font-bold"
+            >
               Залиште номер і ми передзвонимо вам
-            </h2>
-            <p className="mx-auto max-w-[290px] lg:max-w-[620px] uppercase text-[16px] lg:text-[24px] text-center text-red-600 mb-[46px] lg:mb-[48px] font-bold">
+            </motion.h2>
+
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.9 }}
+              viewport={{ once: true, amount: 0.3 }}
+              className="mx-auto max-w-[290px] lg:max-w-[620px] uppercase text-[16px] lg:text-[24px] text-center text-red-600 mb-[46px] lg:mb-[48px] font-bold"
+            >
               Не дзвонимо за 30 хвилин - даруємо знижку $99
-            </p>
-            <div className="lg:flex lg:justify-center lg:gap-[10px]">
+            </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 1.1 }}
+              viewport={{ once: true, amount: 0.3 }}
+              className="lg:flex lg:justify-center lg:gap-[10px]"
+            >
               <div className="mx-auto lg:mx-0 max-w-[313px] lg:max-w-[225px] mb-[10px] lg:mb-0">
                 <InputField
                   type="text"
@@ -43,11 +84,11 @@ const ContactsBlock = () => {
                   Надіслати
                 </Button>
               </div>
-            </div>
+            </motion.div>
           </div>
         )}
       </DynamicForm>
-    </section>
+    </motion.section>
   );
 };
 

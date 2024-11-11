@@ -1,4 +1,5 @@
 import Container from '@/components/Container/Container';
+import AnimatedStep from '@/components/ModernHome/AnimatedStep';
 import Image from 'next/image';
 
 const buyingSteps = [
@@ -65,24 +66,13 @@ const BuyingProcess = () => {
         </h2>
         <ul className="relative flex flex-col justify-center gap-8 lg:gap-x-[53px] lg:gap-y-[66px] sm:flex-row sm:flex-wrap">
           {buyingSteps.map((step, index) => (
-            <li
+            <AnimatedStep
               key={step.number}
-              className={`flex gap-4 pointuserbar:gap-[32px] items-start ${
-                index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'
-              } pointuserbar:flex-row lg:w-[calc(33%-35px)]`}
-            >
-              <div className="text-[102px] font-bold bg-gradient-to-b from-[#ffacb5] to-[#e2011a] bg-clip-text text-transparent">
-                {step.number}
-              </div>
-              <div>
-                <h3 className="uppercase text-[20px] pointuserbar:text-[24px] font-bold mb-3 pointuserbar:mb-[20px] max-w-[250px]">
-                  {step.title}
-                </h3>
-                <p className="text-[14px] pointuserbar:text-[18px] max-w-[250px]">
-                  {step.description}
-                </p>
-              </div>
-            </li>
+              number={step.number}
+              title={step.title}
+              description={step.description}
+              index={index}
+            />
           ))}
           <li className="mobile:hidden lg:block lg:absolute top-[-5%] left-[17%]">
             <Image

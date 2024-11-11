@@ -1,10 +1,47 @@
+'use client';
+import { motion } from 'framer-motion';
 import Container from '@/components/Container/Container';
 import Image from 'next/image';
 import Link from 'next/link';
 
 const TransportCategory = () => {
+  const items = [
+    {
+      id: 1,
+      src: '/delivery-avto.jpg',
+      alt: 'photo avto',
+      title: 'АВТОМОБІЛЬ',
+      width: 502,
+      height: 303,
+    },
+    {
+      id: 2,
+      src: '/delivery-moto.jpg',
+      alt: 'photo moto',
+      title: 'МОТОЦИКЛ',
+      width: 718,
+      height: 303,
+    },
+    {
+      id: 3,
+      src: '/delivery-yacht.jpg',
+      alt: 'photo yacht',
+      title: 'ЯХТУ',
+      width: 827,
+      height: 303,
+    },
+    {
+      id: 4,
+      src: '/delivery-spec-technics.jpg',
+      alt: 'photo spec',
+      title: 'СПЕЦ ТЕХНІКУ',
+      width: 403,
+      height: 303,
+    },
+  ];
+
   return (
-    <section className="pt-[112px] pb-[126px] lg:pt-[200px] lg:pb-[200px]">
+    <section className="pt-[112px] pb-[126px] lg:pt-[200px] lg:pb-[200px] overflow-x-hidden">
       <Container>
         <ul
           className="grid gap-[20px] 
@@ -13,82 +50,34 @@ const TransportCategory = () => {
                         tabletplus:grid-cols-3 tabletplus:auto-rows-[303px]
                         mac:flex mac:flex-wrap mac:justify-center"
         >
-          <li className={`relative`}>
-            <Link
-              href="/"
-              className="overflow-hidden block w-full h-full rounded-[20px] border-[1px] border-white"
+          {items.map((item, index) => (
+            <motion.li
+              key={item.id}
+              initial={{ opacity: 0, x: index % 2 === 0 ? -100 : 100 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.7, delay: index * 0.2 }}
+              viewport={{ once: true, amount: 0.3 }}
+              className="relative rounded-[20px]"
             >
-              <Image
-                src="/delivery-avto.jpg"
-                alt="photo avto"
-                width={502}
-                height={303}
-                className="mobile:max-w-full mobile:h-[313px] object-cover object-center scale-[1.1] rounded-[20px]"
-              />
-              <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50">
-                <span className="text-white text-2xl font-bold desktop:text-[32px]">
-                  АВТОМОБІЛЬ
-                </span>
-              </div>
-            </Link>
-          </li>
-          <li className={`relative rounded-[20px]`}>
-            <Link
-              href="/"
-              className="overflow-hidden block w-full h-full rounded-[20px] border-[1px] border-white"
-            >
-              <Image
-                src="/delivery-moto.jpg"
-                alt="photo moto"
-                width={718}
-                height={303}
-                className="mobile:max-w-full mobile:h-[313px] object-cover object-center scale-[1.1] rounded-[20px]"
-              />
-              <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50">
-                <span className="text-white text-2xl font-bold desktop:text-[32px]">
-                  МОТОЦИКЛ
-                </span>
-              </div>
-            </Link>
-          </li>
-          <li className={`relative rounded-[20px]`}>
-            <Link
-              href="/"
-              className="overflow-hidden block w-full h-full rounded-[20px] border-[1px] border-white"
-            >
-              <Image
-                src="/delivery-yacht.jpg"
-                alt="photo avto"
-                width={827}
-                height={303}
-                className="mobile:max-w-full mobile:h-[313px] object-cover object-center scale-[1.1] rounded-[20px]"
-              />
-              <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50">
-                <span className="text-white text-2xl font-bold desktop:text-[32px]">
-                  ЯХТУ
-                </span>
-              </div>
-            </Link>
-          </li>
-          <li className={`relative rounded-[20px]`}>
-            <Link
-              href="/"
-              className="overflow-hidden block w-full h-full rounded-[20px] border-[1px] border-white"
-            >
-              <Image
-                src="/delivery-spec-technics.jpg"
-                alt="photo avto"
-                width={403}
-                height={303}
-                className="mobile:max-w-full mobile:h-[313px] object-cover object-center scale-[1.1] rounded-[20px]"
-              />
-              <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50">
-                <span className="text-white text-2xl font-bold desktop:text-[32px]">
-                  СПЕЦ ТЕХНІКУ
-                </span>
-              </div>
-            </Link>
-          </li>
+              <Link
+                href="/"
+                className="overflow-hidden block w-full h-full rounded-[20px] border-[1px] border-white"
+              >
+                <Image
+                  src={item.src}
+                  alt={item.alt}
+                  width={item.width}
+                  height={item.height}
+                  className="mobile:max-w-full mobile:h-[313px] object-cover object-center scale-[1.1] rounded-[20px]"
+                />
+                <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50">
+                  <span className="text-white text-2xl font-bold desktop:text-[32px]">
+                    {item.title}
+                  </span>
+                </div>
+              </Link>
+            </motion.li>
+          ))}
         </ul>
       </Container>
     </section>

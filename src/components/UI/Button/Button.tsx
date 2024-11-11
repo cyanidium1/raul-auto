@@ -17,10 +17,14 @@ export default function Button({
 }: ButtonProps) {
   return (
     <button
-      className={`transform transition duration-300 ease-in-out focus:outline-focus outline-none ${className} ${
+      className={`transform transition duration-300 ease-in-out focus:outline-focus outline-none will-change-transform ${className} ${
         disabled
           ? 'bg-gray-400 text-gray-600 cursor-not-allowed'
-          : `${!className.includes('hover:') ? 'hover:scale-105 hover:text-hoverprimary' : ''}`
+          : `${
+              !className.includes('hover:')
+                ? 'hover:scale-105 hover:text-hoverprimary'
+                : ''
+            }`
       } ${!className.includes('bg-') ? 'bg-gradient-red' : ''}`}
       type={type}
       onClick={onClick}

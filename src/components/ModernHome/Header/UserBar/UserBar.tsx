@@ -17,7 +17,8 @@ const UserBar = () => {
 
   return (
     <ul className="mobile:hidden pointuserbar:flex items-center">
-      <li className="mr-[26px] relative">
+      {/* VIN */}
+      {/* <li className="mr-[26px] relative">
         <input
           type="text"
           placeholder="Знайти авто по VIN"
@@ -30,7 +31,10 @@ const UserBar = () => {
           width={16}
           height={16}
         />
-      </li>
+      </li> */}
+
+      {/* auth */}
+
       {/* <li>
               <div className="flex items-center gap-[40px] text-14 text-primary font-bold mr-[40px]">
                 <Link
@@ -44,7 +48,7 @@ const UserBar = () => {
                 <button type="button">Выйти</button>
               </div>
             </li> */}
-      <li className="relative">
+      {/* <li className="relative">
         <Button
           onClick={toggleModal}
           className="bg-white text-[14px] font-semibold py-[10px] px-[43px] mr-[22px] text-black rounded-sub-block-12 h-[40px] hover:text-red-600"
@@ -57,7 +61,7 @@ const UserBar = () => {
             <SelectedAuthRouts toggleModal={toggleModal} />
           </div>
         )}
-      </li>
+      </li> */}
       <li>
         <LanguageSelection />
       </li>
