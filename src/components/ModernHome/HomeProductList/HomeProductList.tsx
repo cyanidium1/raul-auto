@@ -7,6 +7,8 @@ import { useRef } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination } from 'swiper/modules';
 import Button from '@/components/UI/Button/Button';
+import useStore from '@/app/zustand/useStore';
+import translations from '../../../app/lang/homeProductList.json';
 
 const carList = [
   {
@@ -34,8 +36,8 @@ const carList = [
     image: '/car-ford-escape.jpg',
     title: 'FORD Escape 2020',
     price: '7 000$',
-    usaPrice: 'N/A',
-    ukrainePrice: 'N/A',
+    usaPrice: '15 000$',
+    ukrainePrice: '20 000$',
     savings: '5 100$',
     url: 'https://t.me/RaulAvto',
   },
@@ -74,8 +76,8 @@ const carList = [
     image: '/car-rivian-r1t.jpg',
     title: 'RIVANA R1T 2022',
     price: '7 000$',
-    usaPrice: 'N/A',
-    ukrainePrice: 'N/A',
+    usaPrice: '37 000$',
+    ukrainePrice: '58 000$',
     savings: '23 500$',
     url: 'https://t.me/RaulAvto',
   },
@@ -94,8 +96,8 @@ const carList = [
     image: '/car-volvo-xc40.jpg',
     title: 'VOLVO XC40 2021',
     price: '7 000$',
-    usaPrice: 'N/A',
-    ukrainePrice: 'N/A',
+    usaPrice: '25 000$',
+    ukrainePrice: '33 000$',
     savings: '11 600$',
     url: 'https://t.me/RaulAvto',
   },
@@ -103,11 +105,13 @@ const carList = [
 
 const HomeProductList = () => {
   const sliderRef = useRef(null);
+  const language = useStore((state) => state.language);
+  const t = translations[language];
   return (
     <section className="pt-[112px] pointuserbar:py-[200px]">
       <Container>
         <h2 className="uppercase text-[28px] pointuserbar:text-[48px] text-center text-white font-bold mb-[42px] pointuserbar:mb-[86px] max-w-[315px] pointuserbar:max-w-full mx-auto">
-          У цьому місяці ми привезли
+          {t.home_product_list_title}
         </h2>
         <Swiper
           modules={[Navigation, Pagination]}
@@ -146,19 +150,19 @@ const HomeProductList = () => {
                     {card.title}
                   </h3>
                   <p className="text-red-600 text-[28px] pointuserbar:text-[32px] font-bold mb-[18px]">
-                    {card.price}
+                    {card.usaPrice}
                   </p>
 
                   <p className="flex justify-between mb-[12px] text-[14px] pointuserbar:text-[16px] font-medium">
-                    Авто під ключ із США{' '}
+                    {t.car_usa_price}
                     <span className="inline-flex">{card.usaPrice}</span>
                   </p>
                   <p className="flex justify-between mb-[12px] text-[14px] pointuserbar:text-[16px] font-medium">
-                    Ціна на ринку України{' '}
+                    {t.car_ukraine_price}{' '}
                     <span className="inline-flex">{card.ukrainePrice}</span>
                   </p>
                   <p className="flex justify-between text-[14px] pointuserbar:text-[16px] font-medium mb-[32px]">
-                    Економія з нами 40%{' '}
+                    {t.car_savings}{' '}
                     <span className="inline-flex">{card.savings}</span>
                   </p>
 
@@ -169,7 +173,7 @@ const HomeProductList = () => {
                     className="w-full max-w-[265px] pointuserbar:max-w-full mx-auto mt-auto transform transition duration-300 ease-in-out hover:scale-105"
                   >
                     <Button className="w-full h-[40px] bg-transparent border-[1px] border-black rounded-sub-block-12 text-[14px] hover:text-red-600">
-                      Переглянути
+                      {t.view_details}
                     </Button>
                   </a>
                 </div>

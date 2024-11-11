@@ -22,7 +22,7 @@ const LanguageSelection = () => {
   // Находим текущий выбранный язык
   const currentSelectedOption =
     options.find((option) => option.value === language)?.label ||
-    options[0].label;
+    options[1].label;
 
   return (
     <CustomSelect

@@ -28,7 +28,7 @@ export default function RootLayout({
       <body className={myFontPanagram.className}>
         <ReduxProvider>
           <Header />
-          <main>{children}</main>
+          <main className="mt-[100px]">{children}</main>
           <ButtonFeedback />
           <FormCall />
           <Footer />

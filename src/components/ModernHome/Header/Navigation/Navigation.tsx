@@ -2,11 +2,14 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
+import useStore from '@/app/zustand/useStore';
+import translations from '../../../../app/lang/navLinks.json';
 
 const Navigation = () => {
   const pathname = usePathname();
+  const language = useStore((state) => state.language);
   const isActiveClass = 'text-red-600 text-14';
-
+  const t = translations[language];
   return (
     <nav className="flex items-center">
       <Link href="/" className="focus:outline-focus outline-none mr-[70px]">
@@ -26,7 +29,7 @@ const Navigation = () => {
             }`}
             href="/calculator"
           >
-            Калькулятор
+            {t.calculator}
           </Link>
         </li>
         <li className="text-primary text-[16px] font-medium">
@@ -36,7 +39,7 @@ const Navigation = () => {
             }`}
             href="/partnership"
           >
-            Співпраця
+            {t.partnership}
           </Link>
         </li>
         <li className="text-primary text-[16px] font-medium">
@@ -46,7 +49,7 @@ const Navigation = () => {
             }`}
             href="/contacts"
           >
-            Контакти
+            {t.contacts}
           </Link>
         </li>
         <li className="text-primary text-[16px] font-medium">
@@ -56,7 +59,7 @@ const Navigation = () => {
             }`}
             href="/about"
           >
-            Про нас
+            {t.about}
           </Link>
         </li>
         <li className="text-primary text-[16px] font-medium">
@@ -66,7 +69,7 @@ const Navigation = () => {
             }`}
             href="/blog"
           >
-            Блог
+            {t.blog}
           </Link>
         </li>
         <li className="text-primary text-[16px] font-medium">
@@ -76,7 +79,7 @@ const Navigation = () => {
             }`}
             href="/faq"
           >
-            FAQ
+            {t.faq}
           </Link>
         </li>
       </ul>

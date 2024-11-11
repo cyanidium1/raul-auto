@@ -13,6 +13,8 @@ import {
 } from '@/Redux/feedbackFormSlice/feedbackFormSlice';
 import * as yup from 'yup';
 import { isValidPhoneNumber } from 'libphonenumber-js';
+import useStore from '@/app/zustand/useStore';
+import translations from '../../../app/lang/formCall.json';
 
 const initialValues = {
   date: 'Сьогодні',
@@ -33,7 +35,6 @@ const validationSchema = yup.object({
 });
 
 const FormCall = () => {
-  //   const [isVisible, setIsVisible] = useState(false);
   const [selectedDate, setSelectedDate] = useState(initialValues.date);
   const [selectedHour, setSelectedHour] = useState(Number(initialValues.hour));
   const [selectedMinute, setSelectedMinute] = useState(
@@ -43,6 +44,8 @@ const FormCall = () => {
   const isVisible = useAppSelector(
     (state) => state.feedbackForm.isModalFeedbackOpen
   );
+  const language = useStore((state) => state.language);
+  const t = translations[language];
 
   useEffect(() => {
     // Проверяем, если форма уже была показана, то не показываем снова
@@ -109,7 +112,7 @@ const FormCall = () => {
       <Container>
         <div className="w-full max-w-[926px] mx-auto">
           <h2 className="uppercase mobile:text-center tablet:text-left text-[20px] font-bold mb-[22px]">
-            ПЕРЕДЗВОНИМО ВАМ
+            {t.form_title}
           </h2>
           <DynamicForm
             initialValues={initialValues}
@@ -129,8 +132,8 @@ const FormCall = () => {
                     }}
                     className="bg-input-for-form-call border-[1px] border-gray-500 text-[12px] outline-none cursor-pointer font-medium text-white w-full h-[40px] rounded-sub-block-12 px-[16px] appearance-none pr-[32px]"
                   >
-                    <option value="Сегодня">Сьогодні</option>
-                    <option value="Завтра">Завтра</option>
+                    <option value={t.today}>{t.today}</option>
+                    <option value={t.tomorrow}>{t.tomorrow}</option>
                   </select>
 
                   <div className="absolute top-1/2 right-4 transform -translate-y-1/2 pointer-events-none">
@@ -203,7 +206,7 @@ const FormCall = () => {
                 <InputField
                   type="text"
                   name="phoneNumber"
-                  placeholder="Номер телефону"
+                  placeholder={t.phone_placeholder}
                   inputClassName="bg-input-for-form-call text-white border-[1px] border-gray-500 rounded-[12px] tablet:mr-[12px] px-[16px] placeholder:text-[12px] placeholder-gray-400 w-full max-w-[225px] h-[40px]"
                   errorClassName="absolute bottom-[10px] text-red-500 text-[16px] mt-1"
                 />
@@ -212,7 +215,7 @@ const FormCall = () => {
                   className="bg-red-600 text-white text-[14px] font-semibold rounded-sub-block-12 w-full max-w-[205px] h-[40px]"
                   type="submit"
                 >
-                  Чекаю дзвінок
+                  {t.waiting_for_call}
                 </Button>
               </div>
             )}

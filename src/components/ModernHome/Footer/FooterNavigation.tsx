@@ -1,9 +1,13 @@
 'use client';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import useStore from '@/app/zustand/useStore';
+import translations from '../../../app/lang/footerNavigation.json';
 
 const FooterNavigation = () => {
   const pathname = usePathname();
+  const language = useStore((state) => state.language);
+  const t = translations[language];
   const isActiveClass = 'text-red-600 text-14';
   return (
     <nav className="">
@@ -15,7 +19,7 @@ const FooterNavigation = () => {
             }`}
             href="/calculator"
           >
-            Калькулятор
+            {t.calculator}
           </Link>
         </li>
         <li className="text-primary text-[16px] font-medium">
@@ -25,7 +29,7 @@ const FooterNavigation = () => {
             }`}
             href="/partnership"
           >
-            Співпраця
+            {t.partnership}
           </Link>
         </li>
         <li className="text-primary text-[16px] font-medium">
@@ -35,7 +39,7 @@ const FooterNavigation = () => {
             }`}
             href="/contacts"
           >
-            Контакти
+            {t.contacts}
           </Link>
         </li>
         <li className="text-primary text-[16px] font-medium">
@@ -45,7 +49,7 @@ const FooterNavigation = () => {
             }`}
             href="/about"
           >
-            Про нас
+            {t.about}
           </Link>
         </li>
         <li className="text-primary text-[16px] font-medium">
@@ -55,7 +59,7 @@ const FooterNavigation = () => {
             }`}
             href="/blog"
           >
-            Блог
+            {t.blog}
           </Link>
         </li>
         <li className="text-primary text-[16px] font-medium">
@@ -65,7 +69,7 @@ const FooterNavigation = () => {
             }`}
             href="/faq"
           >
-            FAQ
+            {t.faq}
           </Link>
         </li>
       </ul>

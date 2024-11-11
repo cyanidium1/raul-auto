@@ -2,8 +2,11 @@
 import { motion } from 'framer-motion';
 import Container from '@/components/Container/Container';
 import Image from 'next/image';
-
+import useStore from '@/app/zustand/useStore';
+import translations from '../../../app/lang/proposition.json';
 const Propositions = () => {
+  const language = useStore((state) => state.language);
+  const t = translations[language];
   return (
     <motion.section
       initial={{ opacity: 0 }}
@@ -54,10 +57,8 @@ const Propositions = () => {
             viewport={{ once: true, amount: 0.3 }}
             className="absolute bottom-[-82%] tabletplus:static tabletplus:order-[-1]"
           >
-            <h2 className="mb-[16px] uppercase text-[28px] text-white text-center font-bold max-w-[340px] mx-auto tabletplus:max-w-[452px] tabletplus:text-left tabletplus:text-[34px] lg:text-[48px] tabletplus:mb-[26px]">
-              Щоденні <br />
-              пропозиції <br />
-              по авто з США
+            <h2 className="mb-[16px] uppercase text-[28px] text-white text-center font-bold max-w-[340px] mx-auto lg:max-w-[452px] tabletplus:text-left tabletplus:text-[34px] lg:text-[48px] tabletplus:mb-[26px]">
+              {t.title}
             </h2>
 
             <motion.h3
@@ -67,7 +68,7 @@ const Propositions = () => {
               viewport={{ once: true, amount: 0.3 }}
               className="uppercase text-[19px] text-center font-bold text-red-600 mb-[24px] tabletplus:text-[22px] lg:text-[24px] tabletplus:mb-[31px] tabletplus:text-left"
             >
-              Приєднуйтесь до нас!
+              {t.subtitle}
             </motion.h3>
 
             <motion.p
@@ -77,8 +78,7 @@ const Propositions = () => {
               viewport={{ once: true, amount: 0.3 }}
               className="text-[14px] text-center text-white max-w-[315px] mb-[36px] tabletplus:text-left tabletplus:mb-[46px] tabletplus:text-[14px] lg:text-[16px] tabletplus:max-w-[300px] lg:max-w-[456px]"
             >
-              Отримуйте вигідні пропозиції по лотах на аукціонах США. Публікуємо
-              тільки актуальні автомобілі з розрахунком вартості в Україні.
+              {t.description}
             </motion.p>
 
             <motion.a
@@ -87,9 +87,11 @@ const Propositions = () => {
               transition={{ duration: 0.6, delay: 0.9 }}
               viewport={{ once: true, amount: 0.3 }}
               className="bg-gradient-red flex items-center justify-center w-full max-w-[313px] h-[48px] tabletplus:max-w-[205px] tabletplus:h-[40px] rounded-sub-block-12 text-[14px] text-white font-semibold transform transition duration-300 ease-in-out hover:scale-105"
-              href="/"
+              href="https://t.me/RaulAvto"
+              target="_blank"
+              rel="noopener noreferrer"
             >
-              Telegram
+              {t.button_text}
             </motion.a>
 
             <div className="mobile-block-gradient-for-proposition h-[100px] tabletplus:hidden"></div>

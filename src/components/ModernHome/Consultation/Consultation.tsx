@@ -1,8 +1,12 @@
 'use client';
 import { motion } from 'framer-motion';
 import Button from '@/components/UI/Button/Button';
+import useStore from '@/app/zustand/useStore';
+import translations from '../../../app/lang/homeConsultation.json';
 
 const Consultation = () => {
+  const language = useStore((state) => state.language);
+  const t = translations[language];
   return (
     <motion.section
       initial={{ opacity: 0 }}
@@ -55,7 +59,7 @@ const Consultation = () => {
         viewport={{ once: true, amount: 0.3 }}
         className="mx-auto uppercase text-center text-[28px] pointuserbar:text-[48px] pointuserbar:max-w-[440px] text-white font-bold mb-[16px]"
       >
-        отримайте консультацію
+        {t.consultation_title}
       </motion.h2>
 
       <motion.p
@@ -65,7 +69,7 @@ const Consultation = () => {
         viewport={{ once: true, amount: 0.3 }}
         className="uppercase text-center text-[16px] pointuserbar:text-[24px] text-red-600 font-bold mb-[52px] pointuserbar:mb-[88px]"
       >
-        Зателефонуйте нам
+        {t.consultation_subtitle}
       </motion.p>
 
       <motion.div
@@ -75,9 +79,11 @@ const Consultation = () => {
         viewport={{ once: true, amount: 0.3 }}
         className="mx-auto w-full max-w-[313px] pointuserbar:max-w-[205px]"
       >
-        <Button className="bg-gradient-red w-full h-[60px] pointuserbar:h-[40px] rounded-sub-block-12 text-[14px] text-white font-semibold">
-          Зателефонувати
-        </Button>
+        <a href="tel:+380 73 772 73 73">
+          <Button className="bg-gradient-red w-full h-[60px] pointuserbar:h-[40px] rounded-sub-block-12 text-[14px] text-white font-semibold">
+            {t.consultation_button}
+          </Button>
+        </a>
       </motion.div>
     </motion.section>
   );

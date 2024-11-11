@@ -1,76 +1,65 @@
+'use client';
 import Container from '@/components/Container/Container';
 import AnimatedStep from '@/components/ModernHome/AnimatedStep';
 import Image from 'next/image';
+import useStore from '@/app/zustand/useStore';
+import translations from '../../../app/lang/buyingProcess.json';
 
 const buyingSteps = [
   {
     number: 1,
-    title: 'Замовлення авто',
-    description:
-      "Зв'язок з менеджером для уточнення ваших побажань та бюджету на транспортний засіб.",
+    key: 'order', // добавьте ключ для каждого шага
   },
   {
     number: 2,
-    title: 'Договір',
-    description:
-      'Ознайомлення та підписання договору. Це закріплює сторони для виконання умов.',
+    key: 'agreement',
   },
   {
     number: 3,
-    title: 'Пошук підходящого ТЗ',
-    description:
-      'Пошук і перевірка з розрахунком ціни транспортного засобу, що відповідає запитам клієнта.',
+    key: 'vehicle_search',
   },
   {
     number: 4,
-    title: 'Аукціон',
-    description:
-      'Процес покупки автомобіля та спілкування з клієнтом у прямому ефірі аукціону, що дає доступ до коригування побажань.',
+    key: 'auction',
   },
   {
     number: 5,
-    title: 'Оплата',
-    description:
-      'Оплата всіх необхідних процесів здійснюється протягом 2 робочих днів після покупки авто, будь-яким зручним для клієнта способом.',
+    key: 'payment',
   },
   {
     number: 6,
-    title: 'Доставка',
-    description:
-      'Транспортування до найближчого порту та повний фото-звіт автомобіля. Морем транспортування ТЗ до порту вашої країни.',
+    key: 'delivery',
   },
   {
     number: 7,
-    title: 'Ремонт авто',
-    description: 'Ми можемо зробити повний ремонт авто під ключ.',
+    key: 'repair',
   },
   {
     number: 8,
-    title: 'Митне очищення',
-    description:
-      'Повний процес роблять наші митні брокери та надають допомогу в оплаті.',
+    key: 'customs_clearance',
   },
   {
     number: 9,
-    title: 'Передача автомобіля',
-    description: 'Доставка автомобіля призначеним вам місцем призначення.',
+    key: 'car_transfer',
   },
 ];
 
 const BuyingProcess = () => {
+  const language = useStore((state) => state.language);
+  const t = translations[language];
   return (
     <section className="py-[112px] bg-black text-white">
       <Container>
         <h2 className="uppercase text-center text-[28px] pointuserbar:text-[48px] font-bold mx-auto mb-12 pointuserbar:mb-[86px] max-w-[300px] pointuserbar:max-w-full">
-          Процес купівлі автомобіля зі США
+          {t.section_title}
         </h2>
         <ul className="relative flex flex-col justify-center gap-8 lg:gap-x-[53px] lg:gap-y-[66px] sm:flex-row sm:flex-wrap">
           {buyingSteps.map((step, index) => (
             <AnimatedStep
               key={step.number}
               number={step.number}
-              title={step.title}
-              description={step.description}
+              title={t.steps[index].title} // Используем перевод для title
+              description={t.steps[index].description} // Используем перевод для description
               index={index}
             />
           ))}

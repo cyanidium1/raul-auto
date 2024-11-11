@@ -7,13 +7,13 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination } from 'swiper/modules';
 import Button from '@/components/UI/Button/Button';
 import SliderNavigation from '@/components/UI/SliderNavigation/SliderNavigation';
+import useStore from '@/app/zustand/useStore';
+import translations from '../../../app/lang/auction.json';
 
 const auctions = [
   {
     id: 1,
-    name: 'Copart',
-    description:
-      'Найпопулярніший аукціон, де щодня проходять тисячі торгів. Великий вибір авто, але підбір вимагає особливої уваги.',
+    key: 'copart',
     logo: '/copart-auction.png',
     width: 185,
     height: 70,
@@ -21,9 +21,7 @@ const auctions = [
   },
   {
     id: 2,
-    name: 'Manheim',
-    description:
-      'Аукціон Manheim привабливий великим вибором цілих автомобілів та електромобілів.',
+    key: 'manheim',
     logo: '/manheim-auctiom.png',
     width: 108,
     height: 108,
@@ -31,9 +29,7 @@ const auctions = [
   },
   {
     id: 3,
-    name: 'Adesa',
-    description:
-      'Непоганий аукціон із зручною системою онлайн-торгів та меншою конкуренцією, ніж на основних майданчиках.',
+    key: 'adesa',
     logo: '/adessa-auction.png',
     width: 185,
     height: 67,
@@ -41,9 +37,7 @@ const auctions = [
   },
   {
     id: 4,
-    name: 'IAA',
-    description:
-      'Представлені автомобілі від страховок та прозорою історією та детальним описом лоту.',
+    key: 'iaa',
     logo: '/iaai-auction.png',
     width: 132,
     height: 78,
@@ -51,9 +45,7 @@ const auctions = [
   },
   {
     id: 5,
-    name: 'Impact',
-    description:
-      'Impact – популярний аукціон і за сумісництвом онлайн-майданчик, який пропонує для продажу всілякі транспортні засоби.',
+    key: 'impact',
     logo: '/impact-icon.png',
     width: 184,
     height: 50,
@@ -63,12 +55,14 @@ const auctions = [
 
 const AuctionsList = () => {
   const sliderRef = useRef(null);
+  const language = useStore((state) => state.language);
+  const t = translations[language];
 
   return (
     <section>
       <Container>
         <h2 className="text-[28px] uppercase text-center text-white font-bold mb-[42px]  pointuserbar:text-[42px]  pointuserbar:mb-[86px]">
-          Працюємо з найкращими аукціонами
+          {t.auction_title}
         </h2>
         <Swiper
           modules={[Navigation, Pagination]}
@@ -97,16 +91,16 @@ const AuctionsList = () => {
               <div className="flex flex-col h-[480px] rounded-[20px] border border-white py-[52px] px-[20px] desktop:py-[54px] desktop:px-[70px] pointuserbar:w-full pointuserbar:max-w-[413px]">
                 <Image
                   src={auction.logo}
-                  alt={`${auction.name} logo`}
+                  alt={`${auction.key} logo`}
                   width={auction.width}
                   height={auction.height}
                   className="mb-[56px] mx-auto"
                 />
                 <h3 className="uppercase text-[24px] font-bold mb-[14px] text-white text-center">
-                  {auction.name}
+                  {t[`${auction.key}_name`]}
                 </h3>
                 <p className="text-[14px] text-center text-white mb-[36px] pointuserbar:mb-[56px]">
-                  {auction.description}
+                  {t[`${auction.key}_description`]}
                 </p>
                 <a
                   href={auction.url}
@@ -115,7 +109,7 @@ const AuctionsList = () => {
                   className="mx-auto mt-auto w-full max-w-[185px]"
                 >
                   <Button className="bg-transparent w-full py-[10px] px-[44px] rounded-sub-block-12 border border-white text-white text-[14px] hover:scale-105">
-                    Переглянути
+                    {t.view_details}
                   </Button>
                 </a>
               </div>

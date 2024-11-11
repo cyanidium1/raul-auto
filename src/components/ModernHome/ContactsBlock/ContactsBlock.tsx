@@ -6,6 +6,8 @@ import DynamicForm from '@/components/UI/DynamicForm/DynamicForm';
 import { FormikValues } from 'formik';
 import * as yup from 'yup';
 import { isValidPhoneNumber } from 'libphonenumber-js';
+import useStore from '@/app/zustand/useStore';
+import translations from '../../../app/lang/contactBlock.json';
 
 const initialValues = {
   phoneNumber: '',
@@ -23,21 +25,14 @@ const validationSchema = yup.object({
 });
 
 const ContactsBlock = () => {
+  const language = useStore((state) => state.language);
+  const t = translations[language];
+
   const handleSubmit = (value: FormikValues) => {
     console.log(value);
   };
 
   return (
-<<<<<<< HEAD
-    <section className="relative py-[64px] px-[40px] lg:py-[52px] lg:px-[] mobile:bg-[url('/contacs-mobile.jpg')] sm:bg-[url('/contacs-desktop.jpg')] mobile:bg-no-repeat mobile:bg-center mobile:bg-cover">
-      <div className="absolute top-0 left-0 right-0 h-[40px] bg-gradient-to-b from-black to-transparent pointer-events-none"></div>
-      <div className="absolute bottom-0 left-0 right-0 h-[40px] bg-gradient-to-b from-transparent to-black pointer-events-none"></div>
-      <DynamicForm
-        initialValues={initialValues}
-        validationSchema={validationSchema}
-        onSubmit={handleSubmit}
-      >
-=======
     <motion.section
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
@@ -61,8 +56,11 @@ const ContactsBlock = () => {
         className="absolute bottom-0 left-0 right-0 h-[40px] bg-gradient-to-b from-transparent to-black pointer-events-none"
       ></motion.div>
 
-      <DynamicForm initialValues={initialValues} onSubmit={handleSubmit}>
->>>>>>> 89d0f188f5a8f893ccce202dfd0a72745ddc026b
+      <DynamicForm
+        initialValues={initialValues}
+        validationSchema={validationSchema}
+        onSubmit={handleSubmit}
+      >
         {(formikProps) => (
           <div>
             <motion.h2
@@ -72,7 +70,7 @@ const ContactsBlock = () => {
               viewport={{ once: true, amount: 0.3 }}
               className="max-w-[270px] lg:max-w-[650px] mb-[16px] mx-auto text-[28px] lg:text-[48px] text-white uppercase text-center font-bold"
             >
-              Залиште номер і ми передзвонимо вам
+              {t.title}
             </motion.h2>
 
             <motion.p
@@ -82,7 +80,7 @@ const ContactsBlock = () => {
               viewport={{ once: true, amount: 0.3 }}
               className="mx-auto max-w-[290px] lg:max-w-[620px] uppercase text-[16px] lg:text-[24px] text-center text-red-600 mb-[46px] lg:mb-[48px] font-bold"
             >
-              Не дзвонимо за 30 хвилин - даруємо знижку $99
+              {t.subtitle}
             </motion.p>
 
             <motion.div
@@ -96,7 +94,7 @@ const ContactsBlock = () => {
                 <InputField
                   type="text"
                   name="phoneNumber"
-                  placeholder="Введіть Ваш номер"
+                  placeholder={t.input_placeholder}
                   inputClassName="px-[16px] opacity-gradient w-full h-[48px] lg:h-[40px] rounded-[12px] placeholder:text-[12px] placeholder:text-[#a1a1aa] text-[#a1a1aa]"
                   errorClassName="absolute bottom-[10px] text-red-500 text-[16px] mt-1"
                 />
@@ -106,7 +104,7 @@ const ContactsBlock = () => {
                   className="mx-auto bg-gradient-red text-primary text-[14px] font-semibold rounded-sub-block-12 w-full h-[48px] lg:h-[40px]"
                   type="submit"
                 >
-                  Надіслати
+                  {t.button_text}
                 </Button>
               </div>
             </motion.div>

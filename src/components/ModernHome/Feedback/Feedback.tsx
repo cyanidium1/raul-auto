@@ -6,6 +6,8 @@ import { useRef } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination } from 'swiper/modules';
 import Image from 'next/image';
+import useStore from '@/app/zustand/useStore';
+import translations from '../../../app/lang/feedback.json';
 
 const feedbackList = [
   {
@@ -54,13 +56,15 @@ const feedbackList = [
 
 const Feedback = () => {
   const sliderRef = useRef(null);
+  const language = useStore((state) => state.language);
+  const t = translations[language];
   return (
     <section className="relative py-[112px] mobile-block-gradient pointuserbar:py-[200px]">
       <div className="absolute top-0 left-0 right-0 h-[100px] bg-gradient-to-b from-black to-transparent pointer-events-none"></div>
       <div className="absolute bottom-0 left-0 right-0 h-[100px] bg-gradient-to-b from-transparent to-black pointer-events-none"></div>
       <Container>
         <h2 className="uppercase text-[28px] pointuserbar:text-[48px] text-center text-white font-bold mb-[42px] pointuserbar:mb-[86px]">
-          Відгуки
+          {t.feedback_title}
         </h2>
         <Swiper
           modules={[Navigation, Pagination]}
