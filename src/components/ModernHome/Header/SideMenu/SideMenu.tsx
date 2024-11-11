@@ -89,7 +89,7 @@ const SideMenu = ({ isOpen, onClose }: SideMenuProps) => {
             Блог
           </Link>
         </li>
-        <li className="p-2">
+        {/* <li className="p-2">
           <Link
             onClick={onClose}
             className={`text-[20px] text-primary transition-colors duration-300 ease-in-out hover:text-red-600 focus:text-red-600 outline-none ${
@@ -99,8 +99,8 @@ const SideMenu = ({ isOpen, onClose }: SideMenuProps) => {
           >
             Faq
           </Link>
-        </li>
-        <li className="p-2">
+        </li> */}
+        {/* <li className="p-2">
           <Link
             onClick={onClose}
             className={`text-[20px] text-primary transition-colors duration-300 ease-in-out hover:text-red-600 focus:text-red-600 outline-none ${
@@ -110,9 +110,9 @@ const SideMenu = ({ isOpen, onClose }: SideMenuProps) => {
           >
             Личный кабинет
           </Link>
-        </li>
-        <li className="text-primary text-14 mt-8">Найти авто по VIN:</li>
-        <li className="mb-4 relative">
+        </li> */}
+        {/* <li className="text-primary text-14 mt-8">Найти авто по VIN:</li> */}
+        {/* <li className="mb-4 relative">
           <input
             type="text"
             placeholder="Введите VIN номер"
@@ -125,12 +125,12 @@ const SideMenu = ({ isOpen, onClose }: SideMenuProps) => {
             width={16}
             height={16}
           />
-        </li>
-        <li className="">
+        </li> */}
+        {/* <li className="">
           <button className="flex ml-auto mr-auto bg-gradient-red text-14 py-4 px-[24px] w-[217px] h-[20px] text-primary rounded-sub-block-10 transform transition duration-300 ease-in-out hover:scale-105 hover:text-hoverprimary focus:outline-focus outline-none">
             Войти
           </button>
-        </li>
+        </li> */}
       </ul>
     </div>
   );

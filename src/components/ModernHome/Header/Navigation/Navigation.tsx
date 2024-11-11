@@ -18,7 +18,7 @@ const Navigation = () => {
           className="mobile:w-[113px] mobile:h-[80px] tablet:w-[185px] tablet:h-[90px]"
         />
       </Link>
-      <ul className="mobile:hidden pointnav:flex items-center gap-5">
+      <ul className="mobile:hidden pointnav:flex items-center gap-10">
         <li className="text-primary text-[16px] font-medium">
           <Link
             className={`transition-colors duration-300 ease-in-out hover:text-red-600 focus:text-red-600 outline-none ${

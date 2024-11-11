@@ -1,4 +1,5 @@
 export default {
+  reactStrictMode: false,
   typescript: {
     ignoreBuildErrors: true,
   },

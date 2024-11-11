@@ -7,7 +7,7 @@ const Header = () => {
   return (
     <header className="mobile:pt-[13px] tablet:pt-[20px] pb-[12px]">
       <Container>
-        <div className='flex items-center justify-between'>
+        <div className="flex items-center justify-between">
           <Navigation />
           <UserBar />
           <div className="flex items-center gap-[16px]">
