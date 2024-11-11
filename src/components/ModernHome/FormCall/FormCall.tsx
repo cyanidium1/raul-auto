@@ -112,7 +112,7 @@ const FormCall = () => {
       </button>
       <Container>
         <div className="w-full max-w-[926px] mx-auto">
-          <h2 className="uppercase mobile:text-center tablet:text-left text-[20px] font-bold mb-[22px]">
+          <h2 className="uppercase mobile:text-center pointuserbar:text-left text-[20px] font-bold mb-[22px]">
             {t.form_title}
           </h2>
           <DynamicForm
@@ -121,9 +121,9 @@ const FormCall = () => {
             onSubmit={handleSubmit}
           >
             {(formikProps) => (
-              <div className="flex mobile:flex-col mobile:gap-10 tablet:gap-0 mobile:justify-center mobile:items-center tablet:flex-row">
+              <div className="flex mobile:flex-col mobile:gap-10 pointuserbar:gap-0 mobile:justify-center mobile:items-center pointuserbar:flex-row">
                 {/* Date Select */}
-                <div className="w-full">
+                <div className="w-full max-w-[244px] mobile:mr-0 pointuserbar:mr-[32px]">
                   <Select
                     aria-label="date"
                     defaultSelectedKeys={new Set([selectedDate])}
@@ -135,7 +135,7 @@ const FormCall = () => {
                     classNames={{
                       selectorIcon: 'text-white',
                       trigger:
-                        'w-full max-w-[244px] mobile:mr-0 tablet:mr-[32px] bg-input-for-form-call border-[1px] border-gray-500 text-[12px] font-medium h-[40px] rounded-sub-block-12 px-[16px] pr-[32px]',
+                        'w-full max-w-[244px] bg-input-for-form-call border-[1px] border-gray-500 text-[12px] font-medium h-[40px] rounded-sub-block-12 px-[16px] pr-[32px]',
                       // listboxWrapper: 'max-h-[400px]',
                     }}
                     style={{ color: 'white' }}
@@ -148,40 +148,9 @@ const FormCall = () => {
                     </SelectItem>
                   </Select>
                 </div>
-                {/* <div className="relative w-full max-w-[244px] mobile:mr-0 tablet:mr-[32px]">
-                  <select
-                    name="date"
-                    value={selectedDate}
-                    onChange={(e) => {
-                      setSelectedDate(e.target.value);
-                      formikProps.setFieldValue('date', e.target.value);
-                    }}
-                    className="bg-input-for-form-call border-[1px] border-gray-500 text-[12px] outline-none cursor-pointer font-medium text-white w-full h-[40px] rounded-sub-block-12 px-[16px] appearance-none pr-[32px]"
-                  >
-                    <option value={t.today}>{t.today}</option>
-                    <option value={t.tomorrow}>{t.tomorrow}</option>
-                  </select>
-
-                  <div className="absolute top-1/2 right-4 transform -translate-y-1/2 pointer-events-none">
-                    <svg
-                      className="w-3 h-3 text-gray-500"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="M19 9l-7 7-7-7"
-                      ></path>
-                    </svg>
-                  </div>
-                </div> */}
 
                 {/* Hour Selector with Buttons */}
-                <div className="flex tablet:mr-[32px]">
+                <div className="flex pointuserbar:mr-[32px]">
                   <div className="mr-[12px] w-[82px] h-[40px] flex items-center justify-center gap-[13px] bg-input-for-form-call border-[1px] border-gray-500 rounded-[8px]">
                     <div className="text-[28px] text-white font-medium">
                       {String(selectedHour).padStart(2, '0')}
@@ -233,7 +202,7 @@ const FormCall = () => {
                   type="text"
                   name="phoneNumber"
                   placeholder={t.phone_placeholder}
-                  inputClassName="bg-input-for-form-call text-white border-[1px] border-gray-500 rounded-[12px] tablet:mr-[12px] px-[16px] placeholder:text-[12px] placeholder-gray-400 w-full max-w-[225px] h-[40px]"
+                  inputClassName="bg-input-for-form-call text-white border-[1px] border-gray-500 rounded-[12px] pointuserbar:mr-[12px] px-[16px] placeholder:text-[12px] placeholder-gray-400 w-full max-w-[225px] h-[40px]"
                   errorClassName="absolute bottom-[10px] text-red-500 text-[16px] mt-1"
                 />
 
