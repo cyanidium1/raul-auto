@@ -18,7 +18,7 @@ const OurCoordinates = () => {
         <div className="relative w-full pb-[36.04%] mb-[32px]">
           <Image
             className="absolute top-0 left-0 w-full h-full object-cover"
-            src="/map-hero-contacts.png"
+            src="/modern-big-map.png"
             alt="map img"
             fill
           />
@@ -37,12 +37,22 @@ const OurCoordinates = () => {
                 {location.hours}
               </div>
               <div className="mobile:text-14 mobile:leading-10 tablet:text-16 font-bold text-primary">
-                <a href={`tel:${location.phone}`} target="_blank" rel="noopener noreferrer" className='hover:text-red-600 duration-300'>
+                <a
+                  href={`tel:${location.phone}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-red-600 duration-300"
+                >
                   {location.phone}
                 </a>
               </div>
               <div className="mobile:text-14 mobile:leading-10 tablet:text-16 font-bold text-primary">
-                <a href={`mailto:${location.email}`} target="_blank" rel="noopener noreferrer" className='hover:text-red-600 duration-300'>
+                <a
+                  href={`mailto:${location.email}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-red-600 duration-300"
+                >
                   {location.email}
                 </a>
               </div>

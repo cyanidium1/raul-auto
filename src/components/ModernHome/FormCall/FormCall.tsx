@@ -15,6 +15,7 @@ import * as yup from 'yup';
 import { isValidPhoneNumber } from 'libphonenumber-js';
 import useStore from '@/app/zustand/useStore';
 import translations from '../../../app/lang/formCall.json';
+import { Select, SelectItem } from '@nextui-org/react';
 
 const initialValues = {
   date: 'Сьогодні',
@@ -122,7 +123,32 @@ const FormCall = () => {
             {(formikProps) => (
               <div className="flex mobile:flex-col mobile:gap-10 tablet:gap-0 mobile:justify-center mobile:items-center tablet:flex-row">
                 {/* Date Select */}
-                <div className="relative w-full max-w-[244px] mobile:mr-0 tablet:mr-[32px]">
+                <div className="w-full">
+                  <Select
+                    aria-label="date"
+                    defaultSelectedKeys={new Set([selectedDate])}
+                    onSelectionChange={(value) => {
+                      const date = Array.from(value).join('');
+                      setSelectedDate(date);
+                      formikProps.setFieldValue('date', date);
+                    }}
+                    classNames={{
+                      selectorIcon: 'text-white',
+                      trigger:
+                        'w-full max-w-[244px] mobile:mr-0 tablet:mr-[32px] bg-input-for-form-call border-[1px] border-gray-500 text-[12px] font-medium h-[40px] rounded-sub-block-12 px-[16px] pr-[32px]',
+                      // listboxWrapper: 'max-h-[400px]',
+                    }}
+                    style={{ color: 'white' }}
+                  >
+                    <SelectItem key={t.today} className="">
+                      {t.today}
+                    </SelectItem>
+                    <SelectItem key={t.tomorrow} className="">
+                      {t.tomorrow}
+                    </SelectItem>
+                  </Select>
+                </div>
+                {/* <div className="relative w-full max-w-[244px] mobile:mr-0 tablet:mr-[32px]">
                   <select
                     name="date"
                     value={selectedDate}
@@ -152,7 +178,7 @@ const FormCall = () => {
                       ></path>
                     </svg>
                   </div>
-                </div>
+                </div> */}
 
                 {/* Hour Selector with Buttons */}
                 <div className="flex tablet:mr-[32px]">

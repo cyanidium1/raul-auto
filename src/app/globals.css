@@ -110,11 +110,9 @@ button {
 }
 
 .mobile-block-gradient-for-proposition {
-  background: radial-gradient(
-      circle at bottom center,
+  background: radial-gradient(circle at bottom center,
       #660000 0%,
-      transparent 100%
-    ),
+      transparent 100%),
     #000000;
 }
 
@@ -222,4 +220,24 @@ input[type='range']::after {
   to {
     opacity: 0;
   }
+}
+
+/* Используйте более специфичный селектор для переопределения стиля */
+.group[data-has-value=true] .group-data-\[has-value\=true\]\:text-default-foreground {
+  color: white !important;
+  /* Белый цвет и использование !important, чтобы переопределить стиль */
+}
+
+/* Убираем эффект ховера */
+button[data-hover=true] {
+  background: rgba(212, 212, 216, 0.4) !important;
+  /* Убираем фоновый цвет при ховере */
+}
+
+/* Можно также убрать любые другие стили, связанные с hover, если необходимо */
+button[data-hover=true]:hover {
+  background: rgba(212, 212, 216, 0.4) !important;
+  /* Убираем фон при наведении */
+  box-shadow: none !important;
+  /* Убираем тень при наведении */
 }
