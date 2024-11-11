@@ -11,6 +11,8 @@ import {
   closeModalFeedback,
   openModalFeedback,
 } from '@/Redux/feedbackFormSlice/feedbackFormSlice';
+import * as yup from 'yup';
+import { isValidPhoneNumber } from 'libphonenumber-js';
 
 const initialValues = {
   date: 'Сьогодні',
@@ -18,6 +20,17 @@ const initialValues = {
   minute: '00',
   phoneNumber: '',
 };
+
+const validationSchema = yup.object({
+  phoneNumber: yup
+    .string()
+    .test(
+      'valid-phone',
+      'Номер телефону не валідний',
+      (value) => value && isValidPhoneNumber(value)
+    )
+    .required('Номер телефону обов’язковий для заповнення'),
+});
 
 const FormCall = () => {
   //   const [isVisible, setIsVisible] = useState(false);
@@ -98,7 +111,11 @@ const FormCall = () => {
           <h2 className="uppercase mobile:text-center tablet:text-left text-[20px] font-bold mb-[22px]">
             ПЕРЕДЗВОНИМО ВАМ
           </h2>
-          <DynamicForm initialValues={initialValues} onSubmit={handleSubmit}>
+          <DynamicForm
+            initialValues={initialValues}
+            validationSchema={validationSchema}
+            onSubmit={handleSubmit}
+          >
             {(formikProps) => (
               <div className="flex mobile:flex-col mobile:gap-10 tablet:gap-0 mobile:justify-center mobile:items-center tablet:flex-row">
                 {/* Date Select */}
@@ -188,6 +205,7 @@ const FormCall = () => {
                   name="phoneNumber"
                   placeholder="Номер телефону"
                   inputClassName="bg-input-for-form-call text-white border-[1px] border-gray-500 rounded-[12px] tablet:mr-[12px] px-[16px] placeholder:text-[12px] placeholder-gray-400 w-full max-w-[225px] h-[40px]"
+                  errorClassName="absolute bottom-[10px] text-red-500 text-[16px] mt-1"
                 />
 
                 <Button

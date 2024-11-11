@@ -87,6 +87,13 @@ const OrderFormModern = () => {
                       filler: 'bg-red-600', // Заполнение слева до ползунка
                       label: 'text-[12px] mb-[8px] font-medium', // Лейбл
                     }}
+                    renderValue={(props) => (
+                      <output {...props}>
+                        {mileage[0] === 0 && mileage[1] === 2000000
+                          ? null
+                          : `${mileage[0]} - ${mileage[1]} км`}
+                      </output>
+                    )}
                     renderThumb={(props) => (
                       <div
                         {...props}
@@ -113,6 +120,14 @@ const OrderFormModern = () => {
                       filler: 'bg-red-600', // Заполнение слева до ползунка
                       label: 'text-[12px] mb-[8px] font-medium', // Лейбл
                     }}
+                    renderValue={(props) => (
+                      <output {...props}>
+                        {year[0] === 1970 &&
+                        year[1] === new Date().getFullYear()
+                          ? null
+                          : `${year[0]} - ${year[1]}`}
+                      </output>
+                    )}
                     renderThumb={(props) => (
                       <div
                         {...props}

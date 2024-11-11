@@ -3,10 +3,23 @@ import InputField from '@/components/UI/InputField/InputField';
 import Button from '@/components/UI/Button/Button';
 import DynamicForm from '@/components/UI/DynamicForm/DynamicForm';
 import { FormikValues } from 'formik';
+import * as yup from 'yup';
+import { isValidPhoneNumber } from 'libphonenumber-js';
 
 const initialValues = {
   phoneNumber: '',
 };
+
+const validationSchema = yup.object({
+  phoneNumber: yup
+    .string()
+    .test(
+      'valid-phone',
+      'Номер телефону не валідний',
+      (value) => value && isValidPhoneNumber(value)
+    )
+    .required('Номер телефону обов’язковий для заповнення'),
+});
 
 const ContactsBlock = () => {
   const handleSubmit = (value: FormikValues) => {
@@ -17,7 +30,11 @@ const ContactsBlock = () => {
     <section className="relative py-[64px] px-[40px] lg:py-[52px] lg:px-[] mobile:bg-[url('/contacs-mobile.jpg')] sm:bg-[url('/contacs-desktop.jpg')] mobile:bg-no-repeat mobile:bg-center mobile:bg-cover">
       <div className="absolute top-0 left-0 right-0 h-[40px] bg-gradient-to-b from-black to-transparent pointer-events-none"></div>
       <div className="absolute bottom-0 left-0 right-0 h-[40px] bg-gradient-to-b from-transparent to-black pointer-events-none"></div>
-      <DynamicForm initialValues={initialValues} onSubmit={handleSubmit}>
+      <DynamicForm
+        initialValues={initialValues}
+        validationSchema={validationSchema}
+        onSubmit={handleSubmit}
+      >
         {(formikProps) => (
           <div>
             <h2 className="max-w-[270px] lg:max-w-[650px] mb-[16px] mx-auto text-[28px] lg:text-[48px] text-white uppercase text-center font-bold">
@@ -33,6 +50,7 @@ const ContactsBlock = () => {
                   name="phoneNumber"
                   placeholder="Введіть Ваш номер"
                   inputClassName="px-[16px] opacity-gradient w-full h-[48px] lg:h-[40px] rounded-[12px] placeholder:text-[12px] placeholder:text-[#a1a1aa] text-[#a1a1aa]"
+                  errorClassName="absolute bottom-[10px] text-red-500 text-[16px] mt-1"
                 />
               </div>
               <div className="mx-auto lg:mx-0 w-full max-w-[313px] lg:max-w-[132px]">

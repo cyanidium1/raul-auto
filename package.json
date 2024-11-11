@@ -17,6 +17,7 @@
     "hamburger-react": "^2.5.1",
     "lg-fullscreen": "^1.2.1",
     "lg-thumbnail": "^1.2.1",
+    "libphonenumber-js": "^1.11.14",
     "lightgallery": "^2.7.2",
     "next": "14.2.3",
     "react": "^18",
@@ -28,6 +29,7 @@
     "swiper": "^11.1.14",
     "usehooks-ts": "^3.1.0",
     "yet-another-react-lightbox": "^3.21.1",
+    "yup": "^1.4.0",
     "zustand": "^4.5.4"
   },
   "devDependencies": {
