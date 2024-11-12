@@ -2,6 +2,7 @@
 import React from 'react';
 import CustomSelect from '../CustomSelect/CustomSelect';
 import useStore from '../../../app/zustand/useStore';
+import { FaChevronDown } from 'react-icons/fa';
 
 const options = [
   { label: 'RU', value: 'ru' },
@@ -32,6 +33,7 @@ const LanguageSelection = () => {
       selectClassName="ml-[10px] text-14 text-primary w-full cursor-pointer"
       optionListClassName="top-full px-[5px] flex flex-col justify-center items-center"
       optionClassName="py-[5px]"
+      IconComponent={FaChevronDown}
     />
   );
 };

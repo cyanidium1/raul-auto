@@ -1,6 +1,8 @@
 'use client';
 import { useState } from 'react';
 import Image from 'next/image';
+import { IconType } from 'react-icons';
+import { FaChevronDown } from 'react-icons/fa';
 
 interface Option {
   label: string;
@@ -17,6 +19,7 @@ interface CustomSelectProps {
   optionListClassName?: string;
   onSelect: (value: Option) => void;
   currentSelectedOption: string;
+  IconComponent?: IconType;
 }
 
 const CustomSelect = ({
@@ -29,6 +32,7 @@ const CustomSelect = ({
   optionClassName,
   onSelect,
   currentSelectedOption,
+  IconComponent = FaChevronDown,
 }: CustomSelectProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState<Option | null>(null);
@@ -52,14 +56,9 @@ const CustomSelect = ({
           onClick={() => setIsOpen(!isOpen)}
         >
           {selectedOption ? selectedOption.label : currentSelectedOption}
-          <Image
-            src="/select-icon.png"
-            alt="select icon"
-            width={18}
-            height={18}
-            className={`transform transition-transform duration-200 ${
-              isOpen ? 'rotate-180' : 'rotate-0'
-            }`}
+          <IconComponent
+            className={`transform transition-transform duration-200 ${isOpen ? 'rotate-180' : 'rotate-0'}`}
+            size={18}
           />
         </div>
         <ul
