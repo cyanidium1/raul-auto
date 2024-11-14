@@ -34,4 +34,6 @@ const page = () => {
   );
 };
 
+// деплой
+
 export default page;
