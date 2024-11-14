@@ -26,15 +26,17 @@ const DepartmentContacts = () => {
               <div className="mobile:flex mobile:gap-4 mobile:flex-col mobile:items-center mobile:justify-center tablet:flex-row tablet:items-start tablet:justify-start">
                 <a
                   className="w-[270px] h-[44px] flex items-center justify-center py-[14px] px-[24px] rounded-sub-block-10 bg-input text-16 text-primary font-bold transition duration-300 ease-in-out hover:scale-105 focus:outline-focus outline-none"
-                  href={`tel:${t.phone}`}
+                  href={`tel:+380937767373`}
                 >
-                  {t.phone}
+                  +380 93 776 73 73
                 </a>
                 <a
                   className="w-[270px] h-[44px] flex items-center justify-center py-[14px] px-[24px] rounded-sub-block-10 bg-input text-16 text-primary font-bold transition duration-300 ease-in-out hover:scale-105 focus:outline-focus outline-none"
-                  href={`http://t.me/${t.telegram_selection}`} target='_blank' rel='noreferrer'
+                  href={`https://t.me/raul_avto_search`}
+                  target="_blank"
+                  rel="noreferrer"
                 >
-                  {t.telegram_selection}
+                  @raul_avto_search
                 </a>
               </div>
             </div>
@@ -54,15 +56,17 @@ const DepartmentContacts = () => {
               <div className="mobile:flex mobile:gap-4 mobile:flex-col mobile:items-center mobile:justify-center tablet:flex-row tablet:items-start tablet:justify-start">
                 <a
                   className="w-[270px] h-[44px] flex items-center justify-center py-[14px] px-[24px] rounded-sub-block-10 bg-input text-16 text-primary font-bold transition duration-300 ease-in-out hover:scale-105 focus:outline-focus outline-none"
-                  href={`tel:${t.phone}`}
+                  href={`tel:+380637767373`}
                 >
-                  {t.phone}
+                  +380 63 776 73 73
                 </a>
                 <a
                   className="w-[270px] h-[44px] flex items-center justify-center py-[14px] px-[24px] rounded-sub-block-10 bg-input text-16 text-primary font-bold transition duration-300 ease-in-out hover:scale-105 focus:outline-focus outline-none"
-                  href={`http://t.me/${t.telegram_parts}`} target='_blank' rel='noreferrer'
+                  href={`http://t.me/raul_avto_parts`}
+                  target="_blank"
+                  rel="noreferrer"
                 >
-                  {t.telegram_parts}
+                  @raul_avto_parts
                 </a>
               </div>
             </div>
@@ -84,15 +88,17 @@ const DepartmentContacts = () => {
               <div className="mobile:flex mobile:gap-4 mobile:flex-col mobile:items-center mobile:justify-center tablet:flex-row tablet:items-start tablet:justify-start">
                 <a
                   className="w-[270px] h-[44px] flex items-center justify-center py-[14px] px-[24px] rounded-sub-block-10 bg-input text-16 text-primary font-bold transition duration-300 ease-in-out hover:scale-105 focus:outline-focus outline-none"
-                  href={`tel:${t.phone}`}
+                  href={`tel:+380737767373`}
                 >
-                  {t.phone}
+                  +380 73 776 73 73
                 </a>
                 <a
                   className="w-[270px] h-[44px] flex items-center justify-center py-[14px] px-[24px] rounded-sub-block-10 bg-input text-16 text-primary font-bold transition duration-300 ease-in-out hover:scale-105 focus:outline-focus outline-none"
-                  href={`http://t.me/${t.telegram_logistics}`} target='_blank' rel='noreferrer'
+                  href={`http://t.me/raul_avto_transport`}
+                  target="_blank"
+                  rel="noreferrer"
                 >
-                  {t.telegram_logistics}
+                  @raul_avto_transport
                 </a>
               </div>
             </div>

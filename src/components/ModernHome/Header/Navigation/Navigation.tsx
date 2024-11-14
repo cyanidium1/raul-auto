@@ -8,7 +8,7 @@ import translations from '../../../../app/lang/navLinks.json';
 const Navigation = () => {
   const pathname = usePathname();
   const language = useStore((state) => state.language);
-  const isActiveClass = 'text-red-600 text-14';
+  const isActiveClass = 'text-red-600 text-[16px]';
   const t = translations[language];
   return (
     <nav className="flex items-center">

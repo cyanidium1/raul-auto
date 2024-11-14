@@ -23,7 +23,7 @@ const SideMenu = ({ isOpen, onClose }: SideMenuProps) => {
 
   return (
     <div
-      className={`fixed inset-y-0 overflow-y-auto right-0 z-50 mobile:w-72 tablet:w-96 bg-gradient-sub-block shadow-lg transform transition-transform ${
+      className={`fixed inset-y-0 overflow-y-auto right-0 z-[550] mobile:w-72 tablet:w-96 bg-gradient-sub-block shadow-lg transform transition-transform ${
         isOpen ? 'translate-x-0' : 'translate-x-full'
       }`}
     >
@@ -89,7 +89,7 @@ const SideMenu = ({ isOpen, onClose }: SideMenuProps) => {
             Блог
           </Link>
         </li>
-        {/* <li className="p-2">
+        <li className="p-2">
           <Link
             onClick={onClose}
             className={`text-[20px] text-primary transition-colors duration-300 ease-in-out hover:text-red-600 focus:text-red-600 outline-none ${
@@ -99,7 +99,7 @@ const SideMenu = ({ isOpen, onClose }: SideMenuProps) => {
           >
             Faq
           </Link>
-        </li> */}
+        </li>
         {/* <li className="p-2">
           <Link
             onClick={onClose}

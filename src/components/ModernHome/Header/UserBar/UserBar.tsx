@@ -16,7 +16,7 @@ const UserBar = () => {
   };
 
   return (
-    <ul className="mobile:hidden pointuserbar:flex items-center">
+    <ul className="mobile:hidden pointuserbar:flex items-center ml-auto">
       {/* VIN */}
       {/* <li className="mr-[26px] relative">
         <input
@@ -62,7 +62,7 @@ const UserBar = () => {
           </div>
         )}
       </li> */}
-      <li>
+      <li className="mr-[16px]">
         <LanguageSelection />
       </li>
     </ul>

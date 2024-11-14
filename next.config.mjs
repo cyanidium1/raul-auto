@@ -7,5 +7,12 @@ export default {
   },
   images: {
     domains: ['vis.iaai.com', 'cs.copart.com'],
+
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'www.datocms-assets.com',
+      },
+    ],
   },
 };

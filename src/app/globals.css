@@ -241,3 +241,37 @@ button[data-hover=true]:hover {
   box-shadow: none !important;
   /* Убираем тень при наведении */
 }
+
+/* .bg-content1 {
+  background-color: transparent;
+} */
+
+@keyframes loaderForApiAnimation {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+
+  25% {
+    transform: rotate(10deg) scale(1.1);
+    /* Наклон вправо */
+  }
+
+  50% {
+    transform: rotate(-10deg) scale(1.1);
+    /* Наклон влево */
+  }
+
+  75% {
+    transform: rotate(10deg) scale(1.1);
+    /* Наклон вправо */
+  }
+
+  100% {
+    transform: rotate(0deg) scale(1);
+  }
+}
+
+.api-loader {
+  animation: loaderForApiAnimation 1s infinite;
+  -webkit-animation: loaderForApiAnimation 1s infinite;
+}

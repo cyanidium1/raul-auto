@@ -40,9 +40,14 @@ const AdminContacts = () => {
           </div>
           <ul className="flex gap-4 mobile:items-center mobile:justify-center">
             <li>
-              <a className="focus:outline-focus outline-none " href={`https://t.me/${t.telegram}`} target='_blank' rel='noreferrer'>
+              <a
+                className="focus:outline-focus outline-none "
+                href={`https://t.me/RAUL_AVTO`}
+                target="_blank"
+                rel="noreferrer"
+              >
                 <Image
-                  className='hover:scale-110 duration-300'
+                  className="hover:scale-110 duration-300"
                   src="/telegram.png"
                   alt="icon telegram"
                   width={56}
@@ -51,9 +56,14 @@ const AdminContacts = () => {
               </a>
             </li>
             <li>
-              <a className="focus:outline-focus outline-none" href="/" target='_blank' rel='noreferrer'>
+              <a
+                className="focus:outline-focus outline-none"
+                href="https://www.facebook.com/raulautoUSA/"
+                target="_blank"
+                rel="noreferrer"
+              >
                 <Image
-                  className='hover:scale-110 duration-300'
+                  className="hover:scale-110 duration-300"
                   src="/massages.png"
                   alt="icon messanger"
                   width={56}
@@ -62,9 +72,14 @@ const AdminContacts = () => {
               </a>
             </li>
             <li>
-              <a className="focus:outline-focus outline-none" href={`https://wa.me/${t.phone}`} target='_blank' rel='noreferrer'>
+              <a
+                className="focus:outline-focus outline-none"
+                href={`https://wa.me/+380737727373`}
+                target="_blank"
+                rel="noreferrer"
+              >
                 <Image
-                  className='hover:scale-110 duration-300'
+                  className="hover:scale-110 duration-300"
                   src="/WhatsApp.png"
                   alt="icon whatsapp"
                   width={56}
@@ -73,9 +88,14 @@ const AdminContacts = () => {
               </a>
             </li>
             <li>
-              <a className="focus:outline-focus outline-none" href={`viber://chat?number=%2B${t.phone.replace(/\s+/g, '')}`} target='_blank' rel='noreferrer'>
+              <a
+                className="focus:outline-focus outline-none"
+                href={`https://viber.com/+380737727373`}
+                target="_blank"
+                rel="noreferrer"
+              >
                 <Image
-                  className='hover:scale-110 duration-300'
+                  className="hover:scale-110 duration-300"
                   src="/viber.png"
                   alt="icon viber"
                   width={56}

@@ -24,17 +24,6 @@ const initialValues = {
   phoneNumber: '',
 };
 
-const validationSchema = yup.object({
-  phoneNumber: yup
-    .string()
-    .test(
-      'valid-phone',
-      'Номер телефону не валідний',
-      (value) => value && isValidPhoneNumber(value)
-    )
-    .required('Номер телефону обов’язковий для заповнення'),
-});
-
 const FormCall = () => {
   const [selectedDate, setSelectedDate] = useState(initialValues.date);
   const [selectedHour, setSelectedHour] = useState(Number(initialValues.hour));
@@ -47,6 +36,20 @@ const FormCall = () => {
   );
   const language = useStore((state) => state.language);
   const t = translations[language];
+  const validationSchema = yup.object({
+    phoneNumber: yup
+      .string()
+      .test(
+        'valid-phone',
+        `${t.phone_invalid}`,
+        (value) => value && isValidPhoneNumber(value)
+      )
+      .required(`${t.phone_required}`),
+  });
+
+  useEffect(() => {
+    setSelectedDate(t.today);
+  }, [language]);
 
   useEffect(() => {
     // Проверяем, если форма уже была показана, то не показываем снова
@@ -126,7 +129,8 @@ const FormCall = () => {
                 <div className="w-full max-w-[244px] mobile:mr-0 pointuserbar:mr-[32px]">
                   <Select
                     aria-label="date"
-                    defaultSelectedKeys={new Set([selectedDate])}
+                    selectedKeys={new Set([selectedDate])}
+                    // defaultSelectedKeys={new Set([selectedDate])}
                     onSelectionChange={(value) => {
                       const date = Array.from(value).join('');
                       setSelectedDate(date);

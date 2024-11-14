@@ -5,31 +5,31 @@ const social = [
     id: 1,
     icon: '/footer-telegram-icon.png',
     name: 'Telegram',
-    url: 'https://t.me/username',
+    url: 'https://t.me/RAUL_AVTO',
   },
   {
     id: 2,
     icon: '/footer-insagram-icon.png',
     name: 'Instagram',
-    url: 'https://instagram.com/username',
+    url: 'https://www.instagram.com/raul_avto/',
   },
   {
     id: 3,
     icon: '/footer-viber-icon.png',
     name: 'Viber',
-    url: 'https://viber.com/username',
+    url: 'https://viber.com/+380737727373',
   },
   {
     id: 4,
     icon: '/footer-messenger-icon.png',
     name: 'Messenger',
-    url: 'https://m.me/username',
+    url: 'https://www.facebook.com/raulautoUSA/',
   },
   {
     id: 5,
     icon: '/footer-whatsapp-icon.png',
     name: 'WhatsApp',
-    url: 'https://wa.me/username',
+    url: 'https://wa.me/+380737727373',
   },
 ];
 
