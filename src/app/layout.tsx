@@ -23,7 +23,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <link rel="apple-touch-icon" href="/logo.png"></link>
+      <link rel="apple-touch-icon" href="/modern-logo.png"></link>
       <link rel="manifest" href="/manifest.json"></link>
       <body className={myFontPanagram.className}>
         <ReduxProvider>
