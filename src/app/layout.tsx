@@ -24,7 +24,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <link rel="apple-touch-icon" href="/favicon_processed.png"></link>
-      <link rel="manifest" href="/manifest.json"></link>
+      {/* <link rel="manifest" href="/manifest.json"></link> */}
       <body className={myFontPanagram.className}>
         <ReduxProvider>
           <Header />
