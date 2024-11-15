@@ -16,9 +16,10 @@ const Navigation = () => {
         <Image
           src="/modern-logo.png"
           alt="logo icon"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 75vw, 50vw"
           width={185}
-          height={130}
-          className="mobile:w-[113px] mobile:h-[80px] tablet:w-[185px] tablet:h-[90px]"
+          height={90}
+          className="mobile:w-auto mobile:h-auto tablet:w-auto tablet:h-auto"
         />
       </Link>
       <ul className="mobile:hidden pointnav:flex items-center gap-10">

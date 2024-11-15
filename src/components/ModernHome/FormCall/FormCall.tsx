@@ -16,6 +16,7 @@ import { isValidPhoneNumber } from 'libphonenumber-js';
 import useStore from '@/app/zustand/useStore';
 import translations from '../../../app/lang/formCall.json';
 import { Select, SelectItem } from '@nextui-org/react';
+import { sendMessage } from '@/app/utils/sendMessage';
 
 const initialValues = {
   date: 'Сьогодні',
@@ -64,7 +65,14 @@ const FormCall = () => {
   }, [dispatch]);
 
   const handleSubmit = (values: FormikValues) => {
-    console.log(values);
+    const message = `
+    <b>Запрос на звонок:</b>\n
+    <b>Дата:</b> ${values.date}\n
+    <b>Время:</b> ${values.hour}:${values.minute}\n
+    <b>Телефон:</b> ${values.phoneNumber}
+  `;
+    sendMessage(message);
+    console.log(message);
   };
 
   const increaseHour = (formikProps: any) => {

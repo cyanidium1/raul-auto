@@ -3,17 +3,17 @@
   "name": "Raul Avto",
   "icons": [
     {
-      "src": "/src/app/favicon.ico",
+      "src": "icon.png",
       "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
+      "type": "image/png"
     },
     {
-      "src": "favicon_processed.png",
+      "src": "apple-icon.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "favicon_processed.png",
+      "src": "apple-icon.png",
       "type": "image/png",
       "sizes": "309x309"
     }
