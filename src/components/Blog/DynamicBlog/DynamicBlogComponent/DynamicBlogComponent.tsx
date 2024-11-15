@@ -24,6 +24,10 @@ const DynamicBlogComponent = ({ slug }) => {
   const previewImage = '/banner-for-video.png';
   const placeholder = '/Placeholder.png';
 
+  const monthsPassed =
+    (new Date().getFullYear() - 2022) * 12 + new Date().getMonth(); // Количество месяцев с января 2022
+  const views = Math.round(1000 * (1.1 + Math.random() * 0.4) ** monthsPassed); // Растущие просмотры с коэффициентом
+
   useEffect(() => {
     if (!slug || !language) return;
 
@@ -95,7 +99,9 @@ const DynamicBlogComponent = ({ slug }) => {
                     />
                   </svg>
                 </div>
-                <div className="text-white text-[16px] font-semibold">2k</div>
+                <div className="text-white text-[16px] font-semibold">
+                  {(views / 1000).toFixed(1)}K
+                </div>
               </div>
               <div className="flex items-center gap-[12px]">
                 <div>
@@ -109,7 +115,7 @@ const DynamicBlogComponent = ({ slug }) => {
                 {stars.map((_, index) => (
                   <IoStar
                     key={index}
-                    color={index < 3 ? '#F7B750' : 'white'}
+                    color={index < 5 ? '#F7B750' : 'white'}
                     className="w-[20px] h-[20px]"
                   />
                 ))}

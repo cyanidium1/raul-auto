@@ -5,13 +5,19 @@ import LanguageSelection from '@/components/UI/LanguageSelection/LanguageSelecti
 import { Squash as Hamburger } from 'hamburger-react';
 import { usePathname } from 'next/navigation';
 import { useEffect } from 'react';
+import useStore from '@/app/zustand/useStore';
+import translations from '../../../../app/lang/navLinks.json';
 type SideMenuProps = {
   isOpen: boolean;
   onClose: () => void;
 };
 const SideMenu = ({ isOpen, onClose }: SideMenuProps) => {
-  const pathname = usePathname();
   const isActive = 'text-red-600 text-[20px]';
+
+  const pathname = usePathname();
+  const language = useStore((state) => state.language); // Берем текущий язык из Zustand
+  const isActiveClass = 'text-red-600 text-[16px]';
+  const t = translations[language]; // Достаем переводы для выбранного языка
 
   useEffect(() => {
     if (isOpen) {
@@ -42,7 +48,7 @@ const SideMenu = ({ isOpen, onClose }: SideMenuProps) => {
             }`}
             href="/calculator"
           >
-            Калькулятор
+            {t.calculator}
           </Link>
         </li>
         <li className="p-2">
@@ -53,7 +59,7 @@ const SideMenu = ({ isOpen, onClose }: SideMenuProps) => {
             }`}
             href="/partnership"
           >
-            Сотрудничество
+            {t.partnership}
           </Link>
         </li>
         <li className="p-2">
@@ -64,7 +70,7 @@ const SideMenu = ({ isOpen, onClose }: SideMenuProps) => {
             }`}
             href="/contacts"
           >
-            Контакты
+            {t.contacts}
           </Link>
         </li>
         <li className="p-2">
@@ -75,7 +81,7 @@ const SideMenu = ({ isOpen, onClose }: SideMenuProps) => {
             }`}
             href="/about"
           >
-            О нас
+            {t.about}
           </Link>
         </li>
         <li className="p-2">
@@ -86,7 +92,7 @@ const SideMenu = ({ isOpen, onClose }: SideMenuProps) => {
             }`}
             href="/blog"
           >
-            Блог
+            {t.blog}
           </Link>
         </li>
         <li className="p-2">
@@ -97,7 +103,7 @@ const SideMenu = ({ isOpen, onClose }: SideMenuProps) => {
             }`}
             href="/faq"
           >
-            Faq
+            {t.faq}
           </Link>
         </li>
         {/* <li className="p-2">
