@@ -8,6 +8,7 @@ import { useState } from 'react';
 import { Slider } from '@nextui-org/react';
 import useStore from '@/app/zustand/useStore';
 import translations from '../../../app/lang/orderFormModern.json';
+import { sendMessage } from '@/app/utils/sendMessage';
 
 const initialValues = {
   name: '',
@@ -24,8 +25,18 @@ const OrderFormModern = () => {
   const language = useStore((state) => state.language);
   const t = translations[language];
 
-  const handleSubmit = (value: FormikValues) => {
-    console.log(value);
+  const handleSubmit = (values: FormikValues) => {
+    const message = `
+      <b>Новый заказ:</b>\n
+      <b>Имя:</b> ${values.name}\n
+      <b>Телефон:</b> ${values.phoneNumber}\n
+      <b>Марка:</b> ${values.brand}\n
+      <b>Модель:</b> ${values.model}\n
+      <b>Пробег:</b> ${values.mileage[0]} - ${values.mileage[1]} км\n
+      <b>Год:</b> ${values.year[0]} - ${values.year[1]}
+    `;
+    sendMessage(message);
+    console.log(message);
   };
   return (
     <Container>
