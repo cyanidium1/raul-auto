@@ -26,7 +26,9 @@ const DynamicBlogComponent = ({ slug }) => {
 
   const monthsPassed =
     (new Date().getFullYear() - 2022) * 12 + new Date().getMonth(); // Количество месяцев с января 2022
-  const views = Math.round(1000 * (1.1 + Math.random() * 0.4) ** monthsPassed); // Растущие просмотры с коэффициентом
+  const baseViews = 2000; // Начальные просмотры
+  const yearlyIncrease = 1000 / 12; // Прирост в месяц, чтобы в год прибавлялось до 1000
+  const views = baseViews + monthsPassed * yearlyIncrease;
 
   useEffect(() => {
     if (!slug || !language) return;
@@ -100,7 +102,7 @@ const DynamicBlogComponent = ({ slug }) => {
                   </svg>
                 </div>
                 <div className="text-white text-[16px] font-semibold">
-                  {(views / 1000).toFixed(1)}K
+                  {views.toFixed(0).toLocaleString()}K
                 </div>
               </div>
               <div className="flex items-center gap-[12px]">
