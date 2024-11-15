@@ -28,7 +28,7 @@ const DynamicBlogComponent = ({ slug }) => {
     (new Date().getFullYear() - 2022) * 12 + new Date().getMonth(); // Количество месяцев с января 2022
   const baseViews = 2000; // Начальные просмотры
   const yearlyIncrease = 1000 / 12; // Прирост в месяц, чтобы в год прибавлялось до 1000
-  const views = baseViews + monthsPassed * yearlyIncrease;
+  const views = baseViews + (monthsPassed * yearlyIncrease) / 1000;
 
   useEffect(() => {
     if (!slug || !language) return;
