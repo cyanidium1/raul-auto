@@ -84,7 +84,7 @@ const BlogList = () => {
                 </p>
                 <a
                   href={`/blog/${post.slug}`}
-                  className="flex items-center justify-center w-full h-[40px] bg-transparent border-[1px] border-black rounded-sub-block-12 text-[14px] transform transition duration-300 ease-in-out hover:scale-[1.05] hover:text-red-600"
+                  className="flex items-center justify-center w-full h-[40px] bg-transparent border-[1px] border-black rounded-sub-block-12 text-[14px] transform transition duration-300 ease-in-out hover:scale-[1.05] hover:text-red-600 will-change-transform"
                 >
                   {t.view_details}
                 </a>
