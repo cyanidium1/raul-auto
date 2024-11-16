@@ -3,33 +3,54 @@ import { motion } from 'framer-motion';
 import InputField from '@/components/UI/InputField/InputField';
 import Button from '@/components/UI/Button/Button';
 import DynamicForm from '@/components/UI/DynamicForm/DynamicForm';
-import { FormikValues } from 'formik';
+import { FormikHelpers, FormikValues } from 'formik';
 import * as yup from 'yup';
 import { isValidPhoneNumber } from 'libphonenumber-js';
 import useStore from '@/app/zustand/useStore';
 import translations from '../../../app/lang/contactBlock.json';
+import translationsValidation from '../../../app/lang/formCall.json';
+import { sendMessage } from '@/app/utils/sendMessage';
+import { useState } from 'react';
+import Notification from '@/components/UI/Notification/Notification';
 
-const initialValues = {
+interface FormCallValues {
+  phoneNumber: string;
+}
+
+const initialValues: FormCallValues = {
   phoneNumber: '',
 };
 
-const validationSchema = yup.object({
-  phoneNumber: yup
-    .string()
-    .test(
-      'valid-phone',
-      'Номер телефону не валідний',
-      (value) => value && isValidPhoneNumber(value)
-    )
-    .required('Номер телефону обов’язковий для заповнення'),
-});
-
 const ContactsBlock = () => {
+  const [notificationVisible, setNotificationVisible] = useState(false);
   const language = useStore((state) => state.language);
   const t = translations[language];
+  const tValidation = translationsValidation[language];
 
-  const handleSubmit = (value: FormikValues) => {
-    console.log(value);
+  const validationSchema = yup.object({
+    phoneNumber: yup
+      .string()
+      .test(
+        'valid-phone',
+        `${tValidation.phone_invalid}`,
+        (value) => value && isValidPhoneNumber(value)
+      )
+      .required(`${tValidation.phone_required}`),
+  });
+
+  const handleSubmit = (
+    values: FormikValues,
+    formikHelpers: FormikHelpers<FormCallValues>
+  ) => {
+    const { resetForm } = formikHelpers;
+    const message = `
+    Запрос на звонок: телефон: ${values.phoneNumber}
+  `;
+    sendMessage(message);
+
+    resetForm();
+
+    setNotificationVisible(true);
   };
 
   return (
@@ -96,7 +117,7 @@ const ContactsBlock = () => {
                   name="phoneNumber"
                   placeholder={t.input_placeholder}
                   inputClassName="px-[16px] opacity-gradient w-full h-[48px] lg:h-[40px] rounded-[12px] placeholder:text-[12px] placeholder:text-[#a1a1aa] text-[#a1a1aa]"
-                  errorClassName="absolute bottom-[10px] text-red-500 text-[16px] mt-1"
+                  errorClassName="text-red-500 mx-auto text-center text-[16px] mt-1"
                 />
               </div>
               <div className="mx-auto lg:mx-0 w-full max-w-[313px] lg:max-w-[132px]">
@@ -111,6 +132,11 @@ const ContactsBlock = () => {
           </div>
         )}
       </DynamicForm>
+      <div className="absolute bottom-[15px] right-[15px]">
+        {notificationVisible && (
+          <Notification onHide={() => setNotificationVisible(false)} />
+        )}
+      </div>
     </motion.section>
   );
 };
