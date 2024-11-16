@@ -41,7 +41,7 @@ const OrderFormModern = () => {
   const tValidation = translationsValidation[language];
 
   const validationSchema = yup.object({
-    name: yup.string().required(),
+    name: yup.string().required(`${tValidation.name_required}`),
     phoneNumber: yup
       .string()
       .test(
@@ -49,9 +49,9 @@ const OrderFormModern = () => {
         `${tValidation.phone_invalid}`,
         (value) => value && isValidPhoneNumber(value)
       )
-      .required(),
-    brand: yup.string().required(),
-    model: yup.string().required(),
+      .required(`${tValidation.phone_required}`),
+    brand: yup.string().required(`${tValidation.brand_required}`),
+    model: yup.string().required(`${tValidation.model_required}`),
   });
 
   const handleSubmit = (
@@ -63,8 +63,10 @@ const OrderFormModern = () => {
       Заявка на подбор авто: имя:${values.name},телефон:${values.phoneNumber},марка:${values.brand},модель:${values.model},пробег:${values.mileage[0]} - ${values.mileage[1]} км,год:${values.year[0]} - ${values.year[1]}
     `;
     sendMessage(message);
-
     resetForm();
+    // Сброс значений ползунков
+    setMileage([50000, 200000]);
+    setYear([2000, new Date().getFullYear()]);
     setNotificationVisible(true);
   };
   return (
@@ -128,6 +130,7 @@ const OrderFormModern = () => {
                     step={5000}
                     minValue={50000}
                     maxValue={200000}
+                    value={mileage}
                     defaultValue={[mileage[0], mileage[1]]}
                     onChange={(values: number[]) => {
                       setMileage(values);
@@ -162,6 +165,7 @@ const OrderFormModern = () => {
                     step={1}
                     minValue={2000}
                     maxValue={new Date().getFullYear()}
+                    value={year}
                     defaultValue={[year[0], year[1]]}
                     onChange={(values: number[]) => {
                       setYear(values);

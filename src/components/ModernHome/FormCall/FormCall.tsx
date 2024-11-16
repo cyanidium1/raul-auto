@@ -232,7 +232,7 @@ const FormCall = () => {
                   name="phoneNumber"
                   placeholder={t.phone_placeholder}
                   inputClassName="bg-input-for-form-call text-white border-[1px] border-gray-500 rounded-[12px] pointuserbar:mr-[12px] px-[16px] placeholder:text-[12px] placeholder-gray-400 w-full max-w-[225px] h-[40px]"
-                  errorClassName="absolute bottom-[10px] text-red-500 text-[16px] mt-1"
+                  errorClassName="pointuserbar:absolute pointuserbar:bottom-[10px] mx-auto text-red-500 text-[16px] text-center mobileplus:mt-1"
                 />
 
                 <Button
