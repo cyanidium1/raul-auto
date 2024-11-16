@@ -80,7 +80,7 @@ const BlogList = () => {
                   {post.subtitle}
                 </p> */}
                 <p className="h-[93px] overflow-auto scrollbar-hide text-[16px] text-[#71717a] font-medium mb-[32px]">
-                  {post.p1text || 'N/A'}
+                  {post.subtitle || 'N/A'}
                 </p>
                 <a
                   href={`/blog/${post.slug}`}
