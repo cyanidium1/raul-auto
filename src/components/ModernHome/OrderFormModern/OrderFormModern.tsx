@@ -62,11 +62,10 @@ const OrderFormModern = () => {
     const message = `
       Заявка на подбор авто: имя:${values.name},телефон:${values.phoneNumber},марка:${values.brand},модель:${values.model},пробег:${values.mileage[0]} - ${values.mileage[1]} км,год:${values.year[0]} - ${values.year[1]}
     `;
-    // sendMessage(message);
+    sendMessage(message);
 
     resetForm();
     setNotificationVisible(true);
-    console.log(message);
   };
   return (
     <Container>

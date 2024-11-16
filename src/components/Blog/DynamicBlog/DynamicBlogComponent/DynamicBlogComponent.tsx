@@ -24,12 +24,6 @@ const DynamicBlogComponent = ({ slug }) => {
   const previewImage = '/banner-for-video.png';
   const placeholder = '/Placeholder.png';
 
-  const monthsPassed =
-    (new Date().getFullYear() - 2022) * 12 + new Date().getMonth(); // Количество месяцев с января 2022
-  const baseViews = 2000; // Начальные просмотры
-  const yearlyIncrease = 1000 / 12; // Прирост в месяц, чтобы в год прибавлялось до 1000
-  const views = baseViews + (monthsPassed * yearlyIncrease) / 1000;
-
   useEffect(() => {
     if (!slug || !language) return;
 
@@ -101,16 +95,14 @@ const DynamicBlogComponent = ({ slug }) => {
                     />
                   </svg>
                 </div>
-                <div className="text-white text-[16px] font-semibold">
-                  {views.toFixed(0).toLocaleString()}K
-                </div>
+                <div className="text-white text-[16px] font-semibold">2.1K</div>
               </div>
               <div className="flex items-center gap-[12px]">
                 <div>
                   <IoMdTime color="white" className="w-[35px] h-[36px]" />
                 </div>
                 <div className="text-white text-[16px] font-semibold">
-                  5 хв на читання
+                  6 хв на читання
                 </div>
               </div>
               <div className="flex items-center gap-[5px]">

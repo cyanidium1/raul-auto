@@ -81,13 +81,12 @@ const FormCall = () => {
     const message = `
     Запрос на звонок:дата: ${values.date},время: ${values.hour}:${values.minute},телефон: ${values.phoneNumber}
   `;
+    sendMessage(message);
 
-    // setSelectedDate(initialValues.date);
-    // setSelectedHour(Number(initialValues.hour));
-    // setSelectedMinute(Number(initialValues.minute));
-
-    // sendMessage(message);
-    // resetForm();
+    setSelectedDate(initialValues.date);
+    setSelectedHour(Number(initialValues.hour));
+    setSelectedMinute(Number(initialValues.minute));
+    resetForm();
 
     // Показываем уведомление
     setNotificationVisible(true);
@@ -132,10 +131,7 @@ const FormCall = () => {
   if (!isVisible) return null;
 
   return (
-    <section
-      className="mx-[10px] fixed z-[200] inset-x-0 bottom-10 rounded-sub-block-22 border-[1px] border-gay-500 bg-black py-[48px] text-white transition-opacity duration-500 opacity-0 animate-fadeIn"
-      // aria-hidden={!isVisible ? 'true' : 'false'}
-    >
+    <section className="mx-[10px] fixed z-[200] inset-x-0 bottom-10 rounded-sub-block-22 border-[1px] border-gay-500 bg-black py-[48px] text-white transition-opacity duration-500 opacity-0 animate-fadeIn">
       <button
         onClick={handleClose}
         className="absolute top-4 right-4 text-white text-[24px] cursor-pointer"
