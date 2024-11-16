@@ -223,19 +223,19 @@ input[type='range']::after {
 }
 
 /* Используйте более специфичный селектор для переопределения стиля */
-.group[data-has-value=true] .group-data-\[has-value\=true\]\:text-default-foreground {
+.group[data-has-value='true'] .group-data-\[has-value\=true\]\:text-default-foreground {
   color: white !important;
   /* Белый цвет и использование !important, чтобы переопределить стиль */
 }
 
 /* Убираем эффект ховера */
-button[data-hover=true] {
+button[data-hover='true'] {
   background: rgba(212, 212, 216, 0.4) !important;
   /* Убираем фоновый цвет при ховере */
 }
 
 /* Можно также убрать любые другие стили, связанные с hover, если необходимо */
-button[data-hover=true]:hover {
+button[data-hover='true']:hover {
   background: rgba(212, 212, 216, 0.4) !important;
   /* Убираем фон при наведении */
   box-shadow: none !important;
@@ -274,4 +274,43 @@ button[data-hover=true]:hover {
 .api-loader {
   animation: loaderForApiAnimation 1s infinite;
   -webkit-animation: loaderForApiAnimation 1s infinite;
+}
+
+.notification {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  padding: 15px 20px;
+  border-radius: 10px;
+  border: 1px solid white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  animation:
+    fadeIn 1s ease-out forwards,
+    fadeOut 1s ease-out forwards 4s;
+  /* Плавное исчезновение после 4 секунд */
+  pointer-events: none;
+}
+
+.fade-out {
+  animation: fadeOut 1s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
 }

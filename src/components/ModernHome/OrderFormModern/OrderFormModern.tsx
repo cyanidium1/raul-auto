@@ -3,14 +3,27 @@ import InputField from '@/components/UI/InputField/InputField';
 import Button from '@/components/UI/Button/Button';
 import DynamicForm from '@/components/UI/DynamicForm/DynamicForm';
 import Container from '@/components/Container/Container';
-import { FormikValues } from 'formik';
+import { FormikHelpers, FormikValues } from 'formik';
 import { useState } from 'react';
 import { Slider } from '@nextui-org/react';
 import useStore from '@/app/zustand/useStore';
 import translations from '../../../app/lang/orderFormModern.json';
+import translationsValidation from '../../../app/lang/formCall.json';
 import { sendMessage } from '@/app/utils/sendMessage';
+import Notification from '@/components/UI/Notification/Notification';
+import * as yup from 'yup';
+import { isValidPhoneNumber } from 'libphonenumber-js';
 
-const initialValues = {
+interface FormCallValues {
+  name: string;
+  phoneNumber: string;
+  brand: string;
+  model: string;
+  mileage: [number, number];
+  year: [number, number];
+}
+
+const initialValues: FormCallValues = {
   name: '',
   phoneNumber: '',
   brand: '',
@@ -20,28 +33,49 @@ const initialValues = {
 };
 
 const OrderFormModern = () => {
+  const [notificationVisible, setNotificationVisible] = useState(false);
   const [mileage, setMileage] = useState([50000, 200000]);
   const [year, setYear] = useState([2000, new Date().getFullYear()]);
   const language = useStore((state) => state.language);
   const t = translations[language];
+  const tValidation = translationsValidation[language];
 
-  const handleSubmit = (values: FormikValues) => {
+  const validationSchema = yup.object({
+    name: yup.string().required(),
+    phoneNumber: yup
+      .string()
+      .test(
+        'valid-phone',
+        `${tValidation.phone_invalid}`,
+        (value) => value && isValidPhoneNumber(value)
+      )
+      .required(),
+    brand: yup.string().required(),
+    model: yup.string().required(),
+  });
+
+  const handleSubmit = (
+    values: FormikValues,
+    formikHelpers: FormikHelpers<FormCallValues>
+  ) => {
+    const { resetForm } = formikHelpers;
     const message = `
-      <b>Новый заказ:</b>\n
-      <b>Имя:</b> ${values.name}\n
-      <b>Телефон:</b> ${values.phoneNumber}\n
-      <b>Марка:</b> ${values.brand}\n
-      <b>Модель:</b> ${values.model}\n
-      <b>Пробег:</b> ${values.mileage[0]} - ${values.mileage[1]} км\n
-      <b>Год:</b> ${values.year[0]} - ${values.year[1]}
+      Заявка на подбор авто: имя:${values.name},телефон:${values.phoneNumber},марка:${values.brand},модель:${values.model},пробег:${values.mileage[0]} - ${values.mileage[1]} км,год:${values.year[0]} - ${values.year[1]}
     `;
-    sendMessage(message);
+    // sendMessage(message);
+
+    resetForm();
+    setNotificationVisible(true);
     console.log(message);
   };
   return (
     <Container>
-      <section className="bg-white rounded-[20px] py-[32px] tabletplus:py-[50px] tabletplus:px-[80px] px-[35px]">
-        <DynamicForm initialValues={initialValues} onSubmit={handleSubmit}>
+      <section className="relative bg-white rounded-[20px] py-[32px] tabletplus:py-[50px] tabletplus:px-[80px] px-[35px]">
+        <DynamicForm
+          initialValues={initialValues}
+          validationSchema={validationSchema}
+          onSubmit={handleSubmit}
+        >
           {(formikProps) => (
             <div>
               <h2 className="mx-auto max-w-[225px] tablet:max-w-full text-center text-[24px] tabletplus:text-[32px] font-semibold mb-[10px] tabletplus:mb-[14px]">
@@ -57,6 +91,7 @@ const OrderFormModern = () => {
                     name="name"
                     placeholder={t.input_name}
                     inputClassName="input-order-bg border-[1px] border-gray-400 px-[16px] w-full h-[40px] rounded-[12px] placeholder:text-[12px] placeholder:text-[#a1a1aa] text-black"
+                    errorClassName="text-red-500 text-[8px] mt-1"
                   />
                 </div>
                 <div className="mx-auto max-w-[243px] tabletplus:max-w-[225px] mb-[12px] tablet:mb-0">
@@ -65,6 +100,7 @@ const OrderFormModern = () => {
                     name="phoneNumber"
                     placeholder={t.input_phone}
                     inputClassName="input-order-bg border-[1px] border-gray-400 px-[16px] w-full h-[40px] rounded-[12px] placeholder:text-[12px] placeholder:text-[#a1a1aa] text-black"
+                    errorClassName="text-red-500 text-[8px] mt-1"
                   />
                 </div>
                 <div className="mx-auto max-w-[243px] tabletplus:max-w-[225px] mb-[12px] tablet:mb-0">
@@ -73,6 +109,7 @@ const OrderFormModern = () => {
                     name="brand"
                     placeholder={t.input_brand}
                     inputClassName="input-order-bg border-[1px] border-gray-400 px-[16px] w-full h-[40px] rounded-[12px] placeholder:text-[12px] placeholder:text-[#a1a1aa] text-black"
+                    errorClassName="text-red-500 text-[8px] mt-1"
                   />
                 </div>
                 <div className="mx-auto max-w-[243px] tabletplus:max-w-[225px] mb-[20px] tablet:mb-0">
@@ -81,6 +118,7 @@ const OrderFormModern = () => {
                     name="model"
                     placeholder={t.input_model}
                     inputClassName="input-order-bg border-[1px] border-gray-400 px-[16px] w-full h-[40px] rounded-[12px] placeholder:text-[12px] placeholder:text-[#a1a1aa] text-black"
+                    errorClassName="text-red-500 text-[8px] mt-1"
                   />
                 </div>
               </div>
@@ -165,6 +203,11 @@ const OrderFormModern = () => {
             </div>
           )}
         </DynamicForm>
+        <div className="absolute bottom-3 left-3">
+          {notificationVisible && (
+            <Notification onHide={() => setNotificationVisible(false)} />
+          )}
+        </div>
       </section>
     </Container>
   );

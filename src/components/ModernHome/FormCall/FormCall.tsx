@@ -3,7 +3,7 @@ import InputField from '@/components/UI/InputField/InputField';
 import Button from '@/components/UI/Button/Button';
 import DynamicForm from '@/components/UI/DynamicForm/DynamicForm';
 import Container from '@/components/Container/Container';
-import { FormikValues } from 'formik';
+import { FormikHelpers, FormikValues } from 'formik';
 import { useState, useEffect } from 'react';
 import { IoIosArrowUp, IoIosArrowDown, IoMdClose } from 'react-icons/io';
 import { useAppDispatch, useAppSelector } from '@/hooks/redux-hook';
@@ -17,8 +17,16 @@ import useStore from '@/app/zustand/useStore';
 import translations from '../../../app/lang/formCall.json';
 import { Select, SelectItem } from '@nextui-org/react';
 import { sendMessage } from '@/app/utils/sendMessage';
+import Notification from '@/components/UI/Notification/Notification';
 
-const initialValues = {
+interface FormCallValues {
+  date: string;
+  hour: string;
+  minute: string;
+  phoneNumber: string;
+}
+
+const initialValues: FormCallValues = {
   date: 'Сьогодні',
   hour: '09',
   minute: '00',
@@ -26,6 +34,7 @@ const initialValues = {
 };
 
 const FormCall = () => {
+  const [notificationVisible, setNotificationVisible] = useState(false);
   const [selectedDate, setSelectedDate] = useState(initialValues.date);
   const [selectedHour, setSelectedHour] = useState(Number(initialValues.hour));
   const [selectedMinute, setSelectedMinute] = useState(
@@ -64,15 +73,24 @@ const FormCall = () => {
     }
   }, [dispatch]);
 
-  const handleSubmit = (values: FormikValues) => {
+  const handleSubmit = (
+    values: FormikValues,
+    formikHelpers: FormikHelpers<FormCallValues>
+  ) => {
+    const { resetForm } = formikHelpers;
     const message = `
-    <b>Запрос на звонок:</b>\n
-    <b>Дата:</b> ${values.date}\n
-    <b>Время:</b> ${values.hour}:${values.minute}\n
-    <b>Телефон:</b> ${values.phoneNumber}
+    Запрос на звонок:дата: ${values.date},время: ${values.hour}:${values.minute},телефон: ${values.phoneNumber}
   `;
-    sendMessage(message);
-    console.log(message);
+
+    // setSelectedDate(initialValues.date);
+    // setSelectedHour(Number(initialValues.hour));
+    // setSelectedMinute(Number(initialValues.minute));
+
+    // sendMessage(message);
+    // resetForm();
+
+    // Показываем уведомление
+    setNotificationVisible(true);
   };
 
   const increaseHour = (formikProps: any) => {
@@ -114,7 +132,10 @@ const FormCall = () => {
   if (!isVisible) return null;
 
   return (
-    <section className="mx-[10px] fixed z-[200] inset-x-0 bottom-10 rounded-sub-block-22 border-[1px] border-gay-500 bg-black py-[48px] text-white transition-opacity duration-500 opacity-0 animate-fadeIn">
+    <section
+      className="mx-[10px] fixed z-[200] inset-x-0 bottom-10 rounded-sub-block-22 border-[1px] border-gay-500 bg-black py-[48px] text-white transition-opacity duration-500 opacity-0 animate-fadeIn"
+      // aria-hidden={!isVisible ? 'true' : 'false'}
+    >
       <button
         onClick={handleClose}
         className="absolute top-4 right-4 text-white text-[24px] cursor-pointer"
@@ -229,6 +250,11 @@ const FormCall = () => {
           </DynamicForm>
         </div>
       </Container>
+      <div className="absolute bottom-[15px] right-[15px]">
+        {notificationVisible && (
+          <Notification onHide={() => setNotificationVisible(false)} />
+        )}
+      </div>
     </section>
   );
 };
