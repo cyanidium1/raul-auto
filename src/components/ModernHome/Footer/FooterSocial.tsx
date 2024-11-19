@@ -15,15 +15,15 @@ const social = [
   },
   {
     id: 3,
-    icon: '/facebook.webp',
+    icon: '/footer-viber-icon.png',
     name: 'Viber',
-    url: 'https://web.facebook.com/raulautoUSA/',
+    url: 'viber://chat?number=%2B380737727373',
   },
   {
     id: 4,
     icon: '/footer-messenger-icon.png',
     name: 'Messenger',
-    url: 'https://www.facebook.com/raulautoUSA/',
+    url: 'https://web.facebook.com/profile.php?id=100067027997908&_rdc=1&_rdr',
   },
   {
     id: 5,
