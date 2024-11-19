@@ -1,4 +1,5 @@
 import FaqComponent from '@/components/FaqComponent/FaqComponent';
+import ContactsBlock from '@/components/ModernHome/ContactsBlock/ContactsBlock';
 import { Montserrat } from 'next/font/google';
 
 const montserrat = Montserrat({
@@ -7,8 +8,9 @@ const montserrat = Montserrat({
 });
 const FaqPage = () => {
   return (
-    <div className={`${montserrat.className}`}>
+    <div className={`${montserrat.className} space-y-24`}>
       <FaqComponent />
+      <ContactsBlock />
     </div>
   );
 };
