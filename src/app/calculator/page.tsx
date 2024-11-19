@@ -1,11 +1,12 @@
 import HeroCalculator from '@/components/Calculator/HeroCalculator/HeroCalculator';
 import CalculatorBlock from '@/components/Calculator/CalculatorBlock/CalculatorBlock';
+import Container from '@/components/Container/Container';
 const CalculatorPage = () => {
   return (
-    <section className="p-3">
+    <Container>
       <HeroCalculator />
       <CalculatorBlock />
-    </section>
+    </Container>
   );
 };
 

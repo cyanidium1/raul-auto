@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import HeroPartnership from '../../components/Partnership/HeroPartnership/HeroPartnership';
 import Advantages from '@/components/Partnership/Advantages/Advantages';
 import Questions from '@/components/Partnership/Questions/Questions';
+import Container from '@/components/Container/Container';
 
 const blockVariants = {
   hidden: { opacity: 0, y: 20 },
@@ -23,7 +24,7 @@ const AnimatedSection = ({ children }) => (
 
 const PartnershipPage = () => {
   return (
-    <section className="px-3">
+    <Container>
       <div className="mx-auto max-w-[1750px]">
         <AnimatedSection>
           <HeroPartnership />
@@ -35,7 +36,7 @@ const PartnershipPage = () => {
           <Questions />
         </AnimatedSection>
       </div>
-    </section>
+    </Container>
   );
 };
 
