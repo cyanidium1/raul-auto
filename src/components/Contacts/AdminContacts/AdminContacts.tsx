@@ -2,6 +2,7 @@
 import Image from 'next/image';
 import useStore from '../../../app/zustand/useStore';
 import translations from '../../../app/lang/contacts.json';
+import FooterSocial from '@/components/ModernHome/Footer/FooterSocial';
 
 const AdminContacts = () => {
   const language = useStore((state) => state.language);
@@ -38,7 +39,7 @@ const AdminContacts = () => {
               {t.telegram}
             </a>
           </div>
-          <ul className="flex gap-4 mobile:items-center mobile:justify-center">
+          {/* <ul className="flex gap-4 mobile:items-center mobile:justify-center">
             <li>
               <a
                 className="focus:outline-focus outline-none "
@@ -103,7 +104,8 @@ const AdminContacts = () => {
                 />
               </a>
             </li>
-          </ul>
+          </ul> */}
+          <FooterSocial />
         </div>
       </div>
     </div>

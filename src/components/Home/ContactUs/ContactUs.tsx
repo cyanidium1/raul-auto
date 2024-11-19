@@ -6,6 +6,8 @@ import Button from '@/components/UI/Button/Button';
 import { sendMessage } from '@/app/utils/sendMessage';
 import useStore from '../../../app/zustand/useStore';
 import lang from '../../../app/lang/contactUs.json';
+import OrderBlock from '@/components/ModernHome/OrderBlock/OrderBlock';
+import ContactsBlock from '@/components/ModernHome/ContactsBlock/ContactsBlock';
 
 const ContactUs = () => {
   const [phoneNumber, setPhoneNumber] = useState<string>('');
@@ -22,9 +24,9 @@ const ContactUs = () => {
   };
 
   return (
-    <div className="mobile:pb-[20px] desktop:pb-[80px]">
-      <div className="flex justify-center items-center gap-[32px] mobile:flex-wrap tablet:flex-nowrap">
-        <div className="mobile:flex mobile:flex-col mobile:items-center mobile:justify-center mobile:h-auto desktop:flex-row desktop:justify-normal desktop:w-[976px] desktop:h-[355px] mobile:rounded-sub-block-10 tablet:rounded-sub-block-42 bg-gradient-sub-block p-16 gap-16">
+    <div className="mobile:pb-[20px] desktop:pb-[80px] ">
+      {/* <div className="flex justify-center items-center gap-[32px] mobile:flex-wrap tablet:flex-nowrap"> */}
+      {/* <div className="mobile:flex mobile:flex-col mobile:items-center mobile:justify-center mobile:h-auto desktop:flex-row desktop:justify-normal desktop:w-[976px] desktop:h-[355px] mobile:rounded-sub-block-10 tablet:rounded-sub-block-42 bg-gradient-sub-block p-16 gap-16">
           <Image
             className="mobile:w-[150px] mobile:h-[130px] desktop:w-[232px] desktop:h-[220px]"
             src="/call.png"
@@ -44,17 +46,20 @@ const ContactUs = () => {
               {texts.callNow}
             </a>
           </div>
-        </div>
-        <div className="mobile:flex mobile:flex-col mobile:items-center mobile:justify-center mobile:h-auto mobile:p-6 desktop:w-[688px] desktop:h-[355px] desktop:items-start desktop:justify-start mobile:rounded-sub-block-10 tablet:rounded-sub-block-42 bg-gradient-sub-block desktop:p-16">
+        </div> */}
+      {/* <div className="mobile:flex mobile:flex-col mobile:items-center mobile:justify-center mobile:h-auto mobile:p-6 desktop:w-[688px] desktop:h-[355px] desktop:items-start desktop:justify-start mobile:rounded-sub-block-10 tablet:rounded-sub-block-42 bg-gradient-sub-block desktop:p-16">
           <div className="flex items-center mb-[24px] mobile:w-[320px] desktop:w-[445px] h-[27px] bg-gradient-red p-2 rounded-sub-block-6 text-primary mobile:text-[11px] desktop:text-16">
             {texts.noCallBack}
-          </div>
-          <div className="mobile:text-30 desktop:text-40 mobile:text-center desktop:text-left text-primary font-bold mb-[20px]">
+          </div> */}
+      {/* <div className="mobile:text-30 desktop:text-40 mobile:text-center desktop:text-left text-primary font-bold mb-[20px]">
             <span className="block">{texts.leaveNumber}</span>
             <span className="block">{texts.willCallBack}</span>
           </div>
           <div>
-            <form onSubmit={handleSubmit} className="flex gap-4 items-center flex-wrap desktop:flex-nowrap justify-center">
+            <form
+              onSubmit={handleSubmit}
+              className="flex gap-4 items-center flex-wrap desktop:flex-nowrap justify-center"
+            >
               <input
                 className="text-primary placeholder:text-placeholderText placeholder:text-18 placeholder:font-[500] flex border-solid border-[1px] border-primary rounded-sub-block-12 bg-input px-[20px] py-[18px] mobile:w-full desktop:w-[315px] h-[60px] focus:outline-focus outline-none"
                 type="tel"
@@ -70,9 +75,11 @@ const ContactUs = () => {
                 {texts.submit}
               </Button>
             </form>
-          </div>
-        </div>
-      </div>
+          </div> */}
+      <ContactsBlock />
+      <OrderBlock />
+      {/* </div> */}
+      {/* </div> */}
     </div>
   );
 };

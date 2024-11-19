@@ -15,9 +15,9 @@ const social = [
   },
   {
     id: 3,
-    icon: '/footer-viber-icon.png',
+    icon: '/facebook.webp',
     name: 'Viber',
-    url: 'https://viber.com/+380737727373',
+    url: 'https://web.facebook.com/raulautoUSA/',
   },
   {
     id: 4,
@@ -35,7 +35,7 @@ const social = [
 
 const FooterSocial = () => {
   return (
-    <ul className="flex gap-[16px]">
+    <ul className="flex gap-[16px] items-center mx-auto w-fit">
       {social.map((soc) => (
         <li
           key={soc.id}
@@ -45,8 +45,8 @@ const FooterSocial = () => {
             <Image
               src={soc.icon}
               alt={`${soc.name} icon`}
-              width={40}
-              height={40}
+              width={soc.id === 3 ? 37 : 40}
+              height={soc.id === 3 ? 37 : 40}
             />
           </a>
         </li>

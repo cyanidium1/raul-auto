@@ -1,55 +1,40 @@
 import useStore from '@/app/zustand/useStore';
 import translationsFaq from '../../app/lang/faq.json';
-import { itemClasses } from './itemClassesForAccordion';
 import { Accordion, AccordionItem } from '@nextui-org/react';
+import { itemClasses } from './itemClassesForAccordion';
 
 const AccordionFaq = () => {
-  const language = useStore((state) => state.language);
-
-  const { advantage_1, advantage_2, advantage_3, advantage_4 } =
-    translationsFaq[language];
+  const language = useStore((state) => state.language); // Получаем текущий язык из Zustand
+  const { faq_title, faq_items } = translationsFaq[language]; // Извлекаем данные для текущего языка
 
   return (
-    <>
+    <section>
+      <h2 className="text-center text-xl font-bold mb-6 text-gray-500">
+        {faq_title}
+      </h2>
       <Accordion
         variant="shadow"
-        itemClasses={itemClasses}
         className="bg-transparent"
+        itemClasses={itemClasses}
       >
-        <AccordionItem
-          key="1"
-          aria-label="Accordion 1"
-          title={advantage_1.title}
-          classNames={{ content: 'text-secondary pl-2 pr-2' }}
-        >
-          {advantage_1.text}
-        </AccordionItem>
-        <AccordionItem
-          key="2"
-          aria-label="Accordion 2"
-          title={advantage_2.title}
-          classNames={{ content: 'text-secondary pl-2 pr-2' }}
-        >
-          {advantage_2.text}
-        </AccordionItem>
-        <AccordionItem
-          key="3"
-          aria-label="Accordion 3"
-          title={advantage_3.title}
-          classNames={{ content: 'text-secondary pl-2 pr-2' }}
-        >
-          {advantage_3.text}
-        </AccordionItem>
-        <AccordionItem
-          key="4"
-          aria-label="Accordion 4"
-          title={advantage_4.title}
-          classNames={{ content: 'text-secondary pl-2 pr-2' }}
-        >
-          {advantage_4.text}
-        </AccordionItem>
+        {faq_items.map((item, index) => (
+          <AccordionItem
+            key={index}
+            aria-label={`Accordion ${index + 1}`}
+            title={item.question}
+            classNames={{ content: 'text-secondary pl-2 pr-2' }}
+          >
+            <ul>
+              {item.answer.map((text, idx) => (
+                <li key={idx} className="mb-2">
+                  {text}
+                </li>
+              ))}
+            </ul>
+          </AccordionItem>
+        ))}
       </Accordion>
-    </>
+    </section>
   );
 };
 

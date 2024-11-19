@@ -1,37 +1,37 @@
 'use client';
 import Image from 'next/image';
 import useStore from '../../app/zustand/useStore';
-import translations from '../../app/lang/aboutme.json';
-import translationsFaq from '../../app/lang/faq.json';
+// import translations from '../../app/lang/aboutme.json';
+// import translationsFaq from '../../app/lang/faq.json';
 import Container from '../Container/Container';
 import ContactIcon from '../UI/ContactIcon/ContactIcon';
 import AccordionFaq from './AccordionFaq';
 import { contactIcons } from './contactIcons';
 
 const FaqComponent = () => {
-  const language = useStore((state) => state.language);
+  // const language = useStore((state) => state.language);
 
-  const {
-    delivery_items,
-    purchase_benefits_items,
-    text_1,
-    text_2,
-    advantages_title,
-    delivery_time,
-    delivery_includes,
-    purchase_benefits_title,
-    minimum_budget,
-    minimum_budget_details,
-    pre_purchase_info,
-    us_market_info,
-    contact_us,
-  } = translationsFaq[language];
+  // const {
+  //   delivery_items,
+  //   purchase_benefits_items,
+  //   text_1,
+  //   text_2,
+  //   advantages_title,
+  //   delivery_time,
+  //   delivery_includes,
+  //   purchase_benefits_title,
+  //   minimum_budget,
+  //   minimum_budget_details,
+  //   pre_purchase_info,
+  //   us_market_info,
+  //   contact_us,
+  // } = translationsFaq[language];
 
-  const { adminName, adminTitle, contactPhone } = translations[language];
+  // const { adminName, adminTitle, contactPhone } = translations[language];
 
-  if (!translations[language]) {
-    throw new Error(`Translations for language "${language}" not found.`);
-  }
+  // if (!translations[language]) {
+  //   throw new Error(`Translations for language "${language}" not found.`);
+  // }
 
   return (
     <div className="pt-[30px] tablet:pt-[60px]">
@@ -40,7 +40,7 @@ const FaqComponent = () => {
           {/* Left block with image */}
           <div className="flex-1 flex items-center justify-center mb-[32px] tablet:mb-0">
             <Image
-              src="/raul-photo-for-faq.jpg"
+              src="/porsche-bg.jpg"
               alt="admin photo"
               width={800}
               height={800}
@@ -50,21 +50,22 @@ const FaqComponent = () => {
           {/* Right block with info */}
           <div className="flex-1 tabletplus:w-3/5 mobile:mt-3 tabletplus:mt-0 p-[32px] bg-transparent rounded-[20px] border-[1px] border-white flex flex-col">
             <h2 className="text-[40px] leading-[45px] mb-[20px] text-primary text-center font-bold">
-              {adminName}
+              {/* {adminName} */}
+              FAQ
             </h2>
-            <div className="font-medium text-[16px] text-secondary text-center mb-[22px]">
+            {/* <div className="font-medium text-[16px] text-secondary text-center mb-[22px]">
               {adminTitle}
             </div>
             <p className="text-[18px] text-secondary mb-[20px]">{text_1}</p>
             <p className="text-[18px] text-secondary mb-[20px]">{text_2}</p>
             <div className="text-[18px] text-secondary mb-[20px]">
               {advantages_title}
-            </div>
+            </div> */}
             <AccordionFaq />
           </div>
         </div>
 
-        <div className="">
+        {/* <div className="">
           <h3 className="text-[22px] tablet:text-[32px] pointuserbar:text-[36px] text-center text-white font-bold mb-[20px] mt-[80px]">
             {delivery_time}
           </h3>
@@ -101,11 +102,11 @@ const FaqComponent = () => {
           <p className="text-[18px] tabletplus:text-[22px] text-center tabletplus:text-left text-secondary mb-[20px] tabletplus:mb-[50px]">
             {contact_us}
           </p>
-        </div>
-        <div className="flex flex-col gap-4 mb-[25px] mt-4">
+        </div> */}
+        {/* <div className="flex flex-col gap-4 mb-[25px] mt-4">
           <a
             className="w-full max-w-[300px] mx-auto rounded-sub-block-10 h-[44px] flex items-center justify-center py-[14px] px-[24px] rounded-10 bg-input text-16 font-bold text-primary transition duration-300 hover:scale-105"
-            href={`tel:${contactPhone}`}
+            href={`tel:+380937767373`}
           >
             +380 93 776 73 73
           </a>
@@ -126,7 +127,7 @@ const FaqComponent = () => {
               alt={icon.alt}
             />
           ))}
-        </div>
+        </div> */}
       </Container>
     </div>
   );

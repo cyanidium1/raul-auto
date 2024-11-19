@@ -93,18 +93,18 @@ const FormCall = () => {
   };
 
   const increaseHour = (formikProps: any) => {
-    setSelectedHour((prev) => (prev + 1) % 24);
+    setSelectedHour((prev) => (prev === 20 ? 9 : prev + 1));
     formikProps.setFieldValue(
       'hour',
-      String((selectedHour + 1) % 24).padStart(2, '0')
+      String(selectedHour === 20 ? 9 : selectedHour + 1).padStart(2, '0')
     );
   };
 
   const decreaseHour = (formikProps: any) => {
-    setSelectedHour((prev) => (prev === 0 ? 23 : prev - 1));
+    setSelectedHour((prev) => (prev === 9 ? 20 : prev - 1));
     formikProps.setFieldValue(
       'hour',
-      String(selectedHour === 0 ? 23 : selectedHour - 1).padStart(2, '0')
+      String(selectedHour === 9 ? 20 : selectedHour - 1).padStart(2, '0')
     );
   };
 
